@@ -22,12 +22,20 @@ LOD 계산 필드 없이 User 차원과 Event Date 날짜만으로 동작한다.
 | KPI | Avg DAU · D+1 · D+7 · D+30 (일 단위 복귀율) |
 | 미연결 시 | SAMPLE DATA 배지와 함께 샘플 수치 렌더링 |
 
+## 시연 순서 (Tableau Desktop)
+
+1. `sample_game_log.csv` 연결 (또는 자체 이벤트 로그)
+2. 새 워크시트 · Marks 카드 → Add Extension → `retention-matrix.trex`
+3. **User** 선반에 `user_id` · **Event Date** 선반에 `event_date`
+4. 코호트 매트릭스 · KPI 카드 즉시 렌더링
+
 ## 파일
 
 | 파일 | 역할 |
 |---|---|
 | `index.html` | 확장 본체 · 순수 HTML · CSS · JS · 빌드 없음 |
 | `retention-matrix.trex` | Tableau에 올리는 manifest |
+| `sample_game_log.csv` | 시연용 이벤트 로그 · 10개 주간 코호트 · 결정적 생성 |
 
 호스팅: GitHub Pages · `.trex`의 source-location에 고정.
 망 제약 환경은 Extensions API 스크립트를 레포에 내려받아 교체(vendoring).
