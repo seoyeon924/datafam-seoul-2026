@@ -6,9 +6,9 @@ Claude Code와 Tableau MCP로 만드는 분석 워크플로우
 
 | 경로 | 내용 |
 |---|---|
-| `index.html` | 슬라이드 덱 43장 · 편집용 (assets 폴더 필요) |
+| `index.html` | 슬라이드 덱 51장 · 편집용 (assets 폴더 필요) |
 | `DataFam-Seoul-2026-발표자료.html` | 이미지 임베드 단일 파일 · 어디서나 열림 |
-| `DataFam-Seoul-2026-발표자료.pdf` | 43쪽 · 960×540pt |
+| `DataFam-Seoul-2026-발표자료.pdf` | 51쪽 · 960×540pt |
 | `assets/` | 원본 템플릿 PDF에서 추출한 로고·3D 아이콘 |
 
 ## 실행
@@ -149,3 +149,8 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 - **3.9 업계 동향**: The Information Lab(Public MCP 교육 활용) · Lovelytics(평가 주도 방법론) · Tableau 본사(시맨틱 3,300만 · OSI)
 - **4.3 Retention Matrix 확장 직접 제작**: `/extension/retention-matrix/` (index.html + .trex + README). Game Log Analytics Dashboard 디자인 기준, User·Event Date 선반 2개로 코호트 리텐션. GitHub Pages 배포라 .trex 바로 사용 가능. Tableau 미연결 시 샘플 모드
 - 3.3 키노트 슬라이드 문구를 쉬운 말로 교체
+
+## 2026-08-19 추가분
+
+- 활용 도구 8종을 각각 개별 슬라이드로 분리 (3.8 시리즈 · 도구명이 슬라이드 제목)
+- 슬라이드마다 GitHub Pages 라이브 링크 표기 · `/usecases/*.html` 전부 배포 확인

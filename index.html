@@ -394,6 +394,13 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .uc img{display:block;width:100%;height:148px;object-fit:cover;object-position:top}
 .uc b{display:block;font-family:var(--display);font-weight:600;font-size:13.5px;color:var(--navy);
   padding:9px 12px;border-top:1px solid rgba(2,42,192,.1)}
+
+/* 라이브 링크 */
+.live{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid rgba(2,42,192,.15);
+  border-radius:12px;padding:12px 15px;margin-top:18px}
+.live span{font-family:var(--display);font-weight:700;font-size:10.5px;letter-spacing:.08em;
+  color:#fff;background:var(--accent);border-radius:5px;padding:3px 8px;flex:0 0 auto}
+.live a{font-family:var(--mono);font-size:11.5px;color:var(--accent);text-decoration:none;word-break:break-all;line-height:1.5}
 /* ---------- 네비게이션 ---------- */
 #nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:99;
   display:flex;gap:10px;align-items:center;background:rgba(0,30,91,.72);color:#fff;
@@ -1221,6 +1228,150 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
     </div>
   </div>
   <div class="footer">8종 전부 HTML 실물 · 저장소 /usecases · 조회 전용 범위</div>
+</section>
+<!-- 3.8 도구 01 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 월요일 아침 대시보드 브리핑</h2>
+      <p class="sub">활용 도구 01 / 08 · 매주 월 08:30 자동 실행</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>지난주 대비 ±10% 급변 지표 · 새 이상치 · 오늘 열어볼 뷰 정리</li><li>워크북 9개 스캔 · MCP 조회 31회 · 6분 소요</li><li>Slack #data-daily 자동 발송 · 판정 없이 확인 후보까지만</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc1.png" alt="월요일 아침 대시보드 브리핑"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 02 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 대시보드 QA 체크리스트</h2>
+      <p class="sub">활용 도구 02 / 08 · 배포 전 자동 생성</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>워크북 구조 기반 점검 12항목 자동 생성</li><li>계산식 불일치 · 필터 누락 · 지표명 혼용 · 미갱신 뷰 탐지</li><li>대조 기준: KPI 정의서 · 전 버전 · 배포 판단은 담당자</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc2_qa.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc2_qa.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc2.png" alt="대시보드 QA 체크리스트"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 03 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 KPI 정의 감사 리포트</h2>
+      <p class="sub">활용 도구 03 / 08 · 분기 1회 실행</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>같은 이름 「매출」 3곳 · 서로 다른 계산식 2종 탐지</li><li>워크북 XML 파싱으로 계산식 원문 대조</li><li>영향 뷰 9개 표시 · 정본 결정은 거버넌스 회의</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc3.png" alt="KPI 정의 감사 리포트"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 04 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 Tableau 자산 카탈로그</h2>
+      <p class="sub">활용 도구 04 / 08 · 주 1회 자동 갱신</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>워크북 32개 · 뷰 218개 · 원본 11개 자동 문서화</li><li>소유자 · 데이터 원본 · 용도 한 줄 설명 생성</li><li>catalog.md 산출 · 신규 입사자 온보딩용</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc4_catalog.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc4_catalog.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc4.png" alt="Tableau 자산 카탈로그"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 05 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 미사용 · 중복 정리 후보</h2>
+      <p class="sub">활용 도구 05 / 08 · 월 1회 실행</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>90일 무조회 뷰 14 · 중복 의심 3쌍 · 소유자 부재 2 탐지</li><li>구조 유사도 · 조회 기록 근거와 권고 병기</li><li>삭제 실행 없음 · 보관 이동과 재지정 후보까지만</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc5_cleanup.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc5_cleanup.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc5.png" alt="미사용 · 중복 정리 후보"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 06 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 임원 보고 초안</h2>
+      <p class="sub">활용 도구 06 / 08 · 매주 월 07:00 생성</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>이번 주 달라진 것 3가지 · 근거 뷰 명시</li><li>MCP 이미지 추출로 주요 뷰 2개 자동 첨부</li><li>Word 초안 저장 · 발송 판단은 사람</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc6_exec.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc6_exec.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc6.png" alt="임원 보고 초안"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 07 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 장애 · 운영 점검 알림</h2>
+      <p class="sub">활용 도구 07 / 08 · 매일 08:00 자동 점검</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>추출 새로고침 실패 · 원인 추정 · 영향 뷰 표시</li><li>14일 이상 미갱신 데이터 · 소유자 부재 워크북 감지</li><li>Slack #data-ops 발송 · 재시도 실행은 관리자</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc7_ops.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc7_ops.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc7.png" alt="장애 · 운영 점검 알림"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
+</section>
+<!-- 3.8 도구 08 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 대시보드 리뉴얼 전 진단</h2>
+      <p class="sub">활용 도구 08 / 08 · 리뉴얼 착수 전 1회</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.55fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="body"><ul><li>시트 24 · 계산 필드 41 · 조회 상위 3뷰 92% 집중 분석</li><li>남길 것 · 버릴 후보 · 통합 후보 구분</li><li>사용 로그 90일 근거 · 리뉴얼 설계는 담당 분석가</li></ul></div>
+        <div class="live"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html">seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html</a></div>
+      </div>
+      <div class="shot rel"><img src="assets/uc8.png" alt="대시보드 리뉴얼 전 진단"></div>
+    </div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP · 읽기 전용 · HTML 실물</div>
 </section>
 
 <!-- 3.9 업계 동향 -->
