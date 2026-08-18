@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Tableau Public MCP · 제작 구조 질의</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1240px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:center;gap:12px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd .dot{width:10px;height:10px;border-radius:50%;background:#1E7BEF}
+.hd h1{font-size:19px;font-weight:700}
+.hd .sub{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:12px;color:#5B6B84}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:22px}
+.u{background:#16233B;color:#fff;border-radius:14px 14px 3px 14px;padding:13px 18px;font-size:14.5px;line-height:1.6;margin-bottom:12px}
+.u code{color:#BBD3FF;font-family:'SF Mono',Menlo,monospace;font-size:12px}
+.chips{display:flex;gap:7px;margin:2px 0 12px}
+.chip{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#DCE7FA;color:#1E4FC2;border-radius:5px;padding:4px 9px}
+.a{background:#fff;border:1px solid #DDE4EE;border-radius:14px 14px 14px 3px;padding:18px 22px;font-size:14px;line-height:1.66}
+.a p{margin-bottom:8px}
+.a .sec{font-weight:700;font-size:13px;color:#1E4FC2;margin:14px 0 6px}
+.a .sec:first-child{margin-top:0}
+.a li{list-style:none;padding:5px 0 5px 14px;position:relative;font-size:13.5px}
+.a li::before{content:'';position:absolute;left:0;top:.85em;width:4px;height:4px;border-radius:50%;background:#7FA9D9}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11.5px;background:#EDF1F7;border-radius:4px;padding:2px 7px;color:#3A4A63}
+.fx{display:block;background:#0E1E3E;color:#CFE0FA;border-radius:8px;padding:9px 13px;margin:5px 0;font-size:11.5px;line-height:1.7;font-family:'SF Mono',Menlo,monospace;white-space:pre-wrap}
+.fx b{color:#FFD84D;font-weight:600}
+.side{display:flex;flex-direction:column;gap:14px}
+.viz{background:#fff;border:1px solid #DDE4EE;border-radius:12px;overflow:hidden}
+.viz img{display:block;width:100%}
+.viz .cap{padding:10px 14px;font-size:12px;color:#5B6B84;border-top:1px solid #E7ECF4}
+.prof{background:#fff;border:1px solid #DDE4EE;border-radius:12px;padding:16px 18px}
+.prof b{display:block;font-size:14.5px;margin-bottom:3px}
+.prof .r{font-size:12.5px;color:#5B6B84;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.st{background:#F1F5FB;border-radius:8px;padding:9px 6px;text-align:center}
+.st b{font-size:16px;margin:0}
+.st span{font-size:10.5px;color:#5B6B84}
+.foot{margin-top:18px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.foot code{background:#E4EBF5}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hd">
+    <span class="dot"></span>
+    <h1>대시보드 제작 구조 질의</h1>
+    <span class="sub">Tableau Public MCP · 인증 불필요 · 공개 워크북 대상</span>
+    <span class="gen">Claude Code</span>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div class="u">이 대시보드 어떻게 만든 거야?<br><code>public.tableau.com/…/SalesFunnelDashboard/SalesPipelineDashboard</code></div>
+      <div class="chips"><span class="chip">get-workbook-details</span><span class="chip">download-workbook</span><span class="chip">analyze-structure</span></div>
+      <div class="a">
+        <div class="sec">워크북 구성</div>
+        <li>시트 16개 · 대시보드 1개 (Sales Pipeline Dashboard) · 파라미터 2개 (Top N Accounts · padding)</li>
+        <li>시트 이름 규칙: <code>T_</code> 접두 = 툴팁 전용 7개 · <code>B_</code> 접두 = 하단 KPI 카드 4개</li>
+        <div class="sec">계산 필드 27개 중 구조를 만드는 4개</div>
+        <span class="fx"><b>Sort</b> = CASE [Stage] WHEN "Prospecting" THEN 1 WHEN "Qualification" THEN 2
+       WHEN "Value Proposition" THEN 3 …  <b>· 퍼널 단계 정렬</b></span>
+        <span class="fx"><b>Won Rate</b> = [# of Won Opp.] / [# of Closed Opp.]  <b>· Closed 중 Won 비율</b></span>
+        <span class="fx"><b>Age of Oppty</b> = {FIXED [Opportunity ID]: MAX(DATEDIFF("day", [CreatedDate], …))}  <b>· 딜 경과일</b></span>
+        <span class="fx"><b>Avg.Deal Size</b> = SUM({FIXED [Opportunity ID]: MAX([Expected Amount])}) / COUNTD([Opportunity ID])</span>
+        <div class="sec">재현 순서</div>
+        <li>Stage 정렬 계산 필드 → 단계별 집계 시트 → 툴팁 시트(T_) 연결 → KPI 카드(B_) 4개 → 대시보드 조립</li>
+      </div>
+    </div>
+    <div class="side">
+      <div class="viz"><img src="../assets/funnel_full.png" alt="Sales Funnel Dashboard"><div class="cap">Sales Funnel Dashboard | VOTD · 조회 104.4K · Featured</div></div>
+      <div class="prof">
+        <b>Seoyeon Jun</b>
+        <div class="r">Tableau Visionary · Public Ambassador 5회 · VOTD 4회</div>
+        <div class="stats">
+          <div class="st"><b>35</b><span>Vizzes</span></div>
+          <div class="st"><b>2,086</b><span>Followers</span></div>
+          <div class="st"><b>104K</b><span>Top Viz 조회</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="b">공개 API만 사용</span>
+    <span>MCP 제작: Will Sutton · The Information Lab</span>
+    <code>npx -y @wjsutton/tableau-public-mcp-server</code>
+    <span>· 계산식은 실제 워크북 파싱 결과</span>
+  </div>
+</div>
+</body>
+</html>

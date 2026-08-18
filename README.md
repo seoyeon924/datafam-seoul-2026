@@ -174,3 +174,12 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 - 선언 슬라이드 삭제 · 3.8 Use Cases overview(8종 통일 명명) + 상세 3장(수치 3개 포맷 · 상단 크롭 확대 캡처)
 - 업계 동향 → APPENDIX · Ecosystem (Thank you 뒤)
 - 3.10 Connection Options · BONUS 라벨화 · 4.1 Adoption Framework · Wrap-up 4역할 카드
+
+## 2026-08-19 내러티브 · 언어 패스
+
+- 한국어 80 / 영어 고유명사 20 · 110건 치환 (Tableau · MCP · Claude Code · KPI · QA만 영어)
+- 축 3개 재정의: 분석 설계(02) → Tableau MCP(03 표지 승격) → Extensions(거버넌스 유지) → 실무 도입(04)
+- 3.7 사례 1~3 · 데모 3종 실배포(usecases/demo_*.html) · 전 활용사례 링크 앵커화(PDF 클릭 가능)
+- 2.4 에이전트 표에 Tableau 연결 열 추가 · 3.6 단일 도식 · 3.9 업계 사례 본편 복귀(페이지 캡처 포함)
+- EXTENSION 1 · 2 라벨 체계 · 어벤져스 라이브 링크 · Thank you QR · 연락처 · 후기 안내
+- 4.1 단계별 체크 항목 보강 (tableau-mcp 공식 배포 가이드 근거)

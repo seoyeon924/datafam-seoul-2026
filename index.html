@@ -389,6 +389,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .idea.hl{background:var(--card)}
 
 /* 도구 갤러리 */
+a.uc{text-decoration:none;display:block}
+.ucdesc{font-size:14.5px;color:var(--navy);opacity:.75;margin-top:8px}
 .ucgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:22px}
 .uc{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:12px;overflow:hidden}
 .uc img{display:block;width:100%;height:148px;object-fit:cover;object-position:top}
@@ -500,8 +502,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/plus.png" style="left:112px;top:508px;width:34px">
   <img class="deco" src="assets/plus.png" style="right:56px;top:470px;width:26px">
 
-  <h1>AI · Human · Tableau</h1>
-  <p class="note">Automation · Validation · Governance</p>
+  <h1>AI · 사람 · Tableau</h1>
+  <p class="note">자동화 · 검증 · 거버넌스</p>
 </section>
 
 <!-- =========================================================
@@ -523,7 +525,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="big">Contents</div>
   <div class="list">
-    <div class="item"><div class="num">01</div><div><b>AI 역할</b><span>Roles · Workflow · Platform Layer</span></div></div>
+    <div class="item"><div class="num">01</div><div><b>AI 역할</b><span>역할 · 워크플로우 · 플랫폼</span></div></div>
     <div class="item"><div class="num">02</div><div><b>반복 분석 업무 자동화</b><span>프롬프트 반복에서 재사용 가능한 워크플로우로</span></div></div>
     <div class="item"><div class="num">03</div><div><b>Tableau 자산과의 연결</b><span>Tableau MCP로 워크북 · 뷰 · 메타데이터 연결</span></div></div>
     <div class="item"><div class="num">04</div><div><b>실무 도입 순서</b><span>한 가지 업무에서 시작해 검증된 범위만 확대</span></div></div>
@@ -543,7 +545,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <div class="block">
     <div class="num">01</div>
     <h1 class="title">AI 역할</h1>
-    <p class="sub">Roles · Workflow · Platform</p>
+    <p class="sub">역할 · 워크플로우 · 플랫폼</p>
   </div>
 </section>
 
@@ -572,11 +574,11 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">1.2 Analysis Workflow</h2>
+      <h2 class="head">1.2 분석 워크플로우</h2>
     </div>
     <div class="flow3">
       <div class="fcol">
-        <div class="fstage">Before Tableau</div>
+        <div class="fstage">Tableau 전</div>
         <div class="fcard">
           <div class="fbody">데이터 파악<br>EDA<br>KPI 초안</div>
           <div class="ftool">Claude Code</div>
@@ -584,7 +586,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
       <div class="farrow">›</div>
       <div class="fcol">
-        <div class="fstage">In / Around Tableau</div>
+        <div class="fstage">Tableau 안팎</div>
         <div class="fcard">
           <div class="fbody">워크북 · 뷰 조회<br>메타데이터 확인<br>변경 점검</div>
           <div class="ftool">Tableau MCP</div>
@@ -592,7 +594,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
       <div class="farrow">›</div>
       <div class="fcol">
-        <div class="fstage">Decision &amp; Delivery</div>
+        <div class="fstage">판단 · 배포</div>
         <div class="fcard">
           <div class="fbody">검증<br>해석<br>배포 · 공유</div>
           <div class="ftool">사람 + Tableau</div>
@@ -608,8 +610,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">1.3 Tableau Platform Layer</h2>
-      <p class="sub">Refresh · Security · Semantics · Governance</p>
+      <h2 class="head">1.3 Tableau 플랫폼 계층</h2>
+      <p class="sub">새로고침 · 보안 · 시맨틱 · 거버넌스</p>
     </div>
     <div class="rolecards" style="margin-top:30px">
       <div class="rc"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4l1.85 4.95 4.95 1.85-4.95 1.85L12 17l-1.85-4.95L5.2 10.2l4.95-1.85z"/></svg></span>
@@ -617,7 +619,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       <div class="rc"><span class="ibadge wb" style="border:1px solid rgba(2,42,192,.12)"><img src="assets/tableau_logo.svg" alt="" style="width:22px;height:22px"></span>
         <b>Tableau</b><ul><li>권한 · 행 수준 보안</li><li>지표의 정본 · 시맨틱 모델</li><li>새로고침 · 배포 · 감사</li></ul></div>
       <div class="rc"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 11.6a3.8 3.8 0 100-7.6 3.8 3.8 0 000 7.6M4.6 20.4a7.4 7.4 0 0114.8 0"/></svg></span>
-        <b>Human</b><ul><li>정의와 기준</li><li>검증</li><li>최종 판단</li></ul></div>
+        <b>사람</b><ul><li>정의와 기준</li><li>검증</li><li>최종 판단</li></ul></div>
     </div>
     
   </div>
@@ -636,8 +638,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/plus.png" style="right:236px;bottom:104px;width:34px;z-index:3">
   <div class="block">
     <div class="num">02</div>
-    <h1 class="title">반복 분석 업무<br>자동화</h1>
-    <p class="sub">Before Tableau · Claude Code</p>
+    <h1 class="title">분석 설계</h1>
+    <p class="sub">Tableau 작업 전 · 구조 기획 · Claude Code</p>
   </div>
 </section>
 
@@ -646,10 +648,10 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">2.1 Prompt-based Analysis</h2>
+      <h2 class="head">2.1 프롬프트 기반 분석</h2>
     </div>
-    <div class="barow" style="margin-top:40px"><span class="bstep g">Data Profiling</span><span class="baar">→</span><span class="bstep g">Problem</span><span class="baar">→</span><span class="bstep g">KPI</span><span class="baar">→</span><span class="bstep g">Visualization</span><span class="baar">→</span><span class="bstep g">Report</span></div>
-    <p style="margin-top:44px;font-family:var(--display);font-weight:600;font-size:19px;color:var(--navy);opacity:.75">Low Reusability · Context Loss · Manual Restart</p>
+    <div class="barow" style="margin-top:40px"><span class="bstep g">데이터 파악</span><span class="baar">→</span><span class="bstep g">질문</span><span class="baar">→</span><span class="bstep g">KPI</span><span class="baar">→</span><span class="bstep g">시각화</span><span class="baar">→</span><span class="bstep g">보고서</span></div>
+    <p style="margin-top:44px;font-family:var(--display);font-weight:600;font-size:19px;color:var(--navy);opacity:.75">낮은 재사용성 · 맥락 소실 · 수동 재시작</p>
   </div>
   <div class="footer">기업 대상 실습 프롬프트 11단계 요약</div>
 </section>
@@ -660,13 +662,13 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/plus.png" style="left:10px;top:250px;width:24px;opacity:.7">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">2.2 Prompt Workflow Limitations</h2>
+      <h2 class="head">2.2 프롬프트 방식 한계</h2>
     </div>
     <div class="ideas" style="grid-template-columns:repeat(4,1fr);margin-top:40px">
-      <div class="idea"><b>Repetition</b><span>프로젝트마다 재입력</span></div>
-      <div class="idea"><b>Context Dependency</b><span>앞 답변에 종속</span></div>
-      <div class="idea"><b>Output Fragmentation</b><span>대화 속에 흩어짐</span></div>
-      <div class="idea"><b>Inconsistent Standards</b><span>사람마다 다른 기준</span></div>
+      <div class="idea"><b>반복 입력</b><span>프로젝트마다 다시</span></div>
+      <div class="idea"><b>맥락 종속</b><span>앞 답변에 의존</span></div>
+      <div class="idea"><b>산출물 분산</b><span>대화 속에 흩어짐</span></div>
+      <div class="idea"><b>기준 불일치</b><span>사람마다 다른 기준</span></div>
     </div>
   </div>
   <div class="footer">DataFam Seoul 2026</div>
@@ -687,19 +689,19 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
     <div class="cols c3" style="margin-top:26px">
       <div>
         <span class="tag">AGENT</span>
-        <h3 class="colhead">Role · Input · Output</h3>
+        <h3 class="colhead">역할 · 입력 · 산출</h3>
       </div>
       <div>
         <span class="tag">RULE</span>
-        <h3 class="colhead">Metric Definition · Analysis Standard · Visualization Standard</h3>
+        <h3 class="colhead">지표 정의 · 분석 기준 · 시각화 기준</h3>
       </div>
       <div>
         <span class="tag">SKILL</span>
-        <h3 class="colhead">Sequence · Dependency · Resume Point</h3>
+        <h3 class="colhead">순서 · 의존 · 재개 지점</h3>
       </div>
     </div>
   
-    <p style="margin-top:46px;font-family:var(--display);font-weight:700;font-size:26px;color:var(--accent);text-align:center">Define Once → Reuse</p>
+    <p style="margin-top:46px;font-family:var(--display);font-weight:700;font-size:26px;color:var(--accent);text-align:center">한 번 정의 → 재사용</p>
   </div>
   
   <div class="footer">DataFam Seoul 2026</div>
@@ -717,20 +719,20 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       <h2 class="head">2.4 에이전트 구성</h2>
       <p class="sub">단계별 담당 작업과 산출물 사전 정의</p>
     </div>
-    <table class="cmp" style="font-size:15.5px;margin-top:22px">
-      <thead><tr><th style="width:200px">에이전트</th><th style="width:330px">하는 일</th><th>남기는 것</th></tr></thead>
+    <table class="cmp" style="font-size:14px;margin-top:20px">
+      <thead><tr><th style="width:160px">에이전트</th><th>정의 · MD 요약</th><th style="width:150px">산출물</th><th style="width:260px">Tableau 연결</th></tr></thead>
       <tbody>
-        <tr><th style="width:200px">@data-ingestion</th><td>컬럼과 타입, 결측 훑기</td><td>데이터 프로파일</td></tr>
-        <tr><th>@eda</th><td>분포 · 이상치 · 변수 간 관계 확인</td><td>EDA 요약</td></tr>
-        <tr><th>@problem</th><td>무엇에 답할지 확정</td><td>문제 정의</td></tr>
-        <tr><th>@metrics</th><td>지표 이름 · 계산식 · 분모 확정</td><td>KPI 정의서</td></tr>
-        <tr><th>@analysis</th><td>세운 가설 검증</td><td>분석 리포트</td></tr>
-        <tr><th>@dashboard</th><td>차트 선택과 레이아웃 기획</td><td>대시보드</td></tr>
-        <tr><th>@report</th><td>임원 보고용으로 정리</td><td>원페이지 보고서</td></tr>
+        <tr><th style="width:160px">@data-ingestion</th><td>컬럼 · 타입 · 결측 점검</td><td>데이터 프로파일</td><td>데이터 원본 구조 사전 검증</td></tr>
+        <tr><th>@eda</th><td>분포 · 이상치 · 변수 관계</td><td>EDA 요약</td><td>뷰 후보 · 카드 제목 원천</td></tr>
+        <tr><th>@problem</th><td>답할 질문 확정</td><td>질문 정의</td><td>뷰 1개 = 질문 1개</td></tr>
+        <tr><th>@metrics</th><td>지표 이름 · 계산식 · 분모</td><td>KPI 정의서</td><td>계산 필드 등록 · QA 대조 기준</td></tr>
+        <tr><th>@analysis</th><td>가설 검증 · 근거 기록</td><td>분석 리포트</td><td>카드 제목 · 주석 근거</td></tr>
+        <tr><th>@dashboard</th><td>차트 선택 · 레이아웃</td><td>대시보드 시안</td><td>재현 기준 · 와이어프레임 생략</td></tr>
+        <tr><th>@report</th><td>임원용 한 장 요약</td><td>원페이지 보고서</td><td>구독 메일과 같은 주기 발송</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="footer">각 에이전트에 같은 Rule이 적용된다 · 지표 정의 우선, 절대값과 상대값 혼용 금지</div>
+  <div class="footer">공통 Rule 적용 · 지표 정의 우선 · 절대값 · 상대값 혼용 금지</div>
 </section>
 
 <!-- =========================================================
@@ -785,9 +787,9 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
       <div class="agside">
         <span class="tag">@EDA</span>
-        <h3 class="colhead">EDA Summary</h3>
-        <div class="body"><p>Findings 3 · KPI Snapshot</p></div>
-        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>TABLEAU HANDOFF</b><span>View Candidates · Card Titles</span></div></div>
+        <h3 class="colhead">EDA 요약</h3>
+        <div class="body"><p>발견 3 · KPI 스냅샷</p></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 인계</b><span>뷰 후보 · 카드 제목</span></div></div>
       </div>
     </div>
   </div>
@@ -821,9 +823,9 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
       <div class="agside">
         <span class="tag">@METRICS</span>
-        <h3 class="colhead">KPI Definition</h3>
-        <div class="body"><p>Name · Formula · Denominator · Unit</p></div>
-        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>TABLEAU HANDOFF</b><span>Calculated Fields · QA Baseline</span></div></div>
+        <h3 class="colhead">KPI 정의</h3>
+        <div class="body"><p>이름 · 계산식 · 분모 · 단위</p></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 인계</b><span>계산 필드 · QA 대조 기준</span></div></div>
       </div>
     </div>
   </div>
@@ -848,9 +850,9 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
       <div class="agside">
         <span class="tag">@DASHBOARD</span>
-        <h3 class="colhead">Dashboard Draft</h3>
-        <div class="body"><p>Chart Selection · Layout · KPI Cards</p></div>
-        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>TABLEAU HANDOFF</b><span>Rebuild Reference · No Wireframe Step</span></div></div>
+        <h3 class="colhead">대시보드 시안</h3>
+        <div class="body"><p>차트 선택 · 레이아웃 · KPI 카드</p></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 인계</b><span>재현 기준 · 와이어프레임 생략</span></div></div>
       </div>
     </div>
   </div>
@@ -893,8 +895,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/plus.png" style="left:196px;bottom:104px;width:34px;z-index:3">
   <div class="block">
     <div class="num">03</div>
-    <h1 class="title">Tableau 자산과의<br>연결</h1>
-    <p class="sub">In / Around Tableau · Tableau MCP가 맡는 구간</p>
+    <h1 class="title">Tableau MCP</h1>
+    <p class="sub">원본 데이터 · Tableau 대시보드 연결</p>
   </div>
 </section>
 
@@ -906,18 +908,18 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap" style="bottom:auto">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.1 Context Boundary</h2>
+      <h2 class="head">3.1 컨텍스트 경계</h2>
     </div>
   </div>
   <div class="split">
     <div class="sp">
-      <h3 class="colhead">LOCAL CONTEXT</h3>
-      <div class="body" style="font-size:18px;margin-top:14px">CSV · Excel · PDF · Documents</div>
+      <h3 class="colhead">로컬 컨텍스트</h3>
+      <div class="body" style="font-size:18px;margin-top:14px">CSV · Excel · PDF · 문서</div>
     </div>
-    <div class="spgap"><span>Disconnected</span></div>
+    <div class="spgap"><span>단절</span></div>
     <div class="sp">
-      <h3 class="colhead">TABLEAU ASSETS</h3>
-      <div class="body" style="font-size:18px;margin-top:14px;line-height:1.9">Data Sources · Workbooks · Views<br>Calculations · Permissions</div>
+      <h3 class="colhead">Tableau 자산</h3>
+      <div class="body" style="font-size:18px;margin-top:14px;line-height:1.9">데이터 원본 · 워크북 · 뷰<br>계산 필드 · 권한</div>
     </div>
   </div>
   <div class="banner"><svg viewBox="0 0 24 24" style="width:25px;height:25px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M13.9 10.1l-3.8 3.8M10.3 6.7l2-2a3.9 3.9 0 015.5 5.5l-2 2M13.7 17.3l-2 2a3.9 3.9 0 01-5.5-5.5l2-2"/></svg><span>Tableau MCP</span></div>
@@ -936,10 +938,10 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <div class="lbl">3.2 Tableau MCP</div>
   <div class="rule"></div>
   <h1 style="font-size:62px;line-height:1.2">Tableau MCP</h1>
-  <p class="note">AI ↔ Tableau Connection Layer</p>
+  
   <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM7.2 10.2l2.7 2-2.7 2M12.7 14.2h4.2"/></svg></span><b>Claude Code</b><i>요청</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M13.9 10.1l-3.8 3.8M10.3 6.7l2-2a3.9 3.9 0 015.5 5.5l-2 2M13.7 17.3l-2 2a3.9 3.9 0 01-5.5-5.5l2-2"/></svg></span><b>Tableau MCP</b><i>권한 확인</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge wb"><img src="assets/tableau_logo.svg" alt="" style="width:22px;height:22px"></span><b>Tableau</b><i>응답</i></div></div>
   
-  <p class="note" style="margin-top:24px;font-size:16px;opacity:.85">User Permissions · Asset Boundary · Read-only Demo Scope</p>
+  <p class="note" style="margin-top:24px;font-size:16px;opacity:.85">사용자 권한 · 접근 범위 · 읽기 중심 데모</p>
 </section>
 <!-- 3.3 TC26 -->
 <section class="slide">
@@ -951,9 +953,9 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
     <div class="cols c2" style="grid-template-columns:1fr 1.4fr;margin-top:24px;align-items:center">
       <div>
         <div class="body" style="font-size:18px;line-height:2.1">
-          <p><b style="color:var(--accent)">KNOWLEDGE ENGINE</b><br>Data · Semantics</p>
-          <p style="margin-top:16px"><b style="color:var(--accent)">DECISION ENGINE</b><br>Insights · Actions</p>
-          <p style="margin-top:16px"><b style="color:var(--accent)">MCP</b><br>External AI Connectivity</p>
+          <p><b style="color:var(--accent)">KNOWLEDGE ENGINE</b><br>데이터 · 시맨틱</p>
+          <p style="margin-top:16px"><b style="color:var(--accent)">DECISION ENGINE</b><br>인사이트 · 액션</p>
+          <p style="margin-top:16px"><b style="color:var(--accent)">MCP</b><br>외부 AI 연결</p>
         </div>
       </div>
       <div class="shot rel"><img src="assets/tc26_platform.png" alt="Agentic Analytics Platform"></div>
@@ -967,13 +969,13 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.4 TC26 · MCP in Action</h2>
+      <h2 class="head">3.4 TC26 · MCP 시연</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1fr 1.35fr;margin-top:26px;align-items:center">
-      <div class="body" style="font-size:19px;line-height:2.2">
-        <p>External AI Connectivity</p>
-        <p>DataDev Application</p>
-        <p><b>Inventory Exception → Agent Action</b></p>
+      <div class="body">
+        <p style="margin-bottom:18px"><b style="font-size:19px">외부 AI 연결</b><br><span style="font-size:14px;opacity:.72">Tableau 밖의 AI 도구가 Tableau 데이터 사용</span></p>
+        <p style="margin-bottom:18px"><b style="font-size:19px">DataDev 앱 시연</b><br><span style="font-size:14px;opacity:.72">대시보드 없이 Tableau 데이터로 동작하는 앱</span></p>
+        <p><b style="font-size:19px">재고 이상 → 에이전트 실행</b><br><span style="font-size:14px;opacity:.72">이상 발견부터 창고 이동 요청까지 한 흐름</span></p>
       </div>
       <div>
         <div class="shot rel"><img src="assets/tc26_will.png" alt="TC26 키노트 시연"></div>
@@ -981,7 +983,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
     </div>
   </div>
-  <div class="footer">MCP Clients · Claude · Cursor · ChatGPT · 출처: TC26 키노트</div>
+  <div class="footer">MCP 클라이언트 · Claude · Cursor · ChatGPT · 출처: TC26 키노트</div>
 </section>
 
 
@@ -993,14 +995,15 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.5 MCP Access Scope</h2>
+      <h2 class="head">3.5 MCP 접근 범위</h2>
+      <p class="sub">TC26 사례의 실무 번역 · 조회 가능 범위</p>
     </div>
     <div class="body" style="font-size:20px;line-height:2.15;margin-top:26px">
-      <p>Workbooks · Views</p>
-      <p>View Data</p>
-      <p>Fields · Metadata</p>
-      <p>Images</p>
-      <p>Projects · Permissions</p>
+      <p>워크북 · 뷰</p>
+      <p>뷰 데이터</p>
+      <p>필드 · 메타데이터</p>
+      <p>이미지</p>
+      <p>프로젝트 · 권한</p>
     </div>
     <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 5h17v14h-17zM3.5 9.7h17M3.5 14.3h17M9.2 5v14"/></svg></span><b>워크북 · 뷰</b><i>목록과 구조</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.6c4.1 0 7.4 1.2 7.4 2.7S16.1 9 12 9 4.6 7.8 4.6 6.3 7.9 3.6 12 3.6M4.6 6.3v11.4c0 1.5 3.3 2.7 7.4 2.7s7.4-1.2 7.4-2.7V6.3"/></svg></span><b>뷰 데이터</b><i>CSV 추출</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M11.3 3.6H20v8.7l-8.6 8.6-8.7-8.7zM16.2 7.9h.01"/></svg></span><b>메타데이터</b><i>필드 정의</i></div><div class="idiv"></div><div class="istep off"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M6.4 10.4h11.2v9.2H6.4zM9 10.4V8a3 3 0 016 0v2.4"/></svg></span><b>권한 밖 자산</b><i>조회 불가</i></div></div>
 
@@ -1014,23 +1017,15 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
-  <img class="deco" src="assets/plus.png" style="right:104px;bottom:52px;width:22px;opacity:.6">
-
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.6 Dashboard QA Workflow</h2>
+      <h2 class="head">3.6 대시보드 QA 흐름</h2>
+      <p class="sub">접근 범위의 첫 적용 · 배포 전 점검</p>
     </div>
-    <div class="lane">
-      <div class="ln"><div class="lnw mcp">01 RETRIEVE</div><div class="lnt">Tableau MCP</div></div>
-      <div class="ln"><div class="lnw cc">02 REVIEW</div><div class="lnt">Claude Code</div></div>
-      <div class="ln"><div class="lnw hum">03 VALIDATE</div><div class="lnt">Analyst</div></div>
-      <div class="ln"><div class="lnw tb">04 PUBLISH</div><div class="lnt">Tableau</div></div>
+    <div class="iflow" style="margin-top:52px">
+      <div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">01</span>&nbsp; 조회</b><i style="font-size:13px">Tableau MCP</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">02</span>&nbsp; 후보 정리</b><i style="font-size:13px">Claude Code</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">03</span>&nbsp; 사람 검증</b><i style="font-size:13px">분석가</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">04</span>&nbsp; 반영</b><i style="font-size:13px">Tableau</i></div>
     </div>
-  
-    <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M2.6 12s3.6-6.3 9.4-6.3S21.4 12 21.4 12s-3.6 6.3-9.4 6.3S2.6 12 2.6 12M12 14.6a2.6 2.6 0 100-5.2 2.6 2.6 0 000 5.2"/></svg></span><b>조회</b><i>MCP가 가져온다</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M6.4 3.5h8.1l4.1 4.1v12.9H6.4zM14.5 3.5v4.1h4.1M9.6 12.6h5.8M9.6 16h5.8"/></svg></span><b>후보 정리</b><i>Claude Code가 맞춘다</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep key"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4l7.6 2.9v5.6c0 4.7-3.2 7.8-7.6 8.7-4.4-.9-7.6-4-7.6-8.7V6.3zM9.2 12.1l2 2 3.6-3.7"/></svg></span><b>사람 확인</b><i>원본 대조</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 18.8V5.4M6.6 10.8L12 5.4l5.4 5.4M4.6 20.6h14.8"/></svg></span><b>배포</b><i>Tableau가 반영</i></div></div>
   </div>
-  
-  <p style="position:absolute;left:64px;bottom:56px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--navy);opacity:.72">Metadata → Candidates → Validation → Release</p>
   <div class="footer">DataFam Seoul 2026</div>
 </section>
 <!-- 3.7 활용 사례 -->
@@ -1039,9 +1034,11 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">3.7 활용 사례</h2>
-      <p class="sub">01 / 03 · 주간 점검 리포트 · 3.6 워크플로우의 실행 결과물</p>
+      <p class="sub">사례 1 · 주간 점검 리포트</p>
+      <p class="ucdesc">매주 손으로 하던 배포 전 점검의 자동 실행 결과 · 3.6 흐름 그대로</p>
     </div>
-    <div class="shot rel" style="width:960px;margin:20px auto 0"><img src="assets/demo_qa_report.png" alt="주간 대시보드 점검 리포트"></div>
+    <div class="shot rel" style="width:880px;margin:14px auto 0"><img src="assets/demo_qa_report.png" alt="주간 대시보드 점검 리포트"></div>
+    <div class="live" style="max-width:620px;margin:14px auto 0"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_qa_report.html">seoyeon924.github.io/datafam-seoul-2026/usecases/demo_qa_report.html</a></div>
   </div>
   <div class="footer">Claude Code + Tableau MCP 생성 · 요청 한 번 · 워크북 12개 점검 · 데모는 조회 · 분석 범위로 제한</div>
 </section>
@@ -1051,9 +1048,11 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">3.7 활용 사례</h2>
-      <p class="sub">02 / 03 · 대시보드와 대화 · Sales Funnel Dashboard 대상</p>
+      <p class="sub">사례 2 · 대시보드와 대화</p>
+      <p class="ucdesc">Sales Funnel Dashboard(VOTD) 데이터 질의 · 계산식 대조까지 대화로</p>
     </div>
-    <div class="shot rel" style="width:900px;margin:18px auto 0"><img src="assets/demo_chat.png" alt="대시보드와 대화 데모"></div>
+    <div class="shot rel" style="width:820px;margin:14px auto 0"><img src="assets/demo_chat.png" alt="대시보드와 대화 데모"></div>
+    <div class="live" style="max-width:600px;margin:14px auto 0"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_chat.html">seoyeon924.github.io/datafam-seoul-2026/usecases/demo_chat.html</a></div>
   </div>
   <div class="footer">계산식은 실제 워크북 파싱 결과 · 수치는 시연 구성 · 조회 범위 제한</div>
 </section>
@@ -1064,9 +1063,11 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">3.7 활용 사례</h2>
-      <p class="sub">03 / 03 · 제작 구조 질의 · Tableau Public MCP · 인증 불필요</p>
+      <p class="sub">사례 3 · 제작 구조 질의 · Tableau Public MCP</p>
+      <p class="ucdesc">공개 워크북 다운로드 · XML 파싱으로 시트 16개 · 계산 필드 27개 구조 분석</p>
     </div>
-    <div class="shot rel" style="width:940px;margin:18px auto 0"><img src="assets/demo_public.png" alt="Tableau Public MCP 데모"></div>
+    <div class="shot rel" style="width:860px;margin:14px auto 0"><img src="assets/demo_public.png" alt="Tableau Public MCP 데모"></div>
+    <div class="live" style="max-width:620px;margin:14px auto 0"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_public_mcp.html">seoyeon924.github.io/datafam-seoul-2026/usecases/demo_public_mcp.html</a></div>
   </div>
   <div class="footer">MCP 제작: Will Sutton · The Information Lab · 시트 16개와 계산 필드 27개는 실제 파싱 결과</div>
 </section>
@@ -1106,10 +1107,10 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.8 Tableau MCP Use Cases</h2>
-      <p class="sub">8 Workflows · Live Outputs</p>
+      <h2 class="head">3.8 Tableau MCP 활용 업무</h2>
+      <p class="sub">실무 적용 예시 8종 · 전부 실행 화면</p>
     </div>
-    <div class="ucgrid"><div class="uc"><img src="assets/uc1.png" alt=""><b>01 KPI Briefing</b></div><div class="uc"><img src="assets/uc2.png" alt=""><b>02 Dashboard QA</b></div><div class="uc"><img src="assets/uc3.png" alt=""><b>03 KPI Audit</b></div><div class="uc"><img src="assets/uc4.png" alt=""><b>04 Asset Catalog</b></div><div class="uc"><img src="assets/uc5.png" alt=""><b>05 Content Cleanup</b></div><div class="uc"><img src="assets/uc6.png" alt=""><b>06 Executive Report</b></div><div class="uc"><img src="assets/uc7.png" alt=""><b>07 Operations Monitor</b></div><div class="uc"><img src="assets/uc8.png" alt=""><b>08 Renewal Assessment</b></div></div>
+    <div class="ucgrid"><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html"><img src="assets/uc1.png" alt=""><b>01 월요일 KPI 브리핑</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc2_qa.html"><img src="assets/uc2.png" alt=""><b>02 대시보드 QA</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html"><img src="assets/uc3.png" alt=""><b>03 KPI 정의 감사</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc4_catalog.html"><img src="assets/uc4.png" alt=""><b>04 Tableau 자산 카탈로그</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc5_cleanup.html"><img src="assets/uc5.png" alt=""><b>05 미사용 콘텐츠 점검</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc6_exec.html"><img src="assets/uc6.png" alt=""><b>06 임원 보고 초안</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc7_ops.html"><img src="assets/uc7.png" alt=""><b>07 운영 상태 점검</b></a><a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html"><img src="assets/uc8.png" alt=""><b>08 대시보드 리뉴얼 진단</b></a></div>
   </div>
   <div class="footer">Live: seoyeon924.github.io/datafam-seoul-2026/usecases · 조회 · 분석 범위</div>
 </section>
@@ -1117,50 +1118,95 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">01 · KPI Briefing</h2>
-      <p class="sub">WEEKLY · MON 08:30</p>
+      <h2 class="head">01 · 월요일 KPI 브리핑</h2>
+      <p class="sub">매주 월 08:30</p>
+      <p class="ucdesc">지난주 대비 변동 · 이상치 후보 · 확인 필요 대시보드를 월요일 아침 Slack으로</p>
     </div>
     <div class="cols c2" style="grid-template-columns:2.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
       <div class="shot rel"><img src="assets/uc1_z.png" alt=""></div>
-      <div class="statcol"><div class="stat"><b>9</b><span>Workbooks</span></div><div class="stat"><b>31</b><span>MCP Calls</span></div><div class="stat"><b>6 min</b><span>Runtime</span></div><p>±10% Change · Anomaly · Review Queue · Slack</p></div>
+      <div class="statcol"><div class="stat"><b>9개</b><span>워크북</span></div><div class="stat"><b>31회</b><span>MCP 조회</span></div><div class="stat"><b>6분</b><span>소요</span></div><p>급변 지표 · 이상치 후보 · 확인 필요 대시보드 · Slack</p></div>
     </div>
   </div>
-  <div class="footer">Live: seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html</div>
+  <div class="footer"><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html" style="color:inherit;text-decoration:none">Live: seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html</a></div>
 </section>
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">03 · KPI Audit</h2>
-      <p class="sub">QUARTERLY</p>
+      <h2 class="head">03 · KPI 정의 감사</h2>
+      <p class="sub">분기 1회</p>
+      <p class="ucdesc">워크북마다 다른 「매출」 계산식을 정의서와 대조하는 감사</p>
     </div>
     <div class="cols c2" style="grid-template-columns:2.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
       <div class="shot rel"><img src="assets/uc3_z.png" alt=""></div>
-      <div class="statcol"><div class="stat"><b>3</b><span>Same-name Metrics</span></div><div class="stat"><b>2</b><span>Formula Variants</span></div><div class="stat"><b>9</b><span>Affected Views</span></div><p>Workbook XML · KPI Spec · Governance Review</p></div>
+      <div class="statcol"><div class="stat"><b>3곳</b><span>동일 지표명</span></div><div class="stat"><b>2종</b><span>계산식 차이</span></div><div class="stat"><b>9개</b><span>영향 뷰</span></div><p>워크북 XML · KPI 정의서 · 기준 정의 확인</p></div>
     </div>
   </div>
-  <div class="footer">Live: seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html</div>
+  <div class="footer"><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html" style="color:inherit;text-decoration:none">Live: seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html</a></div>
 </section>
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">08 · Renewal Assessment</h2>
-      <p class="sub">PRE-RENEWAL</p>
+      <h2 class="head">08 · 대시보드 리뉴얼 진단</h2>
+      <p class="sub">리뉴얼 착수 전</p>
+      <p class="ucdesc">구조 · 사용 현황 · 중복 · 개선 우선순위의 선행 정리</p>
     </div>
     <div class="cols c2" style="grid-template-columns:2.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
       <div class="shot rel"><img src="assets/uc8_z.png" alt=""></div>
-      <div class="statcol"><div class="stat"><b>24</b><span>Sheets</span></div><div class="stat"><b>41</b><span>Calc Fields</span></div><div class="stat"><b>92%</b><span>Top-3 View Share</span></div><p>Keep · Drop · Merge · 90-day Usage</p></div>
+      <div class="statcol"><div class="stat"><b>24개</b><span>시트</span></div><div class="stat"><b>41개</b><span>계산 필드</span></div><div class="stat"><b>92%</b><span>상위 3뷰 조회 비중</span></div><p>구조 · 사용 현황 · 중복 · 개선 우선순위</p></div>
     </div>
   </div>
-  <div class="footer">Live: seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html</div>
+  <div class="footer"><a href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html" style="color:inherit;text-decoration:none">Live: seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html</a></div>
 </section>
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.9 업계 사례</h2>
+    </div>
+    <div class="cols c3" style="margin-top:20px;align-items:start">
+      <div>
+        <div class="shot rel" style="height:150px;overflow:hidden;margin-bottom:14px"><img src="assets/eco_til.png" alt="The Information Lab 블로그" style="height:100%;width:100%;object-fit:cover;object-position:top"></div>
+        <span class="tag">THE INFORMATION LAB · 영국</span>
+        <div class="body" style="font-size:14px;line-height:1.75;margin-top:10px"><ul>
+          <li>Tableau Public MCP 개발 · 공개 · 도구 22개</li>
+          <li>프롬프트 하나로 공개 워크북 → 제작 가이드</li>
+          <li>차트 유형별 제작 방법 검색 · 닷 플롯 등</li>
+          <li>LOD 주제 사내 교육 세션 자동 구성</li>
+        </ul></div>
+      </div>
+      <div>
+        <div class="shot rel" style="height:150px;overflow:hidden;margin-bottom:14px"><img src="assets/eco_lovely.png" alt="Lovelytics 리포트" style="height:100%;width:100%;object-fit:cover"></div>
+        <span class="tag">LOVELYTICS · 미국</span>
+        <div class="body" style="font-size:14px;line-height:1.75;margin-top:10px"><ul>
+          <li>State of AI Agents 2026 리포트 공개</li>
+          <li>평가 주도 에이전트 개발 방법론</li>
+          <li>10단계 프레임워크 · 거버넌스 · 컨텍스트 선행</li>
+          <li>SME 참여 필수 · 파일럿 → 프로덕션 조건 정리</li>
+        </ul></div>
+      </div>
+      <div>
+        <div class="shot rel" style="height:150px;overflow:hidden;margin-bottom:14px"><img src="assets/tc26_platform.png" alt="Tableau 키노트" style="height:100%;width:100%;object-fit:cover"></div>
+        <span class="tag">TABLEAU</span>
+        <div class="body" style="font-size:14px;line-height:1.75;margin-top:10px"><ul>
+          <li>CPO 기고: 차트 생성은 AI · 기준은 Tableau</li>
+          <li>시맨틱 모델 3,300만 개 · 정의 · 권한 상속</li>
+          <li>OSI 표준 주도 · 2026.01 v0.1</li>
+          <li>TC26 · Agentic Analytics Platform 선언</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">출처: 각 사 공개 블로그 · 리포트 · 2026</div>
+</section>
+
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.9 다음 단계 · MCP Authoring</h2>
+      <h2 class="head">3.10 다음 단계 · MCP Authoring</h2>
       <p class="sub">조회를 넘어 생성으로 · Beta 예정</p>
     </div>
     <div class="cards k2" style="margin-top:24px">
@@ -1200,12 +1246,14 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap">
     <div class="titleblock">
-      <h2 class="head">3.10 Connection Options</h2>
+      <h2 class="head">3.11 연결 방식</h2>
+      <p class="sub">Claude에 Tableau를 붙이는 두 가지 방법</p>
     </div>
     <div class="cards k2" style="margin-top:26px">
       <div class="cardbox">
         <span class="tag">TABLEAU CLOUD</span>
         <h3 class="colhead">Hosted MCP · OAuth 2.1</h3>
+        <div class="body" style="font-size:14px;margin-bottom:12px">Tableau가 운영하는 서버 · 주소 등록 → 브라우저 로그인 → 연결 · 내 권한 그대로</div>
         <div class="code" style="font-size:12.5px;line-height:1.85;background:#001E5B">{ <span class="s">"mcpServers"</span>: { <span class="s">"tableau"</span>: {
     <span class="s">"url"</span>: <span class="k">"https://mcp.tableau.com"</span> } } }</div>
         
@@ -1213,6 +1261,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       <div class="cardbox">
         <span class="tag">TABLEAU SERVER · 제한 환경</span>
         <h3 class="colhead">Self-hosted MCP · PAT</h3>
+        <div class="body" style="font-size:14px;margin-bottom:12px">우리 서버에 직접 실행 · 설치 → 토큰 발급 → 환경변수 → 연결 · 망 제약 환경용</div>
         <div class="code" style="font-size:12.5px;line-height:1.85;background:#001E5B"><span class="c">$</span> npx -y @tableau/mcp-server@latest
 <span class="c">env</span> SERVER · SITE_NAME · PAT_NAME · PAT_VALUE</div>
         
@@ -1234,8 +1283,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/plus.png" style="right:236px;bottom:104px;width:34px;z-index:3">
   <div class="block">
     <div class="num">보너스 데모</div>
-    <h1 class="title">Tableau의<br>표현 범위 확장</h1>
-    <p class="sub">Custom Marks · Extensions</p>
+    <h1 class="title">Extensions</h1>
+    <p class="sub">Tableau 기본 차트 밖의 영역 · 거버넌스 유지</p>
   </div>
 </section>
 
@@ -1246,16 +1295,18 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="logo" src="assets/logo_navy.png">
 
   <div class="wrap" style="bottom:auto;right:auto;width:430px">
-    <h2 class="head">BONUS 1 · 기본 차트로<br>어려운 시각화</h2>
+    <span class="tag">EXTENSION 1</span>
+    <h2 class="head">Tableau에서는 어려운<br>다양한 시각화</h2>
     <div class="body" style="margin-top:24px">
       <ul>
-        <li>Node · Link Data</li>
-        <li>D3 View Extension</li>
+        <li>노드 · 링크 데이터</li>
+        <li>D3 뷰 확장</li>
         <li>Source · Target · Strength · Type</li>
       </ul>
+      <div class="live" style="margin-top:14px;max-width:560px"><span>LIVE</span><a href="https://avengers-network.netlify.app">avengers-network.netlify.app</a></div>
     </div>
   </div>
-  <div class="shot" style="right:56px;top:110px;width:640px;height:470px">
+  <div class="shot" style="right:56px;top:158px;width:640px;height:452px">
     <img src="assets/shot_network.jpg" alt="네트워크 그래프 뷰 확장">
   </div>
   <img class="deco" src="assets/star.png" style="right:610px;bottom:80px;width:34px">
@@ -1269,17 +1320,18 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="logo" src="assets/logo_navy.png">
 
   <div class="wrap" style="bottom:auto;right:auto;width:400px">
-    <h2 class="head">BONUS 2 · Tableau 안에서<br>실행되는 결과</h2>
+    <span class="tag">EXTENSION 1</span>
+    <h2 class="head">Tableau 안에서<br>실행되는 결과</h2>
     <div class="body" style="margin-top:22px">
       <ul>
-        <li>Tableau Worksheet</li>
-        <li>Custom Marks</li>
-        <li>Reusable Extension</li>
+        <li>Tableau 워크시트</li>
+        <li>커스텀 마크</li>
+        <li>재사용 확장</li>
       </ul>
     </div>
     
   </div>
-  <div class="shot" style="right:44px;top:70px;width:700px;height:525px">
+  <div class="shot" style="right:44px;top:128px;width:700px;height:496px">
     <img src="assets/shot_tableau.png" alt="Tableau 워크시트 안에서 실행 중인 뷰 확장">
   </div>
   <div class="footer">화면은 같은 확장에 다른 데이터를 넣은 것</div>
@@ -1288,18 +1340,20 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap" style="bottom:auto;right:auto;width:420px">
-    <h2 class="head">BONUS 3 · 직접 제작 ·<br>Retention Matrix</h2>
+    <span class="tag">EXTENSION 2</span>
+    <h2 class="head">Retention Matrix</h2>
     <div class="body" style="margin-top:22px">
       <ul>
         <li>User · Event Date</li>
-        <li>Weekly Cohort</li>
-        <li>No LOD</li>
+        <li>주간 코호트</li>
+        <li>LOD 불필요</li>
         <li>HTML · JS · .trex</li>
       </ul>
+      <div class="live" style="margin-top:14px;max-width:560px"><span>LIVE</span><a href="https://seoyeon924.github.io/datafam-seoul-2026/extension/retention-matrix/index.html">seoyeon924.github.io/datafam-seoul-2026/extension/retention-matrix/index.html</a></div>
     </div>
-    <div class="tbox" style="margin-top:20px"><img src="assets/tableau_logo.svg" alt=""><div><b>Tableau 연결</b><span>Cohort Offload · Sample Mode</span></div></div>
+    <div class="tbox" style="margin-top:20px"><img src="assets/tableau_logo.svg" alt=""><div><b>Tableau 연결</b><span>코호트 계산 이관 · 샘플 모드</span></div></div>
   </div>
-  <div class="shot" style="right:50px;top:96px;width:660px;height:428px"><img src="assets/ext_retention.png" alt="Retention Matrix 확장"></div>
+  <div class="shot" style="right:50px;top:150px;width:660px;height:428px"><img src="assets/ext_retention.png" alt="Retention Matrix 확장"></div>
   <div class="footer">저장소 /extension/retention-matrix · index.html + retention-matrix.trex</div>
 </section>
 
@@ -1316,7 +1370,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <div class="block">
     <div class="num">04</div>
     <h1 class="title">실무 도입 순서</h1>
-    <p class="sub">Pilot → Validate → Scale</p>
+    <p class="sub">파일럿 → 검증 → 확장</p>
   </div>
 </section>
 
@@ -1329,13 +1383,13 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">4.1 Adoption Framework</h2>
+      <h2 class="head">4.1 실무 도입 순서</h2>
     </div>
     <div class="steps" style="max-width:620px">
-      <div class="st"><div class="stn">1</div><div><b>One Use Case</b></div></div>
-      <div class="st"><div class="stn">2</div><div><b>Read-only Scope</b></div></div>
-      <div class="st"><div class="stn">3</div><div><b>Rules &amp; Validation</b></div></div>
-      <div class="st"><div class="stn">4</div><div><b>Controlled Expansion</b></div></div>
+      <div class="st"><div class="stn">1</div><div><b>작은 업무부터</b><span>반복 주기 명확 · 산출물 정의 · 성공 기준 합의</span></div></div>
+      <div class="st"><div class="stn">2</div><div><b>읽기 범위부터</b><span>전용 계정 · PAT 만료 관리 · 다중 사용자는 OAuth</span></div></div>
+      <div class="st"><div class="stn">3</div><div><b>검증 기준 정의</b><span>KPI 정의서 · 원본 대조 절차 · 이상치 기준 Rule</span></div></div>
+      <div class="st"><div class="stn">4</div><div><b>단계적 확장</b><span>사용 기록 검토 · 대상 업무 추가 · 쓰기 권한은 승인 후</span></div></div>
     </div>
   </div>
   <div class="hero"><svg viewBox="0 0 340 340">
@@ -1348,8 +1402,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 <g class="sat"><path d="M292 34l8 21 21 8-21 8-8 21-8-21-21-8 21-8z"/><path d="M272 74 L246 90" stroke-dasharray="3 8"/></g>
 <g class="sat"><path d="M40 168a15 15 0 1130 0c0 11-15 24-15 24s-15-13-15-24z"/><circle cx="55" cy="167" r="5"/><path d="M70 190 L98 214" stroke-dasharray="3 8"/></g>
 </svg></div>
-  <p style="position:absolute;left:64px;bottom:56px;font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy);opacity:.72">Pilot → Validate → Scale</p>
-  <div class="footer">DataFam Seoul 2026</div>
+  <p style="position:absolute;left:64px;bottom:56px;font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy);opacity:.72">파일럿 → 검증 → 확장</p>
+  <div class="footer">근거: tableau-mcp 공식 배포 가이드 · PAT 문서</div>
 </section>
 
 <!-- =========================================================
@@ -1360,13 +1414,13 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:36px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">AI Analysis Workflow</h2>
+      <h2 class="head">AI 분석 워크플로우</h2>
     </div>
     <div class="three" style="grid-template-columns:repeat(4,1fr);margin-top:40px">
-      <div class="th"><b>Claude Code</b><span style="font-size:15px">Workflow Automation</span></div>
-      <div class="th"><b>Tableau MCP</b><span style="font-size:15px">Asset Connectivity</span></div>
-      <div class="th"><b>Tableau</b><span style="font-size:15px">Governance · Distribution</span></div>
-      <div class="th"><b>Human</b><span style="font-size:15px">Definition · Validation · Decision</span></div>
+      <div class="th"><b>Claude Code</b><span style="font-size:15px">워크플로우 자동화</span></div>
+      <div class="th"><b>Tableau MCP</b><span style="font-size:15px">자산 연결</span></div>
+      <div class="th"><b>Tableau</b><span style="font-size:15px">거버넌스 · 배포</span></div>
+      <div class="th"><b>사람</b><span style="font-size:15px">정의 · 검증 · 판단</span></div>
     </div>
   </div>
   <div class="footer">DataFam Seoul 2026</div>
@@ -1401,50 +1455,19 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   <img class="deco" src="assets/plus.png" style="left:360px;bottom:270px;width:28px">
   <img class="deco" src="assets/iheartdata.png" style="right:290px;bottom:180px;width:120px;z-index:3">
 
-  <img class="lg" src="assets/logo_navy.png">
-  <div class="t">Thank<span class="y">you</span></div>
-  <div class="meta">발표 자료 · 예제 코드 링크 자리<br>연락처 자리</div>
-</section>
-<section class="slide">
-  <img class="logo" src="assets/logo_navy.png">
-  <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
-  <div class="wrap">
-    <div class="titleblock">
-      <h2 class="head">APPENDIX · Ecosystem</h2>
-      <p class="sub">The Information Lab · Lovelytics · Tableau</p>
-    </div>
-    <div class="cols c3" style="margin-top:24px">
-      <div>
-        <span class="tag">THE INFORMATION LAB</span>
-        <h3 class="colhead">Public MCP로 팀 교육</h3>
-        <div class="body"><ul>
-          <li>Tableau Public MCP 공개 · Will Sutton 제작</li>
-          <li>"How was this viz made?" 프롬프트 하나로 제작 가이드 생성</li>
-          <li>LOD 같은 주제별 교육 세션 자동 구성</li>
-        </ul></div>
-      </div>
-      <div>
-        <span class="tag">LOVELYTICS</span>
-        <h3 class="colhead">평가 주도 에이전트 방법론</h3>
-        <div class="body"><ul>
-          <li>거버넌스 · 컨텍스트 · 평가를 설계 단계부터</li>
-          <li>10단계 프레임워크로 파일럿 → 프로덕션 전환</li>
-          <li>SME 참여를 필수 요건으로 규정</li>
-        </ul></div>
-      </div>
-      <div>
-        <span class="tag">TABLEAU 본사</span>
-        <h3 class="colhead">시맨틱 레이어 중심</h3>
-        <div class="body"><ul>
-          <li>CPO 기고: AI는 차트 생성 · truth 정의는 Tableau</li>
-          <li>조직들이 관리해 온 시맨틱 모델 3,300만 개</li>
-          <li>OSI(Open Semantic Interchange) 표준 주도</li>
-        </ul></div>
-      </div>
+  <img class="lg" src="assets/logo_navy.png" style="width:150px;margin-bottom:6px">
+  <div class="t" style="font-size:104px">Thank<span class="y" style="margin-left:48px">you</span></div>
+  <div class="thx" style="position:relative;z-index:3;display:flex;gap:26px;align-items:center;margin-top:30px;background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:18px;padding:20px 28px">
+    <img src="assets/qr_deck.png" alt="발표 자료 QR" style="width:112px;height:112px">
+    <div style="text-align:left">
+      <p style="font-family:var(--display);font-weight:700;font-size:16px;color:var(--accent)">자료 · 도구 8종 · 확장 · 전체 공개</p>
+      <p style="font-family:var(--mono);font-size:12.5px;color:var(--navy);margin-top:6px">seoyeon924.github.io/datafam-seoul-2026</p>
+      <p style="font-size:13.5px;color:var(--navy);margin-top:10px">전서연 · 데이터브릿지랩 · tjdus92422@gmail.com · databridge.co.kr</p>
+      <p style="font-size:12.5px;color:var(--navy);opacity:.7;margin-top:4px">문의 · 후기 환영</p>
     </div>
   </div>
-  <div class="footer">출처: 각 사 공개 블로그 · 2026</div>
 </section>
+
 
 </div></div>
 
