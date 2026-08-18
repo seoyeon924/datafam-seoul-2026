@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>월요일 아침 대시보드 브리핑</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:baseline;gap:13px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd h1{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.hd .period{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.grid{display:grid;gap:13px;margin-top:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.kpi .l{font-size:11.5px;font-weight:600;color:#5B6B84}
+.kpi .v{font-size:25px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;margin-top:3px;color:#5B6B84}
+.kpi .d b{color:#1E5AE0}
+h2{font-size:14.5px;font-weight:700;margin:22px 0 9px}
+h2 .n{font-size:11px;color:#5B6B84;font-weight:500;margin-left:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EDF1F7;color:#3A4A63;text-align:left;font-weight:600;padding:8px 13px;font-size:11.5px}
+td{padding:9px 13px;border-top:1px solid #E7ECF4;vertical-align:top}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tag.chk{background:#E3EBFB;color:#1E4FC2}
+.tag.ok{background:#EEF1F5;color:#6B7789}
+.tag.warn{background:#FBEFD2;color:#8A6B1F}
+.up{color:#1E5AE0;font-weight:600}.dn{color:#6B7789;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.panel{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.panel h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.panel li{list-style:none;font-size:13px;line-height:1.55;padding:7px 0;border-top:1px solid #EDF1F7}
+.panel li:first-of-type{border-top:0}
+.panel .who{font-size:11px;color:#5B6B84}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
+.foot{margin-top:20px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
+.shotimg img{display:block;width:100%}
+.shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+</style></head>
+<body><div class="page">
+<div class="hd"><h1>월요일 아침 대시보드 브리핑</h1><span class="period">2026-08-17 월 08:30 · Sales · Marketing 프로젝트</span><span class="gen">생성: Claude Code + Tableau MCP · 읽기 전용</span></div>
+
+<div class="grid g4">
+  <div class="kpi"><div class="l">지난주 대비 급변 지표</div><div class="v">3건</div><div class="d">±10% 이상</div></div>
+  <div class="kpi"><div class="l">새로 생긴 이상치</div><div class="v">2건</div><div class="d">추세 밖 관측</div></div>
+  <div class="kpi"><div class="l">확인 필요한 뷰</div><div class="v">4개</div><div class="d"><b>담당자 멘션 완료</b></div></div>
+  <div class="kpi"><div class="l">점검 소요</div><div class="v">6분</div><div class="d">MCP 조회 31회</div></div>
+</div>
+<h2>급변 지표 <span class="n">±10% 이상 · 워크북 9개 스캔</span></h2>
+<table>
+  <tr><th>워크북 · 뷰</th><th>지표</th><th class="num" style="text-align:right">전주</th><th class="num" style="text-align:right">금주</th><th class="num" style="text-align:right">변동</th><th>브리핑 메모</th></tr>
+  <tr><td>영업 파이프라인 · 단계 전환</td><td>SQL→수주 전환율</td><td class="num">21.4%</td><td class="num">14.2%</td><td class="num dn">-7.2%p</td><td>8/12 이후 수주 기록 없음 · 입력 지연 가능성</td></tr>
+  <tr><td>캠페인 성과 · 채널</td><td>Paid CVR</td><td class="num">3.1%</td><td class="num">4.2%</td><td class="num up">+1.1%p</td><td>신규 캠페인 2건 시작과 겹침</td></tr>
+  <tr><td>재고 현황 · 창고별</td><td>결품 SKU</td><td class="num">14</td><td class="num">31</td><td class="num up">+17</td><td>원본 새로고침 실패와 동시 발생 · 수치 신뢰 불가</td></tr>
+</table>
+<div class="two" style="margin-top:13px">
+  <div class="panel"><h3>새 이상치 · 2건</h3>
+    <li>Europe 매출 단일 거래 $9.8K · 분포 상위 0.1% 밖<div class="who">주간 매출 현황 · 지역 뷰</div></li>
+    <li>Furniture 할인율 22% 관측 · 정책 상한 21% 초과<div class="who">주간 매출 현황 · 카테고리 뷰</div></li></div>
+  <div class="panel"><h3>오늘 열어볼 뷰 · 4개</h3>
+    <li>영업 파이프라인 · 단계 전환 <span class="tag chk">확인 필요</span></li>
+    <li>재고 현황 · 창고별 <span class="tag warn">원본 실패</span></li>
+    <li>주간 매출 현황 · 지역 / 카테고리 <span class="tag chk">확인 필요</span></li></div>
+</div>
+<div class="foot"><span class="b">Slack #data-daily 발송됨</span><span class="b">매주 월 08:30</span><span>판정 없음 · 확인 후보까지만 정리</span></div>
+
+</div></body></html>

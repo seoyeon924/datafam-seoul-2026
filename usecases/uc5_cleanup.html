@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>미사용 · 중복 대시보드 정리 후보</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:baseline;gap:13px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd h1{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.hd .period{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.grid{display:grid;gap:13px;margin-top:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.kpi .l{font-size:11.5px;font-weight:600;color:#5B6B84}
+.kpi .v{font-size:25px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;margin-top:3px;color:#5B6B84}
+.kpi .d b{color:#1E5AE0}
+h2{font-size:14.5px;font-weight:700;margin:22px 0 9px}
+h2 .n{font-size:11px;color:#5B6B84;font-weight:500;margin-left:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EDF1F7;color:#3A4A63;text-align:left;font-weight:600;padding:8px 13px;font-size:11.5px}
+td{padding:9px 13px;border-top:1px solid #E7ECF4;vertical-align:top}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tag.chk{background:#E3EBFB;color:#1E4FC2}
+.tag.ok{background:#EEF1F5;color:#6B7789}
+.tag.warn{background:#FBEFD2;color:#8A6B1F}
+.up{color:#1E5AE0;font-weight:600}.dn{color:#6B7789;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.panel{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.panel h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.panel li{list-style:none;font-size:13px;line-height:1.55;padding:7px 0;border-top:1px solid #EDF1F7}
+.panel li:first-of-type{border-top:0}
+.panel .who{font-size:11px;color:#5B6B84}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
+.foot{margin-top:20px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
+.shotimg img{display:block;width:100%}
+.shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+</style></head>
+<body><div class="page">
+<div class="hd"><h1>미사용 · 중복 대시보드 정리 후보</h1><span class="period">최근 90일 사용 기록 기준 · 2026-08-18</span><span class="gen">생성: Claude Code + Tableau MCP · 읽기 전용</span></div>
+
+<div class="grid g4">
+  <div class="kpi"><div class="l">90일 무조회 뷰</div><div class="v">14개</div><div class="d">전체 218개 중</div></div>
+  <div class="kpi"><div class="l">중복 의심 쌍</div><div class="v">3쌍</div><div class="d">구조 유사도 80%+</div></div>
+  <div class="kpi"><div class="l">소유자 부재</div><div class="v">2개</div><div class="d">퇴사자 계정</div></div>
+  <div class="kpi"><div class="l">정리 시 감소</div><div class="v">-19개</div><div class="d">뷰 기준 8.7%</div></div>
+</div>
+<h2>정리 후보 <span class="n">근거와 권고 · 발췌</span></h2>
+<table>
+  <tr><th>대상</th><th>근거</th><th>권고</th></tr>
+  <tr><td>Sales · 2024 프로모션 리뷰</td><td>최근 조회 187일 전 · 구독 0</td><td><span class="tag ok">보관 이동</span></td></tr>
+  <tr><td>주간 매출 현황 vs 매출 리포트(구)</td><td>시트 구조 유사도 91% · 같은 원본</td><td><span class="tag chk">병합 검토</span></td></tr>
+  <tr><td>캠페인 성과 vs 채널 리포트</td><td>KPI 5개 중 4개 동일 · 필터만 다름</td><td><span class="tag chk">병합 검토</span></td></tr>
+  <tr><td>Finance · 환율 모니터</td><td>소유자 퇴사 · 새로고침 34일 실패 중</td><td><span class="tag warn">소유자 재지정</span></td></tr>
+</table>
+<div class="two" style="margin-top:13px">
+  <div class="panel"><h3>바로 실행 가능</h3><li>보관 이동 9건 · 구독자 없음 확인됨</li><li>소유자 재지정 2건 · 후보 담당자 표기</li></div>
+  <div class="panel"><h3>협의 필요</h3><li>병합 검토 3쌍 · 워크북 소유자 간 결정</li><li>삭제는 권고하지 않음 · 보관 이동까지만</li></div>
+</div>
+<div class="foot"><span class="b">월 1회 실행</span><span>삭제 실행 없음 · 후보 목록과 근거까지만</span></div>
+
+</div></body></html>

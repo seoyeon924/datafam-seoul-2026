@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>임원 보고 초안</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:baseline;gap:13px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd h1{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.hd .period{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.grid{display:grid;gap:13px;margin-top:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.kpi .l{font-size:11.5px;font-weight:600;color:#5B6B84}
+.kpi .v{font-size:25px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;margin-top:3px;color:#5B6B84}
+.kpi .d b{color:#1E5AE0}
+h2{font-size:14.5px;font-weight:700;margin:22px 0 9px}
+h2 .n{font-size:11px;color:#5B6B84;font-weight:500;margin-left:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EDF1F7;color:#3A4A63;text-align:left;font-weight:600;padding:8px 13px;font-size:11.5px}
+td{padding:9px 13px;border-top:1px solid #E7ECF4;vertical-align:top}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tag.chk{background:#E3EBFB;color:#1E4FC2}
+.tag.ok{background:#EEF1F5;color:#6B7789}
+.tag.warn{background:#FBEFD2;color:#8A6B1F}
+.up{color:#1E5AE0;font-weight:600}.dn{color:#6B7789;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.panel{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.panel h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.panel li{list-style:none;font-size:13px;line-height:1.55;padding:7px 0;border-top:1px solid #EDF1F7}
+.panel li:first-of-type{border-top:0}
+.panel .who{font-size:11px;color:#5B6B84}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
+.foot{margin-top:20px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
+.shotimg img{display:block;width:100%}
+.shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+</style></head>
+<body><div class="page">
+<div class="hd"><h1>임원 보고 초안</h1><span class="period">주간 하이라이트 · 2026-08-17 월 07:00 생성</span><span class="gen">생성: Claude Code + Tableau MCP · 읽기 전용</span></div>
+
+<div class="two" style="margin-top:18px">
+  <div>
+    <h2 style="margin-top:0">이번 주 달라진 것 3가지</h2>
+    <div class="panel">
+      <li><b>1. 영업 전환 급락.</b> SQL→수주 전환 21.4% → 14.2%. 8/12 이후 수주 입력이 없어 실제 급락인지 입력 지연인지 확인 중. 목요일 파이프라인 회의 안건<div class="who">근거: 영업 파이프라인 · 단계 전환 뷰</div></li>
+      <li><b>2. Europe 매출 +28%.</b> 대형 거래 1건($9.8K) 영향. 제외 시 +3.1%로 추세 범위<div class="who">근거: 주간 매출 현황 · 지역 뷰</div></li>
+      <li><b>3. Paid 전환 개선.</b> CVR 3.1% → 4.2%. 신규 캠페인 2건 기여로 추정 · 2주 더 관찰<div class="who">근거: 캠페인 성과 · 채널 뷰</div></li>
+    </div>
+    <h2>핵심 수치</h2>
+    <table>
+      <tr><th>지표</th><th class="num" style="text-align:right">금주</th><th class="num" style="text-align:right">전주 대비</th></tr>
+      <tr><td>주간 매출</td><td class="num">$128.4K</td><td class="num up">+6.2%</td></tr>
+      <tr><td>전체 마진율</td><td class="num">30.1%</td><td class="num dn">-0.5%p</td></tr>
+      <tr><td>신규 계정</td><td class="num">40</td><td class="num dn">-4.8%</td></tr>
+    </table>
+  </div>
+  <div>
+    <h2 style="margin-top:0">첨부 뷰 <span class="n">MCP 이미지 추출</span></h2>
+    <div class="shotimg"><img src="../assets/funnel_full.png" alt=""><div class="cap">영업 파이프라인 · Sales Pipeline Dashboard</div></div>
+    <div class="shotimg" style="margin-top:12px"><img src="../assets/demo_dashboard.png" alt=""><div class="cap">주간 매출 현황 · 수익성 분석</div></div>
+  </div>
+</div>
+<div class="foot"><span class="b">Word 초안 저장됨</span><span class="b">월 07:00 자동</span><span>수치 검증 전 초안 · 발송 판단은 사람</span></div>
+
+</div></body></html>

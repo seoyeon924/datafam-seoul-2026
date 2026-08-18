@@ -1,0 +1,61 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Tableau 자산 카탈로그</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:baseline;gap:13px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd h1{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.hd .period{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.grid{display:grid;gap:13px;margin-top:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.kpi .l{font-size:11.5px;font-weight:600;color:#5B6B84}
+.kpi .v{font-size:25px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;margin-top:3px;color:#5B6B84}
+.kpi .d b{color:#1E5AE0}
+h2{font-size:14.5px;font-weight:700;margin:22px 0 9px}
+h2 .n{font-size:11px;color:#5B6B84;font-weight:500;margin-left:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EDF1F7;color:#3A4A63;text-align:left;font-weight:600;padding:8px 13px;font-size:11.5px}
+td{padding:9px 13px;border-top:1px solid #E7ECF4;vertical-align:top}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tag.chk{background:#E3EBFB;color:#1E4FC2}
+.tag.ok{background:#EEF1F5;color:#6B7789}
+.tag.warn{background:#FBEFD2;color:#8A6B1F}
+.up{color:#1E5AE0;font-weight:600}.dn{color:#6B7789;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.panel{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.panel h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.panel li{list-style:none;font-size:13px;line-height:1.55;padding:7px 0;border-top:1px solid #EDF1F7}
+.panel li:first-of-type{border-top:0}
+.panel .who{font-size:11px;color:#5B6B84}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
+.foot{margin-top:20px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
+.shotimg img{display:block;width:100%}
+.shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+</style></head>
+<body><div class="page">
+<div class="hd"><h1>Tableau 자산 카탈로그</h1><span class="period">사이트 전체 · 2026-08-18 자동 생성</span><span class="gen">생성: Claude Code + Tableau MCP · 읽기 전용</span></div>
+
+<div class="grid g4">
+  <div class="kpi"><div class="l">프로젝트</div><div class="v">4개</div><div class="d">Sales · Marketing · HR · Finance</div></div>
+  <div class="kpi"><div class="l">워크북</div><div class="v">32개</div><div class="d">뷰 218개</div></div>
+  <div class="kpi"><div class="l">데이터 원본</div><div class="v">11개</div><div class="d">인증 4 · 미인증 7</div></div>
+  <div class="kpi"><div class="l">문서화</div><div class="v">32 / 32</div><div class="d"><b>설명 자동 생성 완료</b></div></div>
+</div>
+<h2>워크북 지도 <span class="n">발췌 · 전체는 catalog.md</span></h2>
+<table>
+  <tr><th>프로젝트</th><th>워크북</th><th>뷰</th><th>소유자</th><th>데이터 원본</th><th>자동 생성 설명</th></tr>
+  <tr><td>Sales</td><td>영업 파이프라인</td><td class="num">9</td><td>김지훈</td><td>sales_master <span class="tag ok">인증</span></td><td>단계별 전환과 수주율 · 주간 영업 회의 기준 자료</td></tr>
+  <tr><td>Sales</td><td>주간 매출 현황</td><td class="num">12</td><td>박세영</td><td>sales_master <span class="tag ok">인증</span></td><td>카테고리 · 지역 매출과 마진 추적</td></tr>
+  <tr><td>Marketing</td><td>캠페인 성과</td><td class="num">8</td><td>이수민</td><td>ga4_export</td><td>채널별 유입 · 전환 · CVR 추이</td></tr>
+  <tr><td>HR</td><td>HR Dashboard</td><td class="num">6</td><td>정다은</td><td>hris_extract</td><td>조직별 인원 · 이탈 위험 요인</td></tr>
+  <tr><td>Finance</td><td>임원 KPI 보드</td><td class="num">5</td><td>최원준</td><td>finance_dw <span class="tag ok">인증</span></td><td>전사 KPI 월간 요약 · 구독 발송용</td></tr>
+</table>
+<div class="foot"><span class="b">catalog.md 갱신됨</span><span class="b">신규 입사자 온보딩용</span><span>워크북 추가 · 변경 시 주 1회 자동 갱신</span></div>
+
+</div></body></html>

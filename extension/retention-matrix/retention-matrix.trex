@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+  <!--
+    Retention Matrix — Tableau viz extension (worksheet Marks card).
+    User 차원과 Event Date 날짜만 올리면 주간 코호트 리텐션 매트릭스와
+    DAU · D+1 · D+7 · D+30 KPI 카드를 그린다. 계산 필드 불필요.
+  -->
+  <worksheet-extension id="com.databridge.retentionmatrix" extension-version="1.0.0">
+    <default-locale>ko_KR</default-locale>
+    <name resource-id="name"/>
+    <description>Weekly cohort retention matrix with KPI cards. No LOD calculations required.</description>
+    <author name="Seoyeon Jun" email="tjdus92422@gmail.com" organization="DataBridge" website="https://databridge.co.kr"/>
+    <min-api-version>1.11</min-api-version>
+    <source-location>
+      <url>https://seoyeon924.github.io/datafam-seoul-2026/extension/retention-matrix/index.html</url>
+    </source-location>
+    <icon/>
+    <permissions>
+      <permission>full data</permission>
+    </permissions>
+
+    <encoding id="user">
+      <display-name>User</display-name>
+      <role-spec>
+        <role-type>discrete-dimension</role-type>
+      </role-spec>
+      <fields max-count="1"/>
+      <tooltip>User identifier for cohort grouping</tooltip>
+    </encoding>
+
+    <encoding id="event-date">
+      <display-name>Event Date</display-name>
+      <data-spec>
+        <data-type>temporal</data-type>
+      </data-spec>
+      <fields max-count="1"/>
+      <tooltip>Event timestamp. First event week becomes the cohort.</tooltip>
+    </encoding>
+  </worksheet-extension>
+
+  <resources>
+    <resource id="name">
+      <text locale="ko_KR">Retention Matrix</text>
+      <text locale="en_US">Retention Matrix</text>
+    </resource>
+  </resources>
+</manifest>

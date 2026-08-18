@@ -6,9 +6,9 @@ Claude Code와 Tableau MCP로 만드는 분석 워크플로우
 
 | 경로 | 내용 |
 |---|---|
-| `index.html` | 슬라이드 덱 37장 · 편집용 (assets 폴더 필요) |
+| `index.html` | 슬라이드 덱 43장 · 편집용 (assets 폴더 필요) |
 | `DataFam-Seoul-2026-발표자료.html` | 이미지 임베드 단일 파일 · 어디서나 열림 |
-| `DataFam-Seoul-2026-발표자료.pdf` | 37쪽 · 960×540pt |
+| `DataFam-Seoul-2026-발표자료.pdf` | 43쪽 · 960×540pt |
 | `assets/` | 원본 템플릿 PDF에서 추출한 로고·3D 아이콘 |
 
 ## 실행
@@ -139,3 +139,13 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 - **3.8 활용 아이디어 6종**: 점검 리포트 · 카탈로그 · 미사용 콘텐츠 · KPI 감사 · Slack 브리핑 · 음성 질의
 - 3.2 헤드라인 단순화 · 요청 예시 박스의 한쪽 색 테두리 제거(전역 규칙) · Tableau 공식 로고 추가(worldvectorlogo)
 - 번호 재정렬: 기존 3.3→3.5, 3.4→3.6, 3.5→3.9
+
+## 2026-08-18 2차 추가분
+
+- **1.3 Tableau가 계속 맡는 것**: 새로고침 · RLS · 지표 정본 · 커넥터 · 감사 5개 축 대조표. 근거: Southard Jones(Tableau CPO) "AI Can Draw the Chart. Tableau Defines the Truth." (2026-03)
+- **3.7 활용 사례 3부작**: 주간 점검 리포트 · 대시보드와 대화 · Tableau Public MCP 제작 구조 질의. 02·03은 발표자 본인 Tableau Public 워크북(Sales Funnel Dashboard | VOTD)을 실제 다운로드 · XML 파싱한 결과 (시트 16 · 계산 필드 27 · Sort/Won Rate/Age of Oppty 계산식 원문)
+- **선언 슬라이드**: MCP의 시작점 문구 (다크)
+- **3.8 활용 도구 8종**: 브리핑 · QA · KPI 감사 · 카탈로그 · 정리 후보 · 임원 보고 · 운영 알림 · 리뉴얼 진단. 전부 실행 화면 HTML로 제작 → `/usecases/*.html` 보관, 캡처는 `assets/uc1~8.png`
+- **3.9 업계 동향**: The Information Lab(Public MCP 교육 활용) · Lovelytics(평가 주도 방법론) · Tableau 본사(시맨틱 3,300만 · OSI)
+- **4.3 Retention Matrix 확장 직접 제작**: `/extension/retention-matrix/` (index.html + .trex + README). Game Log Analytics Dashboard 디자인 기준, User·Event Date 선반 2개로 코호트 리텐션. GitHub Pages 배포라 .trex 바로 사용 가능. Tableau 미연결 시 샘플 모드
+- 3.3 키노트 슬라이드 문구를 쉬운 말로 교체

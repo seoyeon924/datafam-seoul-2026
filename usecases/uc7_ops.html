@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>장애 · 운영 점검 알림</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:baseline;gap:13px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd h1{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.hd .period{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.grid{display:grid;gap:13px;margin-top:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.kpi .l{font-size:11.5px;font-weight:600;color:#5B6B84}
+.kpi .v{font-size:25px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;margin-top:3px;color:#5B6B84}
+.kpi .d b{color:#1E5AE0}
+h2{font-size:14.5px;font-weight:700;margin:22px 0 9px}
+h2 .n{font-size:11px;color:#5B6B84;font-weight:500;margin-left:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EDF1F7;color:#3A4A63;text-align:left;font-weight:600;padding:8px 13px;font-size:11.5px}
+td{padding:9px 13px;border-top:1px solid #E7ECF4;vertical-align:top}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tag.chk{background:#E3EBFB;color:#1E4FC2}
+.tag.ok{background:#EEF1F5;color:#6B7789}
+.tag.warn{background:#FBEFD2;color:#8A6B1F}
+.up{color:#1E5AE0;font-weight:600}.dn{color:#6B7789;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.panel{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.panel h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.panel li{list-style:none;font-size:13px;line-height:1.55;padding:7px 0;border-top:1px solid #EDF1F7}
+.panel li:first-of-type{border-top:0}
+.panel .who{font-size:11px;color:#5B6B84}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
+.foot{margin-top:20px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
+.shotimg img{display:block;width:100%}
+.shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+</style></head>
+<body><div class="page">
+<div class="hd"><h1>장애 · 운영 점검 알림</h1><span class="period">매일 08:00 자동 점검 · 2026-08-18</span><span class="gen">생성: Claude Code + Tableau MCP · 읽기 전용</span></div>
+
+<div class="grid g4">
+  <div class="kpi"><div class="l">새로고침 실패</div><div class="v">2건</div><div class="d"><b>즉시 확인</b></div></div>
+  <div class="kpi"><div class="l">오래된 데이터</div><div class="v">3건</div><div class="d">14일 이상 미갱신</div></div>
+  <div class="kpi"><div class="l">소유자 없는 워크북</div><div class="v">2개</div><div class="d">퇴사자 계정</div></div>
+  <div class="kpi"><div class="l">정상</div><div class="v">27개</div><div class="d">워크북 32개 중</div></div>
+</div>
+<h2>새로고침 실패 <span class="n">추출 일정 기준</span></h2>
+<table>
+  <tr><th>데이터 원본</th><th>실패 시각</th><th>오류</th><th>영향 뷰</th><th>상태</th></tr>
+  <tr><td><code>inventory_feed</code></td><td>08/15 06:00</td><td>원본 DB 타임아웃 · 3회 연속</td><td>재고 현황 5개</td><td><span class="tag chk">담당자 멘션</span></td></tr>
+  <tr><td><code>fx_rates</code></td><td>08/17 07:30</td><td>API 인증 만료</td><td>환율 모니터 2개</td><td><span class="tag warn">소유자 부재</span></td></tr>
+</table>
+<h2>오래된 데이터 <span class="n">마지막 성공 기준</span></h2>
+<table>
+  <tr><th>워크북</th><th>마지막 갱신</th><th>경과</th><th>비고</th></tr>
+  <tr><td>2024 프로모션 리뷰</td><td>07/02</td><td class="num">47일</td><td>정리 후보와 중복 · uc5 참조</td></tr>
+  <tr><td>채널 리포트</td><td>08/01</td><td class="num">17일</td><td>수동 갱신 워크북 · 일정 등록 권고</td></tr>
+</table>
+<div class="foot"><span class="b">Slack #data-ops 발송됨</span><span>실패 원인 추정까지만 · 재시도 실행은 관리자</span></div>
+
+</div></body></html>

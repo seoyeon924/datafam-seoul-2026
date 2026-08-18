@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>대시보드 리뉴얼 전 진단</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;-webkit-font-smoothing:antialiased}
+.page{max-width:1200px;margin:0 auto;padding:30px 40px 36px}
+.hd{display:flex;align-items:baseline;gap:13px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.hd h1{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.hd .period{font-size:12.5px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.grid{display:grid;gap:13px;margin-top:18px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.kpi{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.kpi .l{font-size:11.5px;font-weight:600;color:#5B6B84}
+.kpi .v{font-size:25px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.kpi .d{font-size:11.5px;margin-top:3px;color:#5B6B84}
+.kpi .d b{color:#1E5AE0}
+h2{font-size:14.5px;font-weight:700;margin:22px 0 9px}
+h2 .n{font-size:11px;color:#5B6B84;font-weight:500;margin-left:6px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EDF1F7;color:#3A4A63;text-align:left;font-weight:600;padding:8px 13px;font-size:11.5px}
+td{padding:9px 13px;border-top:1px solid #E7ECF4;vertical-align:top}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tag.chk{background:#E3EBFB;color:#1E4FC2}
+.tag.ok{background:#EEF1F5;color:#6B7789}
+.tag.warn{background:#FBEFD2;color:#8A6B1F}
+.up{color:#1E5AE0;font-weight:600}.dn{color:#6B7789;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.panel{background:#fff;border:1px solid #DDE4EE;border-radius:10px;padding:15px 17px}
+.panel h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.panel li{list-style:none;font-size:13px;line-height:1.55;padding:7px 0;border-top:1px solid #EDF1F7}
+.panel li:first-of-type{border-top:0}
+.panel .who{font-size:11px;color:#5B6B84}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
+.foot{margin-top:20px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
+.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+.shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
+.shotimg img{display:block;width:100%}
+.shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+</style></head>
+<body><div class="page">
+<div class="hd"><h1>대시보드 리뉴얼 전 진단</h1><span class="period">대상: 주간 매출 현황 · 2019년 제작 · 2026-08-18</span><span class="gen">생성: Claude Code + Tableau MCP · 읽기 전용</span></div>
+
+<div class="grid g4">
+  <div class="kpi"><div class="l">시트</div><div class="v">24개</div><div class="d">대시보드 3개</div></div>
+  <div class="kpi"><div class="l">계산 필드</div><div class="v">41개</div><div class="d">미사용 12개 포함</div></div>
+  <div class="kpi"><div class="l">조회 집중</div><div class="v">상위 3뷰</div><div class="d"><b>전체 조회의 92%</b></div></div>
+  <div class="kpi"><div class="l">주 이용자</div><div class="v">11명</div><div class="d">영업 7 · 임원 2 · 기타 2</div></div>
+</div>
+<div class="two" style="margin-top:16px">
+  <div class="panel"><h3>남길 것 · 3</h3>
+    <li>카테고리 매출 vs 마진 뷰 · 조회 1위 · 회의 기준</li>
+    <li>지역 비교 뷰 · 임원 구독 2건</li>
+    <li>월별 추세 뷰 · 3개 대시보드 공통 사용</li></div>
+  <div class="panel"><h3>버릴 후보 · 9</h3>
+    <li>90일 무조회 시트 6 · 실험용 잔재로 추정</li>
+    <li>미사용 계산 필드 12 · 참조 0회</li>
+    <li>구버전 필터 시트 3 · 신버전과 중복</li></div>
+</div>
+<div class="two" style="margin-top:13px">
+  <div class="panel"><h3>통합 후보 · 4</h3>
+    <li>KPI 카드 시트 4개 · 같은 수치 다른 표기 · 1개 표준화</li></div>
+  <div class="panel"><h3>리뉴얼 권고</h3>
+    <li>구조: 24시트 → 12시트 · 조회 패턴 기준</li>
+    <li>지표: 「매출」 정의 uc3 감사 결과 반영 후 착수</li></div>
+</div>
+<div class="foot"><span class="b">사용 로그 90일 분석</span><span>구조 진단까지만 · 리뉴얼 설계는 담당 분석가</span></div>
+
+</div></body></html>

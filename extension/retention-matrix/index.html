@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Retention Matrix · Tableau Viz Extension</title>
+<!-- Tableau Extensions API · 망 제약 환경에서는 이 파일을 레포에 내려받아 vendoring -->
+<script src="https://extensions.tableauusercontent.com/resources/tableau.extensions.1.latest.min.js"></script>
+<style>
+/* Game Log Analytics Dashboard(전서연 · Tableau Public) 디자인 토큰 기준 */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F6FA; --card:#fff; --line:#E9EBF2; --ink:#1F2430; --dim:#8A90A0;
+  --blue:#6E92F0; --blue-fill:#C9D7FB; --up:#1D9E6E; --down:#E5484D;
+}
+body{font-family:'Pretendard','Apple SD Gothic Neo','Segoe UI',sans-serif;background:var(--bg);
+  color:var(--ink);-webkit-font-smoothing:antialiased;padding:14px}
+.hd{display:flex;align-items:center;gap:10px;margin:2px 2px 12px}
+.hd .sq{width:22px;height:22px;border-radius:5px;background:#5B7CFA;color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.hd h1{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.hd .src{margin-left:auto;font-size:11px;color:var(--dim)}
+.badge{font-size:10px;font-weight:700;letter-spacing:.06em;color:#8A6B1F;background:#FBEFD2;
+  border-radius:4px;padding:3px 7px;display:none}
+.badge.on{display:inline-block}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:13px 14px 11px;
+  display:grid;grid-template-columns:1fr 86px;grid-template-rows:auto auto auto;column-gap:8px}
+.kpi .l{grid-column:1;font-size:11.5px;color:var(--dim)}
+.kpi .v{grid-column:1;font-size:25px;font-weight:700;letter-spacing:-.02em;margin-top:4px}
+.kpi .d{grid-column:1;font-size:10.5px;margin-top:4px;font-weight:600}
+.kpi .d.up{color:var(--up)}
+.kpi .d.dn{color:var(--down)}
+.kpi .d span{color:var(--dim);font-weight:500}
+.kpi svg{grid-column:2;grid-row:1/4;align-self:center;width:86px;height:44px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-top:10px;padding:14px 16px}
+.panel h2{font-size:12.5px;font-weight:700;margin-bottom:10px}
+table{border-collapse:collapse;width:100%;font-size:11px}
+th{font-weight:600;color:var(--dim);text-align:center;padding:5px 4px}
+th:first-child{text-align:left}
+td{text-align:center;padding:6px 4px;min-width:52px;border-radius:3px}
+td:first-child{text-align:left;color:var(--dim);font-weight:600;min-width:56px}
+.hint{margin-top:10px;font-size:10.5px;color:var(--dim);line-height:1.6}
+.hint code{font-family:'SF Mono',Menlo,monospace;font-size:10px;background:#F0F2F7;border-radius:3px;padding:1px 5px}
+</style>
+</head>
+<body>
+  <div class="hd">
+    <div class="sq">R</div>
+    <h1>Retention Matrix</h1>
+    <span class="badge" id="badge">SAMPLE DATA</span>
+    <span class="src" id="src">worksheet 연결 대기</span>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="panel">
+    <h2>Weekly Cohort Retention</h2>
+    <table id="matrix"></table>
+    <div class="hint" id="hint">선반 구성: <code>User</code> 차원 · <code>Event Date</code> 날짜 · 첫 이벤트 주가 코호트가 됩니다 · 계산 필드 불필요</div>
+  </div>
+
+<script>
+'use strict';
+/* ── 렌더 ─────────────────────────────────────── */
+function spark(vals, w, h){
+  var max = Math.max.apply(null, vals) || 1;
+  var pts = vals.map(function(v,i){
+    return [ (i/(vals.length-1))*(w-2)+1, h-3-(v/max)*(h-10) ];
+  });
+  var line = pts.map(function(p,i){ return (i? 'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' ');
+  var area = line + ' L'+(w-1)+' '+(h-1)+' L1 '+(h-1)+' Z';
+  return '<svg viewBox="0 0 '+w+' '+h+'"><path d="'+area+'" fill="var(--blue-fill)"/>'+
+         '<path d="'+line+'" fill="none" stroke="var(--blue)" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+}
+function kpiCard(o){
+  var cls = o.delta >= 0 ? 'up' : 'dn';
+  var arrow = o.delta >= 0 ? '↑' : '↓';
+  return '<div class="kpi"><div class="l">'+o.label+'</div><div class="v">'+o.value+'</div>'+
+    '<div class="d '+cls+'">'+arrow+' '+Math.abs(o.delta).toFixed(1)+'%p <span>vs PW</span></div>'+
+    spark(o.trend, 86, 44)+'</div>';
+}
+function heat(p){ // 0~1 → 파랑 단계
+  if (p === null) return '';
+  var a = 0.06 + p * 0.94;
+  return 'background:rgba(76,116,232,'+a.toFixed(2)+');color:'+(p>0.45?'#fff':'#33415E');
+}
+function render(model){
+  document.getElementById('kpis').innerHTML = model.kpis.map(kpiCard).join('');
+  var head = '<tr><th>Cohort</th>' + model.weeks.map(function(w){ return '<th>W'+w+'</th>'; }).join('') + '</tr>';
+  var rows = model.rows.map(function(r){
+    return '<tr><td>'+r.label+'</td>' + r.cells.map(function(c){
+      return '<td style="'+heat(c)+'">'+(c===null?'':(c*100).toFixed(1)+'%')+'</td>';
+    }).join('') + '</tr>';
+  }).join('');
+  document.getElementById('matrix').innerHTML = head + rows;
+}
+
+/* ── 코호트 계산 (실데이터) ───────────────────── */
+function weekFloor(d){ var t=new Date(d); var day=(t.getDay()+6)%7; t.setDate(t.getDate()-day); t.setHours(0,0,0,0); return t.getTime(); }
+function buildModel(events){ // events: [{u, t(ms)}]
+  var firstWeek={}, weeksByUser={}, daysByUser={};
+  events.forEach(function(e){
+    var w=weekFloor(e.t);
+    if(!(e.u in firstWeek) || w<firstWeek[e.u]) firstWeek[e.u]=w;
+    (weeksByUser[e.u]=weeksByUser[e.u]||{})[w]=1;
+    (daysByUser[e.u]=daysByUser[e.u]||{})[Math.floor(e.t/864e5)]=1;
+  });
+  var cohorts={};
+  Object.keys(firstWeek).forEach(function(u){
+    var c=firstWeek[u]; (cohorts[c]=cohorts[c]||[]).push(u);
+  });
+  var keys=Object.keys(cohorts).map(Number).sort(function(a,b){return a-b;}).slice(-10);
+  var W=7*864e5, maxCols=10, rows=[];
+  keys.forEach(function(c){
+    var us=cohorts[c], cells=[];
+    for(var k=0;k<maxCols;k++){
+      var wk=c+k*W;
+      if(wk>weekFloor(Date.now())){ cells.push(null); continue; }
+      var n=us.filter(function(u){ return weeksByUser[u][wk]; }).length;
+      cells.push(n/us.length);
+    }
+    var d=new Date(c);
+    rows.push({label:(d.getMonth()+1)+'/'+('0'+d.getDate()).slice(-2), cells:cells});
+  });
+  // KPI: DAU 평균 · D+1 · D+7 · D+30
+  var dau={}, firstDay={};
+  events.forEach(function(e){
+    var day=Math.floor(e.t/864e5);
+    (dau[day]=dau[day]||{})[e.u]=1;
+    if(!(e.u in firstDay)||day<firstDay[e.u]) firstDay[e.u]=day;
+  });
+  function dN(n){
+    var hit=0,tot=0;
+    Object.keys(firstDay).forEach(function(u){
+      var f=firstDay[u];
+      if((f+n)*864e5 <= Date.now()){ tot++; if(daysByUser[u][f+n]) hit++; }
+    });
+    return tot? hit/tot*100 : 0;
+  }
+  var days=Object.keys(dau).map(Number).sort();
+  var counts=days.map(function(d){ return Object.keys(dau[d]).length; });
+  var avg=counts.reduce(function(a,b){return a+b;},0)/(counts.length||1);
+  return { weeks:Array.apply(null,{length:maxCols}).map(function(_,i){return i;}),
+    rows:rows,
+    kpis:[
+      {label:'Avg DAU', value:avg.toFixed(1), delta:0, trend:counts.slice(-14)},
+      {label:'D+1 Retention', value:dN(1).toFixed(1)+'%', delta:0, trend:counts.slice(-14)},
+      {label:'D+7 Retention', value:dN(7).toFixed(1)+'%', delta:0, trend:counts.slice(-14)},
+      {label:'D+30 Retention', value:dN(30).toFixed(1)+'%', delta:0, trend:counts.slice(-14)}
+    ]};
+}
+
+/* ── 샘플 모드 (Game Log Analytics 수치 참조) ── */
+var SAMPLE = {
+  weeks:[0,1,2,3,4,5,6,7,8,9],
+  rows:[
+    {label:'05/28', cells:[1,.545,.349,.298,.298,.305,.308,.240,.240,.123]},
+    {label:'06/04', cells:[1,.301,.203,.216,.170,.139,.157,.134,.041,null]},
+    {label:'06/11', cells:[1,.278,.162,.139,.125,.097,.102,.042,null,null]},
+    {label:'06/18', cells:[1,.185,.066,.062,.044,.053,.018,null,null,null]},
+    {label:'06/25', cells:[1,.227,.109,.097,.067,.029,null,null,null,null]},
+    {label:'07/02', cells:[1,.239,.098,.093,.024,null,null,null,null,null]},
+    {label:'07/09', cells:[1,.206,.112,.028,null,null,null,null,null,null]},
+    {label:'07/16', cells:[1,.153,.033,null,null,null,null,null,null,null]},
+    {label:'07/23', cells:[1,.145,null,null,null,null,null,null,null,null]},
+    {label:'07/30', cells:[1,null,null,null,null,null,null,null,null,null]}
+  ],
+  kpis:[
+    {label:'Avg DAU', value:'102.3', delta:+1.75, trend:[62,71,88,96,84,92,103,99,108,112,97,104,110,102]},
+    {label:'D+1 Retention', value:'24.7%', delta:+2.1, trend:[18,21,19,24,22,25,23,26,24,27,25,24,26,25]},
+    {label:'D+7 Retention', value:'10.9%', delta:-0.8, trend:[13,12,14,11,12,10,11,12,10,11,9,11,10,11]},
+    {label:'D+30 Retention', value:'4.4%', delta:-0.3, trend:[6,5,6,5,4,5,4,5,4,4,5,4,4,4]}
+  ]
+};
+
+/* ── 초기화: Tableau 연결 실패 시 샘플 모드 ── */
+function sampleMode(){
+  document.getElementById('badge').classList.add('on');
+  document.getElementById('src').textContent = '독립 실행 · Tableau 미연결';
+  render(SAMPLE);
+}
+if (window.tableau && tableau.extensions){
+  var t = setTimeout(sampleMode, 1800);
+  tableau.extensions.initializeAsync().then(function(){
+    clearTimeout(t);
+    var ws = tableau.extensions.worksheetContent && tableau.extensions.worksheetContent.worksheet;
+    if(!ws) return sampleMode();
+    document.getElementById('src').textContent = ws.name;
+    return ws.getSummaryDataReaderAsync(undefined,{ignoreSelection:true}).then(function(reader){
+      return reader.getAllPagesAsync();
+    }).then(function(data){
+      var cols = data.columns, di=-1, ui=-1;
+      cols.forEach(function(c,i){
+        var dt=(c.dataType||'').toLowerCase();
+        if(di<0 && (dt==='date'||dt==='date-time')) di=i;
+      });
+      cols.forEach(function(c,i){ if(ui<0 && i!==di) ui=i; });
+      if(di<0||ui<0) return sampleMode();
+      var ev = data.data.map(function(r){
+        return { u:String(r[ui].value), t:new Date(r[di].value).getTime() };
+      }).filter(function(e){ return e.u && isFinite(e.t); });
+      if(!ev.length) return sampleMode();
+      render(buildModel(ev));
+    });
+  }).catch(sampleMode);
+} else { sampleMode(); }
+</script>
+</body>
+</html>
