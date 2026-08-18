@@ -185,8 +185,6 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
 
 /* ---------- 재구성 v2 전용 ---------- */
-.lede{margin-top:26px;font-size:18px;line-height:1.6;color:var(--navy);
-  border-left:4px solid var(--accent);padding-left:16px}
 
 /* 질문 슬라이드 */
 .qslide .qbox{position:absolute;inset:0;display:flex;flex-direction:column;
@@ -256,7 +254,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
 /* 요청 예시 박스 */
 .askbox{background:#fff;border-radius:14px;padding:16px 20px;font-size:15.5px;line-height:1.6;
-  color:var(--navy);margin-bottom:14px;border-left:4px solid var(--cyan)}
+  color:var(--navy);margin-bottom:14px;border:1px solid rgba(2,42,192,.15)}
 
 /* QA 레인 */
 .lane{margin-top:30px}
@@ -325,6 +323,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .istep.off .ibadge{background:#EDF1F6}
 .istep.off .ibadge svg{stroke:#9AA6B4}
 .istep.off b{color:#8C97A5}
+.ibadge.wb{background:#fff;border:1px solid rgba(2,42,192,.12)}
 .idiv{flex:0 0 1px;background:repeating-linear-gradient(180deg,rgba(2,42,192,.28) 0 6px,transparent 6px 13px);margin:6px 12px}
 .slide.dark .iflow{margin-top:40px;width:100%;padding:0 var(--pad)}
 .slide.dark .istep{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.32)}
@@ -357,6 +356,37 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .iflow.chain6 .ibadge{width:40px;height:40px}
 .iflow.chain6 .ibadge svg{width:20px;height:20px}
 .iflow.chain6 .iarrow svg{width:16px;height:16px}
+
+/* MD 산출물 카드 */
+.mdwrap{display:grid;grid-template-columns:1.45fr 1fr;gap:26px;margin-top:24px;align-items:start}
+.mdcard{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:14px;overflow:hidden}
+.mdcard .fname{display:flex;align-items:center;gap:9px;background:#E4EEFB;padding:10px 16px;
+  font-family:var(--mono);font-size:12.5px;color:#2E4C7E}
+.mdcard .fname i{width:9px;height:9px;border-radius:50%;background:#7FA9D9}
+.mdbody{padding:18px 24px 20px;font-size:14px;line-height:1.7;color:var(--navy)}
+.mdbody .h{font-family:var(--display);font-weight:600;font-size:16.5px;margin-bottom:10px}
+.mdbody .h .mk{color:#8CA3C4;font-family:var(--mono);font-weight:400;margin-right:7px}
+.mdbody p{margin-bottom:7px}
+.mdbody .dim{color:#5B6F92;font-size:12.5px;font-family:var(--mono);margin-top:10px}
+.mdbody table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0 4px}
+.mdbody th{text-align:left;color:#2E4C7E;border-bottom:1.5px solid rgba(2,42,192,.25);padding:4px 8px;font-weight:600}
+.mdbody td{border-bottom:1px solid rgba(2,42,192,.1);padding:4px 8px}
+.agside .tag{margin-bottom:12px}
+.tbox{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid rgba(2,42,192,.15);
+  border-radius:14px;padding:16px 18px;margin-top:18px}
+.tbox img{width:30px;height:30px;flex:0 0 auto;margin-top:2px}
+.tbox b{display:block;font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--accent);margin-bottom:3px}
+.tbox span{font-size:13.5px;line-height:1.55;color:var(--navy)}
+/* 상대 배치 스크린샷 */
+.shot.rel{position:relative;inset:auto;width:100%}
+.shot.rel img{height:auto}
+/* 아이디어 그리드 */
+.ideas{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.idea{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:16px;padding:20px 20px 18px}
+.idea .ibadge{margin-bottom:12px;width:42px;height:42px}
+.idea b{display:block;font-family:var(--display);font-weight:600;font-size:16.5px;color:var(--navy);margin-bottom:5px}
+.idea span{font-size:13px;line-height:1.5;color:var(--navy);opacity:.78}
+.idea.hl{background:var(--card)}
 /* ---------- 네비게이션 ---------- */
 #nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:99;
   display:flex;gap:10px;align-items:center;background:rgba(0,30,91,.72);color:#fff;
@@ -688,15 +718,227 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       <div class="vf out">분석 보고서 초안</div>
     </div>
   </div>
-  <div class="shot ph" style="right:56px;top:150px;width:620px;height:400px">
-    <span>Demo 결과 화면 자리</span>
-  </div>
+  <div class="shot" style="right:56px;top:140px;width:640px;height:424px"><img src="assets/demo_dashboard.png" alt="파이프라인 산출 대시보드"></div>
   <div class="sidenote" style="right:56px;top:576px;width:620px">
     <b>이전과 달라진 점</b>
     단계별 결과 파일 저장 · 중단 지점부터 재개 · 데이터 교체 후 동일 흐름 재사용
   </div>
   <div class="footer">앞 단계 파일 생성 후 다음 단계 시작</div>
 </section>
+<!-- 2.6 산출물 01 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">01 / 07 · @data-ingestion · 데이터 구조 검증</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/01_dataset_profile.md</div>
+        <div class="mdbody">
+          <div class="h"><span class="mk">#</span>데이터 프로파일</div>
+          <p>sample_sales.csv · 24행 × 12컬럼 · 2026-01-05 ~ 03-18 · 결측 0건 · 중복 0건</p>
+          <table>
+            <tr><th>컬럼</th><th>타입</th><th>역할</th></tr>
+            <tr><td>date</td><td>날짜</td><td>시계열 기준</td></tr>
+            <tr><td>revenue · cost · discount</td><td>수치</td><td>수익성 계산</td></tr>
+            <tr><td>test_group</td><td>범주</td><td>A/B 테스트 그룹</td></tr>
+          </table>
+          <p class="dim">→ @eda: profit 컬럼 없음 · revenue - cost 계산 필요 · Furniture 고할인 주목</p>
+        </div>
+      </div>
+      <div class="agside">
+        <span class="tag">@DATA-INGESTION</span>
+        <h3 class="colhead">데이터 구조 검증</h3>
+        <div class="body"><ul><li>타입 · 결측 · 중복 점검</li><li>다음 에이전트 인수인계 메모</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>필드 타입과 역할 정리 = Tableau 데이터 원본 설계 초안 · 업로드 전 구조 검증</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
+<!-- 2.6 산출물 02 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">02 / 07 · @eda · 분포 · 관계 탐색</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/02_eda_report.md</div>
+        <div class="mdbody">
+          <div class="h"><span class="mk">#</span>EDA 보고서 · 발견 3가지</div>
+          <p><b>1.</b> Furniture 마진 10.7% · Technology(34.6%)의 1/3 수준</p>
+          <p><b>2.</b> B그룹 전환율 +1.1%p · 매출 +$11K</p>
+          <p><b>3.</b> 2월 $164K → 3월 $114K · -31%</p>
+          <table>
+            <tr><th>총 매출</th><th>전체 마진</th><th>전환율</th><th>AOV</th></tr>
+            <tr><td>$397,130</td><td>30.6%</td><td>12.6%</td><td>$121</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="agside">
+        <span class="tag">@EDA</span>
+        <h3 class="colhead">분포 · 관계 탐색</h3>
+        <div class="body"><ul><li>발견 3가지로 압축</li><li>검증 전 수치는 후보로만 표기</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>발견 3가지가 대시보드 뷰 후보 · 카드 제목 문구의 원천</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
+<!-- 2.6 산출물 03 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">03 / 07 · @problem · 답할 질문 확정</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/03_problem_definition.md</div>
+        <div class="mdbody">
+          <div class="h"><span class="mk">#</span>분석 질문 정의</div>
+          <p><b>Q1.</b> Furniture 마진 10.7%의 원인 · 가설: 할인율 17.7%의 직접 잠식</p>
+          <p><b>Q2.</b> B그룹 전환율 우위 +1.1%p의 유의성 · 가설: 가격 신호 효과</p>
+          <p><b>Q3.</b> 3월 급락 -31% · 구조적 vs 일시적 · 가설: Technology 대형 거래 집중</p>
+          <p class="dim">→ @metrics: 카테고리별 마진율 · 할인 구간별 전환율 · A/B 그룹별 지표 요청</p>
+        </div>
+      </div>
+      <div class="agside">
+        <span class="tag">@PROBLEM</span>
+        <h3 class="colhead">답할 질문 확정</h3>
+        <div class="body"><ul><li>가설 · 중요도 · 성공 기준 명시</li><li>우선순위 Top 3 선정</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>대시보드가 답할 질문 목록 · 뷰 1개 = 질문 1개 원칙</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
+<!-- 2.6 산출물 04 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">04 / 07 · @metrics · 지표 계산식 확정</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/04_kpi_summary.md</div>
+        <div class="mdbody">
+          <div class="h"><span class="mk">#</span>KPI 정의</div>
+          <table>
+            <tr><th>KPI</th><th>정의</th><th>현재값</th></tr>
+            <tr><td>전체 마진율</td><td>Gross Profit / Gross Revenue</td><td>30.6%</td></tr>
+            <tr><td>전환율 (CVR)</td><td>orders / visitors</td><td>12.6%</td></tr>
+            <tr><td>평균 주문액 (AOV)</td><td>revenue / orders</td><td>$121</td></tr>
+            <tr><td>A/B 전환율 차이</td><td>B - A · %p 절대값</td><td>+1.1%p</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="agside">
+        <span class="tag">@METRICS</span>
+        <h3 class="colhead">지표 계산식 확정</h3>
+        <div class="body"><ul><li>이름 · 분모 · 단위 고정</li><li>이후 모든 단계의 기준 문서</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>계산식 그대로 Tableau 계산 필드 등록 · 3.6 QA 워크플로우의 대조 기준</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
+<!-- 2.6 산출물 05 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">05 / 07 · @analysis · 가설 검증</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/05_analysis_report.md</div>
+        <div class="mdbody">
+          <div class="h"><span class="mk">#</span>분석 보고서 · 인사이트 3가지</div>
+          <p><b>1.</b> 할인 17.7% → 마진 10.7% · 할인 10%p 축소 시 +$6~8K 추정</p>
+          <p><b>2.</b> 할인 줄인 B그룹이 전환율도 우위 · 표본 24행 · 방향성 참고</p>
+          <p><b>3.</b> 3월 급락 = Technology 단일 이슈(-77%) · 나머지 카테고리는 성장</p>
+          <p class="dim">대시보드 한 줄: "Furniture 할인 축소와 Technology 분산이 수익성 개선 레버"</p>
+        </div>
+      </div>
+      <div class="agside">
+        <span class="tag">@ANALYSIS</span>
+        <h3 class="colhead">가설 검증</h3>
+        <div class="body"><ul><li>방법론 선택 근거 기록</li><li>확정 불가 항목은 주의 표기</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>카드 제목과 주석 문구의 근거 · 대시보드의 한 줄 결론 제공</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
+<!-- 2.6 산출물 06 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">06 / 07 · @dashboard · 시각화 시안</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/06_dashboard.html</div>
+        <img src="assets/demo_dashboard.png" alt="산출 대시보드" style="display:block;width:100%">
+      </div>
+      <div class="agside">
+        <span class="tag">@DASHBOARD</span>
+        <h3 class="colhead">시각화 시안</h3>
+        <div class="body"><ul><li>차트 선택과 배치 완료</li><li>KPI 카드 · 추세 · 비교 · 지역 구성</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>이 시안 그대로 Tableau 재현 · 와이어프레임 단계 생략</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
+<!-- 2.6 산출물 07 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.6 단계별 산출물</h2>
+      <p class="sub">07 / 07 · @report · 임원 보고 요약</p>
+    </div>
+    <div class="mdwrap">
+      <div class="mdcard">
+        <div class="fname"><i></i>runs/latest/outputs/07_executive_report.md</div>
+        <div class="mdbody">
+          <div class="h"><span class="mk">#</span>Executive Report</div>
+          <p>한 줄 요약: Furniture 고할인 구조와 Technology 매출 집중이 수익성의 두 리스크</p>
+          <p><b>1.</b> Furniture 할인의 마진 잠식 · 축소 시 +$6~8K 추정</p>
+          <p><b>2.</b> 3월 급락 = Technology 단일 이슈 · 포트폴리오 분산 필요</p>
+          <p><b>3.</b> 할인 줄인 B그룹의 전환율 우위 · 표본 주의 · 방향성 참고</p>
+        </div>
+      </div>
+      <div class="agside">
+        <span class="tag">@REPORT</span>
+        <h3 class="colhead">임원 보고 요약</h3>
+        <div class="body"><ul><li>A4 한 장 · 결론 먼저</li><li>근거 수치 병기</li></ul></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt="Tableau"><div><b>Tableau 연결</b><span>Tableau 구독 메일과 같은 주기로 발송 · 임원은 요약 · 실무자는 대시보드</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">실제 파이프라인 실행 산출물 · sample_sales.csv</div>
+</section>
+
 
 <!-- =========================================================
      13 · 섹션 03
@@ -763,11 +1005,60 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="lbl">3.2 Tableau MCP의 역할</div>
   <div class="rule"></div>
-  <h1 style="font-size:40px;line-height:1.42;max-width:940px">Claude Code가 Tableau의 워크북, 뷰, 데이터,<br>메타데이터를 <span style="color:#FFD84D">권한 범위 안에서</span> 읽도록<br>연결하는 인터페이스</h1>
-  <p class="note">Tableau 직접 운영 · 사용자의 기존 권한 그대로 적용 · 권한 밖 자산은 조회 불가</p>
-  <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM7.2 10.2l2.7 2-2.7 2M12.7 14.2h4.2"/></svg></span><b>Claude Code</b><i>요청</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M13.9 10.1l-3.8 3.8M10.3 6.7l2-2a3.9 3.9 0 015.5 5.5l-2 2M13.7 17.3l-2 2a3.9 3.9 0 01-5.5-5.5l2-2"/></svg></span><b>Tableau MCP</b><i>권한 확인</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM3.5 9.1h17M9.1 9.1v10.3"/></svg></span><b>Tableau</b><i>응답</i></div></div>
+  <h1 style="font-size:56px;line-height:1.25">AI가 Tableau를 읽는 <span style="color:#FFD84D">공식 통로</span></h1>
+  <p class="note">조회 전용 · 사용자 권한 그대로 · 권한 밖 자산 차단</p>
+  <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM7.2 10.2l2.7 2-2.7 2M12.7 14.2h4.2"/></svg></span><b>Claude Code</b><i>요청</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M13.9 10.1l-3.8 3.8M10.3 6.7l2-2a3.9 3.9 0 015.5 5.5l-2 2M13.7 17.3l-2 2a3.9 3.9 0 01-5.5-5.5l2-2"/></svg></span><b>Tableau MCP</b><i>권한 확인</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge wb"><img src="assets/tableau_logo.svg" alt="" style="width:22px;height:22px"></span><b>Tableau</b><i>응답</i></div></div>
   
 </section>
+<!-- 3.3 TC26 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.3 Tableau Conference 2026</h2>
+      <p class="sub">키노트 선언 · Agentic Analytics Platform</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.4fr;margin-top:24px;align-items:center">
+      <div class="body">
+        <ul>
+          <li><b>Knowledge Engine</b> · Data + Semantics 층</li>
+          <li><b>Decision Engine</b> · Insights + Actions 층</li>
+          <li>Cloud · Server · Desktop · Next 전 표면 적용</li>
+          <li><b>MCP</b> · 외부 AI와 플랫폼을 잇는 통로</li>
+        </ul>
+        <p style="margin-top:16px;font-size:13.5px;opacity:.75">키노트 문구: "Tableau is your agentic analytics platform"</p>
+      </div>
+      <div class="shot rel"><img src="assets/tc26_platform.png" alt="Agentic Analytics Platform 구조"></div>
+    </div>
+  </div>
+  <div class="footer">출처: Tableau Conference 2026 키노트 · Salesforce+ 화면 캡처</div>
+</section>
+
+<!-- 3.4 키노트 데모 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.4 키노트 데모 · Tableau MCP GA</h2>
+      <p class="sub">Insights in the flow of work · 작업 흐름 속 인사이트</p>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.4fr;margin-top:24px;align-items:center">
+      <div class="body">
+        <ul>
+          <li>Tableau MCP · Embedded Analytics <b>정식 출시(GA)</b> · Cloud · Server · Next</li>
+          <li>연결 파트너: Claude · Cursor · ElevenLabs · ChatGPT</li>
+          <li>Will Sutton(The Information Lab · Iron Viz 2022 우승) 시연 · 대시보드 밖 DataDev 앱 구동</li>
+          <li>키노트 시연: 재고 불일치 발견 → 창고 이동 요청까지 에이전트 실행</li>
+        </ul>
+        <div class="shot rel" style="width:280px;margin-top:18px"><img src="assets/tc26_will.png" alt="Will Sutton 키노트 시연"></div>
+        <p style="font-size:12px;opacity:.7;margin-top:6px">Will Sutton · The Information Lab</p>
+      </div>
+      <div class="shot rel"><img src="assets/tc26_mcp_ga.png" alt="Tableau MCP GA 발표 화면"></div>
+    </div>
+  </div>
+  <div class="footer">출처: Tableau Conference 2026 키노트 · Salesforce+ 화면 캡처</div>
+</section>
+
 
 <!-- =========================================================
      16 · 3.3 MCP로 처리하는 업무
@@ -778,7 +1069,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap">
     <div class="titleblock">
-      <h2 class="head">3.3 MCP로 처리하는 업무</h2>
+      <h2 class="head">3.5 MCP로 처리하는 업무</h2>
       <p class="sub">사람이 Tableau를 열어 하나씩 확인하던 작업</p>
     </div>
     <div class="cols c2" style="margin-top:24px;grid-template-columns:1fr 1.05fr">
@@ -815,7 +1106,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.4 대시보드 QA 워크플로우</h2>
+      <h2 class="head">3.6 대시보드 QA 워크플로우</h2>
       <p class="sub">한 흐름 안에서의 두 도구와 사람의 분담</p>
     </div>
     <div class="lane">
@@ -830,6 +1121,39 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
   
   <div class="footer">DataFam Seoul 2026</div>
 </section>
+<!-- 3.7 활용 사례 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.7 활용 사례 · 주간 점검 리포트</h2>
+      <p class="sub">3.6 워크플로우의 실행 결과물</p>
+    </div>
+    <div class="shot rel" style="width:960px;margin:20px auto 0"><img src="assets/demo_qa_report.png" alt="주간 대시보드 점검 리포트"></div>
+  </div>
+  <div class="footer">Claude Code + Tableau MCP 생성 · 요청 한 번 · 워크북 12개 점검 · 읽기 전용</div>
+</section>
+
+<!-- 3.8 활용 아이디어 -->
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.8 MCP 활용 아이디어</h2>
+      <p class="sub">읽기 전용 범위에서 시작 가능한 자동화</p>
+    </div>
+    <div class="ideas">
+      <div class="idea hl"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M6.4 3.5h8.1l4.1 4.1v12.9H6.4zM14.5 3.5v4.1h4.1M9.6 12.6h5.8M9.6 16h5.8"/></svg></span><b>주간 점검 리포트</b><span>KPI 변동과 정의 불일치 정리 · 오늘 시연</span></div>
+      <div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 5h17v14h-17zM3.5 9.7h17M3.5 14.3h17M9.2 5v14"/></svg></span><b>대시보드 카탈로그</b><span>워크북 · 뷰 목록과 설명 자동 문서화</span></div>
+      <div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M11.3 3.6H20v8.7l-8.6 8.6-8.7-8.7zM16.2 7.9h.01"/></svg></span><b>미사용 콘텐츠 정리</b><span>조회 기록 기반 정리 후보 목록</span></div>
+      <div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4l7.6 2.9v5.6c0 4.7-3.2 7.8-7.6 8.7-4.4-.9-7.6-4-7.6-8.7V6.3zM9.2 12.1l2 2 3.6-3.7"/></svg></span><b>KPI 정의 감사</b><span>정의서와 계산 필드 주기 대조</span></div>
+      <div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M4.2 5h15.6v10.2H9.6L5.6 19v-3.8H4.2z"/></svg></span><b>Slack 아침 브리핑</b><span>주요 뷰 변동 요약 발송</span></div>
+      <div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 14.6a3 3 0 003-3V6.2a3 3 0 10-6 0v5.4a3 3 0 003 3zM6.4 11.6a5.6 5.6 0 0011.2 0M12 17.2v3.2M8.8 20.4h6.4"/></svg></span><b>음성 질의 에이전트</b><span>음성 AI와 MCP 연결 · TC26 키노트 방향</span></div>
+    </div>
+  </div>
+  <div class="footer">전부 조회 · 추출 범위 · 수정 권한 불필요</div>
+</section>
+
 
 <!-- =========================================================
      18 · 3.5 연결 방식
@@ -840,7 +1164,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
   <div class="wrap">
     <div class="titleblock">
-      <h2 class="head">3.5 연결 방식</h2>
+      <h2 class="head">3.9 연결 방식</h2>
       <p class="sub">환경에 따라 두 갈래</p>
     </div>
     <div class="cards k2" style="margin-top:26px">
@@ -860,7 +1184,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
       </div>
     </div>
   
-    <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM7.2 10.2l2.7 2-2.7 2M12.7 14.2h4.2"/></svg></span><b>Claude Code</b><i>요청을 보낸다</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M13.9 10.1l-3.8 3.8M10.3 6.7l2-2a3.9 3.9 0 015.5 5.5l-2 2M13.7 17.3l-2 2a3.9 3.9 0 01-5.5-5.5l2-2"/></svg></span><b>MCP 서버</b><i>공식 호스팅 또는 셀프 호스팅</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM3.5 9.1h17M9.1 9.1v10.3"/></svg></span><b>Tableau</b><i>권한 범위 안에서 응답</i></div></div>
+    <div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 4.6h17v14.8h-17zM7.2 10.2l2.7 2-2.7 2M12.7 14.2h4.2"/></svg></span><b>Claude Code</b><i>요청을 보낸다</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M13.9 10.1l-3.8 3.8M10.3 6.7l2-2a3.9 3.9 0 015.5 5.5l-2 2M13.7 17.3l-2 2a3.9 3.9 0 01-5.5-5.5l2-2"/></svg></span><b>MCP 서버</b><i>공식 호스팅 또는 셀프 호스팅</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge wb"><img src="assets/tableau_logo.svg" alt="" style="width:22px;height:22px"></span><b>Tableau</b><i>권한 범위 안에서 응답</i></div></div>
   </div>
   
   <div class="footer">출처: github.com/tableau/tableau-mcp</div>

@@ -6,9 +6,9 @@ Claude Code와 Tableau MCP로 만드는 분석 워크플로우
 
 | 경로 | 내용 |
 |---|---|
-| `index.html` | 슬라이드 덱 27장 · 편집용 (assets 폴더 필요) |
+| `index.html` | 슬라이드 덱 37장 · 편집용 (assets 폴더 필요) |
 | `DataFam-Seoul-2026-발표자료.html` | 이미지 임베드 단일 파일 · 어디서나 열림 |
-| `DataFam-Seoul-2026-발표자료.pdf` | 27쪽 · 960×540pt |
+| `DataFam-Seoul-2026-발표자료.pdf` | 37쪽 · 960×540pt |
 | `assets/` | 원본 템플릿 PDF에서 추출한 로고·3D 아이콘 |
 
 ## 실행
@@ -130,3 +130,12 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 
 - 16장의 "권한 밖의 자산은 보이지 않는다"는 MCP가 사용자 권한을 승계한다는 문서 기술에 근거한다. 실제 사이트에서 검증 후 발표할 것
 - 18장의 QA 워크플로우는 MCP 단독 기능이 아니라 MCP + Claude Code 조합이다. 슬라이드에 역할을 나눠 표기했다
+
+## 2026-08-18 추가분
+
+- **2.6 단계별 산출물 × 7장**: fastcampus-webinar 파이프라인의 실제 산출물(01~07) 인용 + 슬라이드별 Tableau 연결 포인트
+- **3.3 · 3.4 TC26 키노트**: Agentic Analytics Platform 구조 · Tableau MCP GA 발표 화면 캡처 (Salesforce+ 키노트, Will Sutton · The Information Lab)
+- **3.7 활용 사례**: Claude Code + Tableau MCP 주간 점검 리포트 · 직접 제작한 데모(`scratchpad/demo_qa.html`)를 캡처
+- **3.8 활용 아이디어 6종**: 점검 리포트 · 카탈로그 · 미사용 콘텐츠 · KPI 감사 · Slack 브리핑 · 음성 질의
+- 3.2 헤드라인 단순화 · 요청 예시 박스의 한쪽 색 테두리 제거(전역 규칙) · Tableau 공식 로고 추가(worldvectorlogo)
+- 번호 재정렬: 기존 3.3→3.5, 3.4→3.6, 3.5→3.9
