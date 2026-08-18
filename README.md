@@ -1,0 +1,132 @@
+# DataFam Seoul 2026 · 발표자료 초안
+
+Claude Code와 Tableau MCP로 만드는 분석 워크플로우
+
+## 파일
+
+| 경로 | 내용 |
+|---|---|
+| `index.html` | 슬라이드 덱 27장 · 편집용 (assets 폴더 필요) |
+| `DataFam-Seoul-2026-발표자료.html` | 이미지 임베드 단일 파일 · 어디서나 열림 |
+| `DataFam-Seoul-2026-발표자료.pdf` | 27쪽 · 960×540pt |
+| `assets/` | 원본 템플릿 PDF에서 추출한 로고·3D 아이콘 |
+
+## 실행
+
+```bash
+open index.html
+```
+
+좌우 방향키 · 스페이스로 이동. 하단 카운터로 현재 장 확인.
+PDF 재생성:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless=new --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="DataFam-Seoul-2026-발표자료.pdf" \
+  "file://$PWD/index.html"
+```
+
+단일 파일 HTML 재생성은 이미지 10개를 base64로 인라인하면 된다. iCloud Drive `DataFam Seoul 2026/` 에도 같은 파일들을 복사해 뒀다.
+
+## 템플릿 재현 기준
+
+원본: `Copy 후 사용 [회사명] DataFam Seoul 2026_Speaker Template` (Google Slides)
+PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아이콘은 PDF 내부 이미지에서 알파 채널까지 복원해 추출했다.
+
+| 토큰 | 값 | 쓰임 |
+|---|---|---|
+| `--sky` | `#90D0FE` | 커버 · 타이틀 · 인용 · 감사 |
+| `--pale` | `#CFE9FE` | 본문 슬라이드 |
+| `--brand` | `#066AFE` | 섹션 구분 · 빅 스테이트먼트 |
+| `--card` | `#EAF5FE` | 카드 채움 |
+| `--navy` | `#001E5B` | 제목 · 본문 |
+| `--accent` | `#022AC0` | 소제목 강조 |
+| `--cyan` | `#00B3FF` | 인용 2행 |
+
+원본 폰트는 Avant Garde Demi(제목) · Salesforce Sans(본문). 라이선스 문제로 로컬 대체 스택(Futura / Century Gothic / Pretendard)을 썼다.
+원본 템플릿에 있으나 이 초안에서 뺀 레이아웃: 이미지 카드 2단, 노트북·모바일 목업, Forward Looking Statements(Salesforce 법적 고지라 외부 발표에는 불필요).
+
+## 구성
+
+하나의 문장에 들어가는 내용만 남겼다.
+
+> Tableau 전의 반복 업무는 Claude Code로 줄이고, Tableau 안에 있는 자산은 MCP로 연결하고,
+> 최종 판단과 배포는 사람과 Tableau가 맡는다.
+
+### 본편 27장
+
+| # | 구분 | 제목 |
+|---|---|---|
+| 1 | 오프닝 | 타이틀 |
+| 2 | 오프닝 | 오늘 던질 질문 |
+| 3 | 오프닝 | AI는 Tableau를 대체하지 않는다 |
+| 4 | 오프닝 | Contents |
+| 5 | 섹션 | 01 AI가 들어갈 자리 |
+| 6 | 표 | 1.1 AI · 사람 · Tableau 역할 분담 |
+| 7 | 지도 | 1.2 전체 워크플로우 |
+| 8 | 섹션 | 02 반복 분석 업무 자동화 |
+| 9 | 흐름 | 2.1 기존 방식 · 프롬프트 이어 붙이기 |
+| 10 | 2 카드 | 2.2 프롬프트 방식의 한계 |
+| 11 | 3단 | 2.3 Agent · Rule · Skill |
+| 12 | 표 | 2.4 에이전트 구성 |
+| 13 | 흐름 + 데모 자리 | 2.5 실행 흐름 |
+| 14 | 섹션 | 03 Tableau 자산과의 연결 |
+| 15 | 대비 | 3.1 Claude Code 단독 사용의 단절 |
+| 16 | 빅 스테이트먼트 | 3.2 Tableau MCP의 역할 |
+| 17 | 2단 | 3.3 MCP로 처리하는 업무 |
+| 18 | 레인 | 3.4 대시보드 QA 워크플로우 |
+| 19 | 2 카드 + 코드 | 3.5 연결 방식 |
+| 20 | 섹션 | 보너스 데모 · Tableau의 표현 범위 확장 |
+| 21 | 이미지 | 4.1 기본 차트로 어려운 시각화 |
+| 22 | 이미지 | 4.2 Tableau 안에서 실행되는 결과 |
+| 23 | 섹션 | 04 실무 도입 순서 |
+| 24 | 단계 | 4.1 실무 도입 순서 |
+| 25 | 1단 | WRAP UP |
+| 26 | 빅 스테이트먼트 | Q & A |
+| 27 | 감사 | Thank you |
+
+부록은 두지 않는다. 에이전트 구성은 2.4로, MCP 설정 코드는 3.5 카드 안으로 넣었다.
+
+## 제목 규칙
+
+한국 컨퍼런스 발표자료(NAVER DEVIEW 2023 세션 덱) 관행을 따랐다.
+
+- 본문 슬라이드 제목은 **챕터 번호 + 명사구**. 예: `3.4 대시보드 QA 워크플로우`
+- 서술어로 끝나는 문장형 제목을 쓰지 않는다
+- 부제는 제목을 한 줄로 푼 명사구
+- 섹션 구분 슬라이드는 `번호 + 명사구`
+- 마무리는 WRAP UP → Q & A → Thank You
+
+## 발표 시간에 따른 조정
+
+- **20분 안팎** 20–22장(보너스 데모)을 통째로 뺀다. 24장으로 줄어든다
+- **30분 이상** 현재 구성 그대로
+- 부록은 어느 경우에도 넘기지 않는다
+
+## 채워야 할 자리
+
+- ~~1장 발표자 정보~~ 전서연 · 데이터브릿지랩 CEO | Tableau Visionary & Ambassador 반영 완료
+- **13장** Demo 결과 화면. 파이프라인 실행 결과가 나오면 교체
+- **18장** 실제 사용 중인 Tableau 사이트 기준으로 QA 시나리오 조정
+- **27장** 자료 · 예제 코드 링크, 연락처
+
+## 이전 버전
+
+`index.v1.html` 은 재구성 전 27장 버전이다. 5개 대주제(반복 구간 → 파이프라인 → MCP → 확장 제작 → 공개와 도입) 구성으로,
+확장 프로그램 개발 과정이 본편의 3분의 1을 차지했다. 세션 주제와 어긋나 부록으로 내렸다.
+
+## 내용 출처
+
+- 프롬프트 체이닝(9장): 업로드한 `Prompt to Dashboard 실습 프롬프트`
+  - 슬라이드에는 고객사명을 빼고 "기업 대상 실습"으로만 표기했다. 대외 발표라 사명 노출은 확인 후 결정할 것
+- 파이프라인 구성 · 에이전트(11·12장): 업로드한 `ai-pipeline-kit.zip`
+- Tableau MCP(16·17·19장): [github.com/tableau/tableau-mcp](https://github.com/tableau/tableau-mcp)
+- 자체 확장(21·22장): `~/Projects/Script/P04-CH01/avengers-complete/`
+  - 화면 이미지: `assets/shot_network.jpg`, `assets/shot_tableau.png`
+- 제목 규칙 근거: [NAVER DEVIEW 2023 세션 발표자료](https://deview.kr/2023)
+
+## 확인 필요
+
+- 16장의 "권한 밖의 자산은 보이지 않는다"는 MCP가 사용자 권한을 승계한다는 문서 기술에 근거한다. 실제 사이트에서 검증 후 발표할 것
+- 18장의 QA 워크플로우는 MCP 단독 기능이 아니라 MCP + Claude Code 조합이다. 슬라이드에 역할을 나눠 표기했다
