@@ -6,9 +6,9 @@ Claude Code와 Tableau MCP로 만드는 분석 워크플로우
 
 | 경로 | 내용 |
 |---|---|
-| `index.html` | 슬라이드 덱 44장 · 편집용 (assets 폴더 필요) |
+| `index.html` | 슬라이드 덱 43장 · 편집용 (assets 폴더 필요) |
 | `DataFam-Seoul-2026-발표자료.html` | 이미지 임베드 단일 파일 · 어디서나 열림 |
-| `DataFam-Seoul-2026-발표자료.pdf` | 44쪽 · 960×540pt |
+| `DataFam-Seoul-2026-발표자료.pdf` | 43쪽 · 960×540pt |
 | `assets/` | 원본 템플릿 PDF에서 추출한 로고·3D 아이콘 |
 
 ## 실행
@@ -165,3 +165,12 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 - 1.3 → "AI에게 맡기면 안 되는 것" · AI/Tableau/사람 역할 분담 원칙 3열
 - 2.3 부제 → 누가 · 어떤 기준으로 · 어떤 순서로
 - 보너스 데모 번호 → BONUS 1 · 2 · 3 (04장 실무 도입 순서와 번호 충돌 해소)
+
+## 2026-08-19 라벨 리디자인 패스
+
+- 전 슬라이드 라벨 + 수치 + 실물 원칙 적용: 부제 삭제 · 설명 문장 제거 · 영문 기술 라벨
+- 2.1 Prompt-based Analysis · 2.2 Limitations 4카드 · 2.3 라벨 3종 + Define Once → Reuse
+- 3.1 Context Boundary · 3.2 Tableau MCP(Connection Layer) · 3.3 플랫폼 라벨 3종 · 3.4 MCP in Action(캡션만 Will Sutton) · 3.5 Access Scope · 3.6 01 RETRIEVE→04 PUBLISH
+- 선언 슬라이드 삭제 · 3.8 Use Cases overview(8종 통일 명명) + 상세 3장(수치 3개 포맷 · 상단 크롭 확대 캡처)
+- 업계 동향 → APPENDIX · Ecosystem (Thank you 뒤)
+- 3.10 Connection Options · BONUS 라벨화 · 4.1 Adoption Framework · Wrap-up 4역할 카드
