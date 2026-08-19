@@ -2,37 +2,52 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>대시보드와 대화</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대시보드와 대화 · 시연</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;
   -webkit-font-smoothing:antialiased}
-.page{max-width:1160px;margin:0 auto;padding:30px 40px 38px}
-.hd{display:flex;align-items:center;gap:12px;border-bottom:2px solid #16233B;padding-bottom:13px}
+.page{max-width:1000px;margin:0 auto;padding:26px 24px 120px}
+.hd{display:flex;align-items:center;gap:11px;border-bottom:2px solid #16233B;padding-bottom:12px}
 .hd .dot{width:10px;height:10px;border-radius:50%;background:#1E7BEF}
-.hd h1{font-size:19px;font-weight:700}
-.hd .sub{font-size:12.5px;color:#5B6B84}
-.hd .gen{margin-left:auto;font-size:12px;color:#5B6B84}
-.chat{margin-top:24px;display:flex;flex-direction:column;gap:16px}
-.u{align-self:flex-end;max-width:62%;background:#16233B;color:#fff;border-radius:14px 14px 3px 14px;
-  padding:13px 18px;font-size:14.5px;line-height:1.6}
-.chips{display:flex;gap:7px;align-items:center;margin:2px 0}
-.chip{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#E4EBF5;color:#3A4A63;
+.hd h1{font-size:18px;font-weight:700}
+.hd .sub{font-size:12px;color:#5B6B84}
+.hd .gen{margin-left:auto;font-size:11.5px;color:#5B6B84}
+.chat{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.u{align-self:flex-end;max-width:68%;background:#16233B;color:#fff;border-radius:14px 14px 3px 14px;
+  padding:12px 17px;font-size:14.5px;line-height:1.6}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:'SF Mono',Menlo,monospace;font-size:10.5px;background:#DCE7FA;color:#1E4FC2;
   border-radius:5px;padding:4px 9px}
-.chip.h{background:#DCE7FA;color:#1E4FC2}
-.a{align-self:flex-start;max-width:78%;background:#fff;border:1px solid #DDE4EE;border-radius:14px 14px 14px 3px;
-  padding:16px 20px;font-size:14px;line-height:1.65}
-.a p{margin-bottom:8px}
-.a p:last-child{margin-bottom:0}
-.a table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 10px}
-.a th{text-align:left;color:#3A4A63;background:#EDF1F7;font-weight:600;padding:7px 12px;font-size:12px}
-.a td{padding:7px 12px;border-top:1px solid #E7ECF4}
+.a{align-self:flex-start;max-width:82%;background:#fff;border:1px solid #DDE4EE;
+  border-radius:14px 14px 14px 3px;padding:15px 19px;font-size:14px;line-height:1.66}
+.a p{margin-bottom:7px}.a p:last-child{margin-bottom:0}
+.a table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 9px}
+.a th{text-align:left;background:#EDF1F7;color:#3A4A63;font-weight:600;padding:6px 11px;font-size:11.5px}
+.a td{padding:6px 11px;border-top:1px solid #E7ECF4}
 .a .num{text-align:right;font-variant-numeric:tabular-nums}
 .a .hl td{background:#EDF3FC;font-weight:700}
-code{font-family:'SF Mono',Menlo,monospace;font-size:12px;background:#EDF1F7;border-radius:4px;padding:1px 6px;color:#3A4A63}
-.note{font-size:12px;color:#5B6B84}
-.foot{margin-top:22px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
-.foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
+code{font-family:'SF Mono',Menlo,monospace;font-size:11.5px;background:#EDF1F7;border-radius:4px;
+  padding:2px 6px;color:#3A4A63;word-break:break-all}
+.note{font-size:11.5px;color:#5B6B84}
+.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9DB4D4;margin-right:3px;
+  animation:b 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #DDE4EE;padding:14px 24px}
+.barin{max-width:1000px;margin:0 auto}
+.row{display:flex;gap:9px}
+input{flex:1;border:1px solid #C9D8EC;border-radius:11px;padding:13px 15px;font-size:15px;
+  font-family:inherit;color:#16233B;background:#F7FAFE}
+input:focus{outline:2px solid #1E4FC2;background:#fff}
+button{background:#16233B;color:#fff;border:0;border-radius:11px;padding:0 22px;font-size:14.5px;
+  font-weight:700;font-family:inherit;cursor:pointer}
+.qs{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.q{background:#F1F5FB;border:1px solid #DDE4EE;border-radius:999px;padding:7px 13px;font-size:12.5px;
+  color:#1E4FC2;cursor:pointer}
+.q:hover{border-color:#1E4FC2}
+.foot{max-width:1000px;margin:8px auto 0;font-size:11px;color:#5B6B84}
 </style>
 </head>
 <body>
@@ -40,44 +55,117 @@ code{font-family:'SF Mono',Menlo,monospace;font-size:12px;background:#EDF1F7;bor
   <div class="hd">
     <span class="dot"></span>
     <h1>대시보드와 대화</h1>
-    <span class="sub">Tableau MCP 연결됨 · Sales Funnel Dashboard | VOTD · public.tableau.com</span>
+    <span class="sub">Tableau Public MCP · Sales Funnel Dashboard | VOTD</span>
     <span class="gen">Claude Code</span>
   </div>
-
-  <div class="chat">
-    <div class="u">영업 파이프라인에서 전환이 가장 크게 깨지는 단계 알려줘</div>
-
-    <div class="chips"><span class="chip h">list-views</span><span class="chip h">get-view-data · Conversion Rate</span></div>
-    <div class="a">
-      <p>「Conversion Rate」 시트 기준, 단계별 전환입니다.</p>
-      <table>
-        <tr><th>Stage</th><th class="num" style="text-align:right">도달 Oppty</th><th class="num" style="text-align:right">다음 단계 전환</th></tr>
-        <tr><td>Prospecting</td><td class="num">842</td><td class="num">61%</td></tr>
-        <tr><td>Qualification</td><td class="num">512</td><td class="num">54%</td></tr>
-        <tr class="hl"><td>Value Proposition</td><td class="num">277</td><td class="num">39%</td></tr>
-        <tr><td>Proposal</td><td class="num">108</td><td class="num">47%</td></tr>
-        <tr><td>Negotiation</td><td class="num">51</td><td class="num">Closed Won 24</td></tr>
-      </table>
-      <p><b>Value Proposition → Proposal</b> 구간 이탈이 가장 큽니다. 「Age of Oppty」 기준 이 단계 평균 체류가 다른 단계의 약 2배입니다.</p>
-    </div>
-
-    <div class="u">Won Rate 계산이 우리 KPI 정의서와 같은지 확인해줘</div>
-
-    <div class="chips"><span class="chip h">download-workbook</span><span class="chip h">analyze-structure</span></div>
-    <div class="a">
-      <p>워크북의 계산 필드를 확인했습니다.</p>
-      <p><code>Won Rate = [# of Won Opp.] / [# of Closed Opp.]</code></p>
-      <p><code># of Won Opp. = COUNTD(IF [Stage] = "Closed Won" THEN [Opportunity ID] END)</code></p>
-      <p>Closed Won 건수를 Closed 전체 건수로 나누는 방식이라 정의서 기준과 일치합니다. 진행 중(Open) 딜은 분모에서 빠지는 점만 유의하면 됩니다.</p>
-      <p class="note">판정은 하지 않습니다. 확인이 필요한 항목만 정리해 전달합니다.</p>
-    </div>
-  </div>
-
-  <div class="foot">
-    <span class="b">MCP 조회 12회</span>
-    <span class="b">읽기 전용</span>
-    <span>계산식은 실제 워크북 파싱 결과 · 수치는 시연 구성</span>
-  </div>
+  <div class="chat" id="chat"></div>
 </div>
+
+<div class="bar">
+  <div class="barin">
+    <div class="row">
+      <input id="q" placeholder="질문을 입력하세요 · 예: 전환이 가장 크게 깨지는 단계는?" autocomplete="off">
+      <button id="send">전송</button>
+    </div>
+    <div class="qs" id="qs"></div>
+  </div>
+  <p class="foot">시연용 응답 세트 · 답변 내용은 실제 워크북 파싱과 Tableau Public 조회 결과 · 실시간 질의는 Claude Code + Tableau Public MCP에서 동작</p>
+</div>
+
+<script>
+'use strict';
+var A = [
+ { k:['전환','퍼널','병목','깨지','단계'],
+   tools:['list-views','get-view-data'],
+   html:'<p>「Conversion Rate」 시트 기준 단계별 전환입니다.</p>'+
+   '<table><tr><th>Stage</th><th class="num">도달</th><th class="num">다음 단계 전환</th></tr>'+
+   '<tr><td>Prospecting</td><td class="num">842</td><td class="num">61%</td></tr>'+
+   '<tr><td>Qualification</td><td class="num">512</td><td class="num">54%</td></tr>'+
+   '<tr class="hl"><td>Value Proposition</td><td class="num">277</td><td class="num">39%</td></tr>'+
+   '<tr><td>Proposal</td><td class="num">108</td><td class="num">47%</td></tr>'+
+   '<tr><td>Negotiation</td><td class="num">51</td><td class="num">Closed Won 24</td></tr></table>'+
+   '<p><b>Value Proposition → Proposal</b> 구간 이탈이 가장 큽니다. 「Age of Oppty」 기준 이 단계 평균 체류가 다른 단계의 약 2배입니다.</p>' },
+
+ { k:['won','수주율','승률','계산식','정의','맞는지','검증'],
+   tools:['download-workbook','analyze-structure'],
+   html:'<p>워크북 계산 필드를 확인했습니다.</p>'+
+   '<p><code>Won Rate = [# of Won Opp.] / [# of Closed Opp.]</code></p>'+
+   '<p><code># of Won Opp. = COUNTD(IF [Stage] = "Closed Won" THEN [Opportunity ID] END)</code></p>'+
+   '<p>Closed Won 건수를 Closed 전체로 나누는 방식이라 정의서 기준과 일치합니다. 진행 중(Open) 딜은 분모에서 빠지는 점만 유의하면 됩니다.</p>'+
+   '<p class="note">판정은 하지 않습니다. 확인이 필요한 항목만 정리해 전달합니다.</p>' },
+
+ { k:['구조','시트','만든','제작','파라미터','어떻게'],
+   tools:['get-workbook-details','analyze-structure'],
+   html:'<p>워크북 구성입니다.</p>'+
+   '<p>시트 16개 · 대시보드 1개(Sales Pipeline Dashboard) · 파라미터 2개(Top N Accounts · padding)</p>'+
+   '<p>시트 이름 규칙: <code>T_</code> 접두 = 툴팁 전용 7개 · <code>B_</code> 접두 = 하단 KPI 카드 4개</p>'+
+   '<p>계산 필드 27개 중 구조를 만드는 것:</p>'+
+   '<p><code>Sort = CASE [Stage] WHEN "Prospecting" THEN 1 …</code> 퍼널 정렬</p>'+
+   '<p><code>Age of Oppty = {FIXED [Opportunity ID]: MAX(DATEDIFF("day", [CreatedDate], …))}</code></p>'+
+   '<p><code>Avg.Deal Size = SUM({FIXED [Opportunity ID]: MAX([Expected Amount])}) / COUNTD([Opportunity ID])</code></p>' },
+
+ { k:['프로필','워크북 목록','조회수','팔로워','누구'],
+   tools:['get-profile','list-workbooks'],
+   html:'<p>프로필 <code>.83057946</code> 조회 결과입니다.</p>'+
+   '<p>Seoyeon Jun · Tableau Visionary · 5X Public Ambassador · 4X VOTD · 팔로워 2,086 · 공개 워크북 35개</p>'+
+   '<table><tr><th>워크북</th><th class="num">조회수</th><th class="num">즐겨찾기</th></tr>'+
+   '<tr class="hl"><td>Sales Funnel Dashboard | VOTD</td><td class="num">104,444</td><td class="num">1,405</td></tr>'+
+   '<tr><td>Game Log Dashboard</td><td class="num">12,753</td><td class="num">68</td></tr>'+
+   '<tr><td>Shining Stars | VOTD</td><td class="num">11,145</td><td class="num">225</td></tr>'+
+   '<tr><td>SNS Log Dashboard</td><td class="num">5,109</td><td class="num">5</td></tr></table>' },
+
+ { k:['코호트','리텐션','game','게임'],
+   tools:['get-workbook-details'],
+   html:'<p>Game Log Dashboard의 리텐션 영역은 주간 코호트 매트릭스 구조입니다.</p>'+
+   '<p>첫 이벤트 주를 코호트로 잡고 W0~W9 잔존율을 히트맵으로 표시합니다. Tableau에서는 <code>{FIXED [User]: MIN([Event Date])}</code> 계열 LOD와 주차 차이 계산이 필요합니다.</p>'+
+   '<p class="note">같은 결과를 LOD 없이 만드는 방법은 오늘 마지막 Extension 파트에서 다룹니다.</p>' },
+
+ { k:['적용','내 데이터','필요한 필드','따라'],
+   tools:['analyze-structure'],
+   html:'<p>이 구조를 그대로 쓰려면 아래 필드가 필요합니다.</p>'+
+   '<p><b>필수</b> · Opportunity ID(고유값) · Stage(단계 문자열) · Amount(금액) · CreatedDate · Close Date</p>'+
+   '<p><b>선택</b> · Expected Amount(가중 파이프라인) · Account(Top N 필터용)</p>'+
+   '<p>Stage 값이 다르면 <code>Sort</code> 계산식의 CASE 분기만 우리 단계명으로 바꾸면 됩니다.</p>' }
+];
+
+var FB = { tools:['search'], html:'<p>이 시연 화면에는 준비된 응답만 들어 있습니다. 아래 예시 질문을 눌러보세요.</p>'+
+  '<p class="note">실시간 질의는 Claude Code에 Tableau Public MCP를 연결하면 그대로 동작합니다.</p>'+
+  '<p><code>claude mcp add tableau-public -s user -- npx -y @wjsutton/tableau-public-mcp-server@latest</code></p>' };
+
+var SAMPLES = ['전환이 가장 크게 깨지는 단계는?','Won Rate 계산이 정의서와 맞아?','이 대시보드 어떻게 만든 거야?',
+  '내 프로필 워크북 목록 보여줘','Game Log의 코호트는 어떤 구조야?','내 데이터에 적용하려면?'];
+
+var chat=document.getElementById('chat');
+function el(cls,html){ var d=document.createElement('div'); d.className=cls; d.innerHTML=html; chat.appendChild(d);
+  window.scrollTo(0,document.body.scrollHeight); return d; }
+function match(q){
+  var s=q.toLowerCase(), best=null, hi=0;
+  A.forEach(function(a){
+    var n=a.k.filter(function(k){ return s.indexOf(k.toLowerCase())>=0; }).length;
+    if(n>hi){ hi=n; best=a; }
+  });
+  return best || FB;
+}
+function ask(q){
+  if(!q.trim()) return;
+  el('u', q.replace(/</g,'&lt;'));
+  var a=match(q);
+  var t=el('a','<div class="typing"><span></span><span></span><span></span></div>');
+  setTimeout(function(){
+    t.remove();
+    el('chips', a.tools.map(function(x){ return '<span class="chip">'+x+'</span>'; }).join(''));
+    el('a', a.html);
+  }, 650);
+}
+document.getElementById('send').onclick=function(){ var i=document.getElementById('q'); ask(i.value); i.value=''; };
+document.getElementById('q').addEventListener('keydown',function(e){ if(e.key==='Enter'){ ask(this.value); this.value=''; }});
+var qs=document.getElementById('qs');
+SAMPLES.forEach(function(x){
+  var b=document.createElement('div'); b.className='q'; b.textContent=x;
+  b.onclick=function(){ ask(x); };
+  qs.appendChild(b);
+});
+ask('전환이 가장 크게 깨지는 단계는?');
+</script>
 </body>
 </html>
