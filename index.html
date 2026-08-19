@@ -467,6 +467,29 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 .bstep.g{border-color:#D4DAE3;color:#5F6C7E}
 .bstep.b{font-weight:600}
 .baar{flex:0 0 auto;display:flex;align-items:center;color:#7FA9D9;font-size:17px}
+.tcl{display:flex;align-items:stretch;gap:16px;background:#fff;border:1px solid rgba(2,42,192,.13);
+  border-radius:18px;padding:16px 18px}
+.tcl+.tcl{margin-top:13px}
+.tchead{flex:0 0 168px;display:flex;align-items:center;gap:12px;padding-right:6px;
+  border-right:1px dashed rgba(2,42,192,.18)}
+.tchead .tcic{width:44px;height:44px;border-radius:50%;background:var(--card);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center}
+.tchead .tcic svg{width:22px;height:22px;fill:none;stroke:var(--accent);stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.tchead b{font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--navy);line-height:1.3}
+.tcsteps{flex:1;display:flex;align-items:center;gap:8px}
+.tcc{flex:1;background:var(--card);border-radius:11px;padding:13px 8px;text-align:center;
+  font-size:14px;line-height:1.35;color:var(--navy)}
+.tcc.hl{background:var(--accent);color:#fff;font-weight:600}
+.tca{flex:0 0 auto;display:flex}
+.tca svg{width:15px;height:15px;fill:none;stroke:#7FA9D9;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tcsum{margin-top:22px;background:var(--navy);border-radius:16px;padding:15px 20px;
+  display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
+.tcsum .tct{flex:0 0 auto;font-family:var(--display);font-weight:700;font-size:15px;color:#fff;opacity:.85;margin-right:4px}
+.tcsum .tcp{background:rgba(255,255,255,.14);border-radius:999px;padding:8px 16px;
+  font-family:var(--display);font-weight:600;font-size:14.5px;color:#fff;white-space:nowrap}
+.tcsum .tcp.on{background:var(--cyan);color:var(--navy)}
+.tcsum svg{width:14px;height:14px;fill:none;stroke:rgba(255,255,255,.6);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .ba.tall{gap:26px}
 .ba.tall .balbl{font-size:17px;border-radius:16px}
 .ba.tall .bstep{padding:50px 12px;font-size:18.5px}
@@ -1277,11 +1300,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
     <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">3.4 TC26 무대 시연이 작동하는 원리</h2>
     </div>
-    <div class="ba" style="margin-top:30px;gap:14px"><div class="barow"><span class="balbl new" style="flex:0 0 140px">음성 통화</span><span class="bstep b">전화로 질문</span><span class="baar">→</span><span class="bstep b">음성 → 텍스트</span><span class="baar">→</span><span class="bstep b">MCP가 Tableau 조회</span><span class="baar">→</span><span class="bstep b">지표 요약</span><span class="baar">→</span><span class="bstep b">음성 답변</span></div><div class="barow"><span class="balbl new" style="flex:0 0 140px">재고 조치</span><span class="bstep b">재고 뷰 조회</span><span class="baar">→</span><span class="bstep b">기준 초과 감지</span><span class="baar">→</span><span class="bstep b">원인 확인</span><span class="baar">→</span><span class="bstep b">창고 이동 요청</span><span class="baar">→</span><span class="bstep b">시스템 실행</span></div><div class="barow"><span class="balbl new" style="flex:0 0 140px">DataDev 앱</span><span class="bstep b">앱에서 질문</span><span class="baar">→</span><span class="bstep b">MCP가 데이터 반환</span><span class="baar">→</span><span class="bstep b">앱 화면에 표시</span><span class="baar">→</span><span class="bstep b">판단</span><span class="baar">→</span><span class="bstep b">다음 작업</span></div>
-    </div>
-    <p style="margin-top:30px;font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy)">
-      공통 구조 · <span style="color:var(--accent)">질문 → MCP가 Tableau 조회 → 권한 안의 답 → 실행</span></p>
-    <p style="margin-top:10px;font-size:14px;color:var(--navy);opacity:.72">대시보드를 열지 않아도 답이 나오는 이유 · 화면이 아니라 데이터와 지표 정의에 직접 접근</p>
+    <div style="margin-top:28px"><div class="tcl"><div class="tchead"><span class="tcic"><svg viewBox="0 0 24 24"><path d="M5.2 4.4h3l1.5 3.9-1.9 1.5a12.6 12.6 0 006.4 6.4l1.5-1.9 3.9 1.5v3a1.9 1.9 0 01-2.1 1.9A16.9 16.9 0 013.3 6.5a1.9 1.9 0 011.9-2.1z"/></svg></span><b>음성 통화</b></div><div class="tcsteps"><span class="tcc">전화로 질문</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">음성 → 텍스트</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc hl">MCP가 Tableau 조회</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">지표 요약</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">음성 답변</span></div></div><div class="tcl"><div class="tchead"><span class="tcic"><svg viewBox="0 0 24 24"><path d="M12 3.2l8 4.4v8.8l-8 4.4-8-4.4V7.6zM4 7.6l8 4.4 8-4.4M12 12v8.8M8 5.4l8 4.4"/></svg></span><b>재고 조치</b></div><div class="tcsteps"><span class="tcc hl">재고 뷰 조회</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">기준 초과 감지</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">원인 확인</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">창고 이동 요청</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">시스템 실행</span></div></div><div class="tcl"><div class="tchead"><span class="tcic"><svg viewBox="0 0 24 24"><rect x="3.6" y="4.4" width="16.8" height="15.2" rx="2.2"/><path d="M3.6 8.8h16.8M8.6 13l-2 2 2 2M15.4 13l2 2-2 2M13 12.4l-2 5.2"/></svg></span><b>DataDev 앱</b></div><div class="tcsteps"><span class="tcc">앱에서 질문</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc hl">MCP가 데이터 반환</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">앱 화면에 표시</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">판단</span><span class="tca"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><span class="tcc">다음 작업</span></div></div></div>
+    <div class="tcsum"><span class="tct">공통 구조</span><span class="tcp">질문</span><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg><span class="tcp on">MCP가 Tableau 조회</span><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg><span class="tcp">권한 안의 답</span><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg><span class="tcp">실행</span></div>
+    <p style="margin-top:16px;font-size:14.5px;color:var(--navy);opacity:.72">대시보드를 열지 않아도 답이 나오는 이유 · 화면이 아니라 데이터와 지표 정의에 직접 접근</p>
   </div>
   <div class="footer">출처: Tableau Conference 2026 키노트</div>
 </section>
