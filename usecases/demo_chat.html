@@ -261,7 +261,8 @@ SAMPLES.forEach(function(x){
   b.onclick=function(){ ask(x); };
   qs.appendChild(b);
 });
-ask('내 프로필 정보 알려줘');
+el('a','<p>Tableau Public에 연결됐습니다. 무엇이든 물어보세요.</p>'+
+  '<p class="note">공개 워크북 데이터와 워크북 구조를 근거로 답합니다. 아래 예시 질문을 눌러도 됩니다.</p>');
 </script>
 </body>
 </html>
