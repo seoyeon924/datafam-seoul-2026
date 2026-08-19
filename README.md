@@ -211,3 +211,4 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 - 자료 공개 톤 전환: 후기 조건 없이 전면 공개 · QR → links.html · 피드백은 하단 소개
 - Extensions 표지 BONUS · 5 MIN 브릿지
 - 2번 슬라이드에 발표자 소개 추가 (Tableau Visionary · Public Ambassador 5년 연속 · Tableau Public 프로필 캡처)
+- 부록 폐지: 파이프라인 상세 6장은 2.4~2.10으로, 활용 사례는 01~11 전부 본편에 한 장씩 배치
