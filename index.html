@@ -475,6 +475,15 @@ a.uc{text-decoration:none;display:block}
   font-family:var(--display);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
 .pstep b{display:block;font-family:var(--display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:3px}
 .pstep i{font-style:normal;font-size:12.5px;line-height:1.55;color:var(--navy);opacity:.75}
+
+/* 표면 스택 */
+.surf{display:flex;flex-wrap:wrap;gap:8px}
+.sf{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:999px;padding:9px 16px;font-size:14px;color:var(--navy)}
+.sarrow{text-align:center;font-size:13px;color:#7FA9D9;margin:10px 0}
+.smcp{background:var(--accent);color:#fff;border-radius:12px;padding:13px 0;text-align:center;font-family:var(--display);font-weight:700;font-size:19px}
+.sbase{background:var(--navy);color:#fff;border-radius:14px;padding:18px 22px;text-align:center}
+.sbase b{display:block;font-family:var(--display);font-weight:700;font-size:21px;margin-bottom:6px}
+.sbase span{font-size:13.5px;opacity:.85}
 /* ---------- 네비게이션 ---------- */
 #nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:99;
   display:flex;gap:10px;align-items:center;background:rgba(0,30,91,.72);color:#fff;
@@ -1196,26 +1205,44 @@ a.uc{text-decoration:none;display:block}
 </section>
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
+  <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.4 TC26 · Agentic Analytics</h2>
-      <p class="sub">방향 한 장 · 무대 시연 3가지</p>
+      <h2 class="head">3.4 TC26 시연 · 작동 원리</h2>
     </div>
-    <div class="cols c2" style="grid-template-columns:1fr 1.3fr;margin-top:20px;align-items:center">
-      <div class="body" style="font-size:14.5px;line-height:1.8">
-        <p><b>플랫폼 확장</b><br><span style="opacity:.75">데이터와 지표의 뜻 위에서 답과 실행까지 · MCP는 외부 AI가 읽는 문</span></p>
-        <p style="margin-top:14px"><b>무대 시연</b></p>
-        <ul>
-          <li>음성 통화 브리핑 · MCP Voice</li>
-          <li>재고 이상 → 창고 이동 요청 · Agentified Actions</li>
-          <li>DataDev 앱 · Disney 무대 시연</li>
-        </ul>
-        <p style="margin-top:12px;font-size:13px;opacity:.65">연결 표면: Claude · ChatGPT · Slack · Salesforce · Teams</p>
+    <div class="ba" style="margin-top:30px;gap:14px"><div class="barow"><span class="balbl new" style="flex:0 0 140px">음성 통화</span><span class="bstep b">전화로 질문</span><span class="baar">→</span><span class="bstep b">음성 → 텍스트</span><span class="baar">→</span><span class="bstep b">MCP가 Tableau 조회</span><span class="baar">→</span><span class="bstep b">지표 요약</span><span class="baar">→</span><span class="bstep b">음성 답변</span></div><div class="barow"><span class="balbl new" style="flex:0 0 140px">재고 조치</span><span class="bstep b">재고 뷰 조회</span><span class="baar">→</span><span class="bstep b">기준 초과 감지</span><span class="baar">→</span><span class="bstep b">원인 확인</span><span class="baar">→</span><span class="bstep b">창고 이동 요청</span><span class="baar">→</span><span class="bstep b">시스템 실행</span></div><div class="barow"><span class="balbl new" style="flex:0 0 140px">DataDev 앱</span><span class="bstep b">앱에서 질문</span><span class="baar">→</span><span class="bstep b">MCP가 데이터 반환</span><span class="baar">→</span><span class="bstep b">앱 화면에 표시</span><span class="baar">→</span><span class="bstep b">판단</span><span class="baar">→</span><span class="bstep b">다음 작업</span></div>
+    </div>
+    <p style="margin-top:30px;font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy)">
+      공통 구조 · <span style="color:var(--accent)">질문 → MCP가 Tableau 조회 → 권한 안의 답 → 실행</span></p>
+    <p style="margin-top:10px;font-size:14px;color:var(--navy);opacity:.72">대시보드를 열지 않아도 답이 나오는 이유 · 화면이 아니라 데이터와 지표 정의에 직접 접근</p>
+  </div>
+  <div class="footer">출처: Tableau Conference 2026 키노트</div>
+</section>
+
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">3.5 Tableau가 기반이 되는 구조</h2>
+    </div>
+    <div class="cols c2" style="grid-template-columns:1fr 1.15fr;margin-top:18px;align-items:center">
+      <div>
+        <div class="surf">
+          <div class="sf">음성 에이전트</div><div class="sf">Claude</div><div class="sf">ChatGPT</div>
+          <div class="sf">Slack</div><div class="sf">Salesforce</div><div class="sf">Teams</div>
+        </div>
+        <div class="sarrow">모두 같은 통로로</div>
+        <div class="smcp">Tableau MCP</div>
+        <div class="sarrow">↓</div>
+        <div class="sbase">
+          <b>Tableau</b>
+          <span>데이터 원본 · 지표 정의 · 권한 · 새로고침 · 감사</span>
+        </div>
       </div>
       <div class="shot rel"><img src="assets/tc26_platform.png" alt="Agentic Analytics Platform"></div>
     </div>
   </div>
-  <div class="footer">출처: Tableau Conference 2026 키노트 · Salesforce+</div>
+  <div class="footer">표면이 늘어도 답의 기준은 Tableau 하나 · 권한 밖 자산은 어느 표면에서도 조회 불가</div>
 </section>
 <!-- 3.3 TC26 -->
 
@@ -1232,7 +1259,7 @@ a.uc{text-decoration:none;display:block}
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.5 MCP 접근 범위</h2>
+      <h2 class="head">3.6 MCP 접근 범위</h2>
       <p class="sub">사용자 권한 안의 조회 대상</p>
     </div>
     <div style="margin-top:56px"><div class="iflow"><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M3.5 5h17v14h-17zM3.5 9.7h17M3.5 14.3h17M9.2 5v14"/></svg></span><b>워크북 · 뷰</b><i>목록과 구조</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.6c4.1 0 7.4 1.2 7.4 2.7S16.1 9 12 9 4.6 7.8 4.6 6.3 7.9 3.6 12 3.6M4.6 6.3v11.4c0 1.5 3.3 2.7 7.4 2.7s7.4-1.2 7.4-2.7V6.3"/></svg></span><b>뷰 데이터</b><i>CSV 추출</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M11.3 3.6H20v8.7l-8.6 8.6-8.7-8.7zM16.2 7.9h.01"/></svg></span><b>메타데이터</b><i>필드 정의</i></div><div class="idiv"></div><div class="istep off"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M6.4 10.4h11.2v9.2H6.4zM9 10.4V8a3 3 0 016 0v2.4"/></svg></span><b>권한 밖 자산</b><i>조회 불가</i></div></div>
@@ -1249,7 +1276,7 @@ a.uc{text-decoration:none;display:block}
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.6 대시보드 QA 흐름</h2>
+      <h2 class="head">3.7 대시보드 QA 흐름</h2>
       <p class="sub">접근 범위의 첫 적용 · 배포 전 점검</p>
     </div>
     <div class="iflow" style="margin-top:52px">
@@ -1262,7 +1289,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.7 활용 사례 11종</h2>
+      <h2 class="head">3.8 활용 사례 11종</h2>
       <p class="sub">분석 · 품질 · 운영</p>
     </div>
     <div class="cols c3" style="margin-top:18px;gap:18px">
@@ -1300,7 +1327,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 01 / 11</span>
+      <span class="tag">3.8 활용 사례 · 01 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">01 · 대시보드와 대화</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1322,7 +1349,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 02 / 11</span>
+      <span class="tag">3.8 활용 사례 · 02 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">02 · 제작 구조 질의</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1344,7 +1371,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 03 / 11</span>
+      <span class="tag">3.8 활용 사례 · 03 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">03 · 월요일 KPI 브리핑</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1366,7 +1393,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 04 / 11</span>
+      <span class="tag">3.8 활용 사례 · 04 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">04 · 주간 점검 리포트</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1388,7 +1415,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 05 / 11</span>
+      <span class="tag">3.8 활용 사례 · 05 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">05 · 대시보드 QA 체크리스트</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1410,7 +1437,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 06 / 11</span>
+      <span class="tag">3.8 활용 사례 · 06 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">06 · KPI 정의 감사</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1432,7 +1459,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 07 / 11</span>
+      <span class="tag">3.8 활용 사례 · 07 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">07 · Tableau 자산 카탈로그</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1454,7 +1481,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 08 / 11</span>
+      <span class="tag">3.8 활용 사례 · 08 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">08 · 미사용 콘텐츠 점검</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1476,7 +1503,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 09 / 11</span>
+      <span class="tag">3.8 활용 사례 · 09 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">09 · 임원 보고 초안</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1498,7 +1525,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 10 / 11</span>
+      <span class="tag">3.8 활용 사례 · 10 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">10 · 운영 상태 점검</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1520,7 +1547,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <span class="tag">3.7 활용 사례 · 11 / 11</span>
+      <span class="tag">3.8 활용 사례 · 11 / 11</span>
       <h2 class="head" style="font-size:33px;margin-top:10px">11 · 대시보드 리뉴얼 진단</h2>
     </div>
     <div class="cols c2" style="grid-template-columns:1.5fr 1fr;margin-top:16px;align-items:center;gap:30px">
@@ -1596,7 +1623,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.8 공개 대시보드를 팀 교재로</h2>
+      <h2 class="head">3.9 공개 대시보드를 팀 교재로</h2>
       <p class="sub">업계 사례 1 / 2 · The Information Lab · 영국 데이터 컨설팅</p>
     </div>
     <div class="cols c2" style="grid-template-columns:1fr 1.25fr;margin-top:20px;align-items:center">
@@ -1622,7 +1649,7 @@ a.uc{text-decoration:none;display:block}
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.8 기준은 시맨틱 레이어에</h2>
+      <h2 class="head">3.9 기준은 시맨틱 레이어에</h2>
       <p class="sub">업계 사례 2 / 2 · Tableau · CPO 공식 기고</p>
     </div>
     <div class="cols c2" style="grid-template-columns:1fr 1.25fr;margin-top:20px;align-items:center">
@@ -1647,7 +1674,7 @@ a.uc{text-decoration:none;display:block}
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.9 다음 단계 · MCP Authoring</h2>
+      <h2 class="head">3.10 다음 단계 · MCP Authoring</h2>
       <p class="sub">조회를 넘어 생성으로 · Beta 예정</p>
     </div>
     <div class="cards k2" style="margin-top:24px">
