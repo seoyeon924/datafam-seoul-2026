@@ -57,8 +57,9 @@ p.sub{font-size:23px;line-height:1.45;color:var(--navy);font-weight:400}
 .bio ul{margin:0 0 20px}
 .bio ul:last-child{margin-bottom:0}
 .bio li{margin-bottom:7px}
-.bio .grp{display:block;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;
-  color:var(--accent);opacity:.62;margin-bottom:9px}
+.bio .grp{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;
+  font-size:15.5px;letter-spacing:.03em;color:var(--accent);margin-bottom:12px}
+.bio .grp:after{content:'';flex:1;height:1px;background:rgba(2,42,192,.2)}
 h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.3;color:var(--accent);margin-bottom:14px;letter-spacing:-.01em}
 .body{font-size:17px;line-height:1.72;color:var(--navy)}
 .body p+p{margin-top:12px}
@@ -131,7 +132,7 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 /* ---------- 타이틀 슬라이드 ---------- */
 .slide.cover{background:var(--sky)}
 .slide.titleslide{background:var(--sky)}
-.titleslide .wrap{top:64px;bottom:64px;padding-top:0}
+.titleslide .wrap{top:64px;bottom:64px;padding-top:62px}
 .titleslide .names{margin-top:46px;display:flex;gap:110px}
 .titleslide .names .n b{display:block;font-family:var(--display);font-weight:700;font-size:24px;color:var(--accent);margin-bottom:4px}
 .titleslide .names .n span{font-size:18px;font-weight:600;color:var(--navy);white-space:nowrap}
@@ -206,8 +207,14 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 /* 전체 워크플로우 지도 */
 .flow3{display:flex;align-items:stretch;gap:14px;margin-top:30px}
 .flow3 .fcol{flex:1;display:flex;flex-direction:column}
-.flow3 .fstage{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;
-  color:var(--accent);text-align:center;margin-bottom:10px}
+.flow3 .fstage{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-.01em;
+  color:var(--navy);text-align:center;margin-bottom:12px}
+.flow3 .ficon{width:52px;height:52px;border-radius:50%;background:#fff;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  border:1px solid rgba(2,42,192,.12)}
+.flow3 .ficon img{width:27px;height:27px;display:block}
+.flow3 .ficon svg{width:27px;height:27px;fill:none;stroke:var(--accent);stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
 .flow3 .fcard{flex:1;background:var(--card);border-radius:18px;padding:22px 20px 18px;
   display:flex;flex-direction:column;align-items:center;text-align:center}
 .flow3 .fbody{font-size:16.5px;line-height:1.75;color:var(--navy);flex:1}
@@ -448,17 +455,18 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 /* 3.4 메시지 슬라이드 */
 .msg{font-family:var(--display);font-weight:700;font-size:31px;line-height:1.4;color:var(--navy);
   letter-spacing:-.015em;margin-top:26px}
-.ba{margin-top:28px;display:flex;flex-direction:column;gap:13px}
-.barow{display:flex;align-items:center;gap:9px;flex-wrap:nowrap}
-.balbl{flex:0 0 96px;text-align:center;font-family:var(--display);font-weight:700;font-size:13.5px;
-  border-radius:999px;padding:8px 0}
+.ba{margin-top:28px;display:flex;flex-direction:column;gap:26px}
+.barow{display:flex;align-items:stretch;gap:11px;flex-wrap:nowrap}
+.balbl{flex:0 0 112px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:700;font-size:17px;border-radius:16px}
 .balbl.old{background:#E3E7EE;color:#5F6C7E}
 .balbl.new{background:var(--accent);color:#fff}
-.bstep{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:10px;padding:10px 16px;
-  font-size:15px;color:var(--navy);white-space:nowrap}
+.bstep{flex:1;background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:16px;
+  padding:50px 12px;display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:18.5px;line-height:1.4;color:var(--navy)}
 .bstep.g{border-color:#D4DAE3;color:#5F6C7E}
 .bstep.b{font-weight:600}
-.baar{color:#7FA9D9;font-size:15px}
+.baar{flex:0 0 auto;display:flex;align-items:center;color:#7FA9D9;font-size:19px}
 .demo1{margin-top:26px;background:var(--navy);color:#fff;border-radius:14px;padding:16px 22px;
   display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:600;font-size:18px}
 .demo1 span{flex:0 0 auto;font-size:10.5px;letter-spacing:.09em;background:rgba(255,255,255,.16);
@@ -589,16 +597,16 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
           <li><b>Tableau Visionary</b></li>
           <li><b>Tableau Public Ambassador 5년 연속</b></li>
         </ul>
-        <span class="grp">수상 · 인증</span>
-        <ul>
-          <li>Viz of the Day 4회 · Tableau Viz Contest Winner</li>
-          <li>Tableau Live Featured Author · Tableau Certified Associate</li>
-        </ul>
         <span class="grp">이전</span>
         <ul>
           <li>ex-Amazon Web Services · Data Visualization Engineer</li>
           <li>ex-Amazon Web Services · Business Analyst</li>
           <li>ex-Martinee · Growth Data Analyst</li>
+        </ul>
+        <span class="grp">수상 · 인증</span>
+        <ul>
+          <li>Viz of the Day 4회 · Tableau Viz Contest Winner</li>
+          <li>Tableau Live Featured Author · Tableau Certified Associate</li>
         </ul>
       </div>
       <div class="shot rel"><img src="assets/profile_public.png" alt="Tableau Public 프로필"></div>
@@ -641,7 +649,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
         <span class="bstep b">데이터</span><span class="baar">→</span><span class="bstep b">Claude Code 워크플로우</span><span class="baar">→</span><span class="bstep b">Tableau MCP</span><span class="baar">→</span><span class="bstep b">QA · 운영 · 보고</span>
       </div>
     </div>
-    <p style="margin-top:44px;font-family:var(--display);font-weight:600;font-size:19px;color:var(--navy);opacity:.75">차트 생성 요청이 아니라 · 분석 업무의 재사용 워크플로우화</p>
+    <p style="margin-top:40px;font-family:var(--display);font-weight:600;font-size:21px;color:var(--navy);opacity:.78">차트 생성 요청이 아니라 · 분석 업무의 재사용 워크플로우화</p>
   </div>
   <div class="footer">DataFam Seoul 2026</div>
 </section>
@@ -718,6 +726,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div class="fcol">
         <div class="fstage">데이터 분석 · 시각화 기획</div>
         <div class="fcard" style="min-height:210px">
+          <div class="ficon"><img src="assets/claude_logo.svg" alt=""></div>
           <div class="fbody" style="font-size:16px">구조 파악 · EDA<br>KPI 초안 · 대시보드 시안</div>
           <div class="ftool">Claude Code</div>
         </div>
@@ -726,6 +735,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div class="fcol">
         <div class="fstage">Tableau에 붙이기</div>
         <div class="fcard" style="min-height:210px;border:1.5px solid var(--accent);background:#fff">
+          <div class="ficon" style="background:var(--card)"><img src="assets/tableau_logo.svg" alt=""></div>
           <div class="fbody" style="font-size:16px">원본 · 대시보드 연결<br>점검 · 질의 · 확장</div>
           <div class="ftool">Tableau MCP · Extensions</div>
         </div>
@@ -734,12 +744,13 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div class="fcol">
         <div class="fstage">판단 · 배포</div>
         <div class="fcard" style="min-height:210px">
+          <div class="ficon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.7"/><path d="M4.8 20.2a7.2 7.2 0 0114.4 0"/></svg></div>
           <div class="fbody" style="font-size:16px">검증 · 해석<br>공유 · 구독</div>
           <div class="ftool">사람 + Tableau</div>
         </div>
       </div>
     </div>
-    <div class="govbar"><img src="assets/tableau_logo.svg" alt="">Tableau 거버넌스 · 권한 · 지표 정본 · 새로고침 · 감사</div>
+    <div class="govbar"><img src="assets/tableau_logo.svg" alt="">Tableau 거버넌스 · 권한 · 지표 · 데이터 새로고침 · Audit</div>
   </div>
   <div class="footer">오늘 순서: 기획(02) → 붙이기(03 · Extensions) → 도입(04)</div>
 </section>
@@ -756,7 +767,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div class="rc"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4l1.85 4.95 4.95 1.85-4.95 1.85L12 17l-1.85-4.95L5.2 10.2l4.95-1.85z"/></svg></span>
         <b>AI</b><ul><li>탐색과 초안</li><li>반복 산출물</li><li>변경 감지와 정리</li></ul></div>
       <div class="rc"><span class="ibadge wb" style="border:1px solid rgba(2,42,192,.12)"><img src="assets/tableau_logo.svg" alt="" style="width:22px;height:22px"></span>
-        <b>Tableau</b><ul><li>권한 · 행 수준 보안</li><li>지표의 정본 · 시맨틱 모델</li><li>새로고침 · 배포 · 감사</li></ul></div>
+        <b>Tableau</b><ul><li>권한 · 행 수준 보안</li><li>지표 · 시맨틱 모델</li><li>데이터 새로고침 · 배포 · Audit</li></ul></div>
       <div class="rc"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 11.6a3.8 3.8 0 100-7.6 3.8 3.8 0 000 7.6M4.6 20.4a7.4 7.4 0 0114.8 0"/></svg></span>
         <b>사람</b><ul><li>정의와 기준</li><li>검증</li><li>최종 판단</li></ul></div>
     </div>
@@ -812,7 +823,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <img class="deco" src="assets/star.png" style="left:28px;top:200px;width:32px">
-  <div class="wrap" style="justify-content:flex-start">
+  <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">2.2 프롬프트를 반복 사용할 때 생기는 한계</h2>
     </div>
