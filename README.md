@@ -210,3 +210,4 @@ PDF로 내려받아 색상을 픽셀 단위로 샘플링하고, 로고와 3D 아
 - 사례 11종 3갈래 지도(분석 / 품질 · 거버넌스 / 운영 · 개선) + 대표 3종만 본편 상세(02 구조 질의 · 05 QA · 06 KPI 감사) · 나머지 8종 부록
 - 자료 공개 톤 전환: 후기 조건 없이 전면 공개 · QR → links.html · 피드백은 하단 소개
 - Extensions 표지 BONUS · 5 MIN 브릿지
+- 2번 슬라이드에 발표자 소개 추가 (Tableau Visionary · Public Ambassador 5년 연속 · Tableau Public 프로필 캡처)
