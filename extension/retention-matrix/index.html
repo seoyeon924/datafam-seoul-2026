@@ -238,23 +238,25 @@ function buildModel(events, now, cmp){
     if(vals.length<1) return null;
     return vals.reduce(function(a,b){return a+b;},0)/vals.length*100;
   }
-  function delta(k){
-    var cur=[], prev=[];
-    rows.forEach(function(r,i){ if(r.cells[k]!==null){ (i>=rows.length/2?cur:prev).push(r.cells[k]); } });
-    if(!cur.length || !prev.length) return null;
-    var a=cur.reduce(function(x,y){return x+y;},0)/cur.length;
-    var b=prev.reduce(function(x,y){return x+y;},0)/prev.length;
+  // 해당 열에 값이 있는 코호트만 모아 앞뒤 절반 비교 (rows는 과거 → 최근 순)
+  function colDelta(k){
+    var v=[]; rows.forEach(function(r){ if(r.cells[k]!==null) v.push(r.cells[k]); });
+    if(v.length<2) return null;
+    var h=Math.floor(v.length/2);
+    var older=v.slice(0,h), recent=v.slice(h);
+    var a=recent.reduce(function(x,y){return x+y;},0)/recent.length;
+    var b=older.reduce(function(x,y){return x+y;},0)/older.length;
     return (a-b)*100;
   }
-
-  var r1=retN(1), r7=retN(7), r30=retN(30);
+  function colVal(k){ var c=retCol(k); return c===null?'—':c.toFixed(1)+'%'; }
+  var dauLabel = unit==='day' ? 'DAU' : (unit==='week' ? 'WAU' : 'MAU');
+  var c1 = Math.min(1, maxCols-1), c2 = Math.min(4, maxCols-1), c3 = Math.min(8, maxCols-1);
   var kpis=[
-    { label:'활성 사용자 · '+unitKo+' 평균', value: avg.toFixed(1), delta: dAvg, unit:'%', cmpLabel: cmpLabel, trend: cSeries.slice(-14) },
-    { label: prefix+'1 잔존율', value: (retCol(1)===null?'—':retCol(1).toFixed(1)+'%'), delta: delta(1), cmpLabel:'이전 코호트', trend: counts.slice(-14) },
-    { label:'D+7 복귀율', value: (r7?r7.v.toFixed(1)+'%':'—'), delta:null, trend: counts.slice(-14) },
-    { label:'D+30 복귀율', value: (r30?r30.v.toFixed(1)+'%':'—'), delta:null, trend: counts.slice(-14) }
+    { label: dauLabel, value: avg.toFixed(1), delta: dAvg, unit:'%', cmpLabel: cmpLabel, trend: cSeries.slice(-14) },
+    { label: prefix+c1+' Retention', value: colVal(c1), delta: colDelta(c1), cmpLabel:'이전 코호트', trend: counts.slice(-14) },
+    { label: prefix+c2+' Retention', value: colVal(c2), delta: colDelta(c2), cmpLabel:'이전 코호트', trend: counts.slice(-14) },
+    { label: prefix+c3+' Retention', value: colVal(c3), delta: colDelta(c3), cmpLabel:'이전 코호트', trend: counts.slice(-14) }
   ];
-  if(!r7) kpis[2]={ label:'D+1 복귀율', value:(r1?r1.v.toFixed(1)+'%':'—'), delta:null, trend:counts.slice(-14) };
 
   return {
     periods: Array.apply(null,{length:maxCols}).map(function(_,i){return i;}),
@@ -328,8 +330,8 @@ function run(ws){
   document.getElementById('src').innerHTML = '워크시트 · ' + ws.name;
   readWorksheet(ws).then(function(r){
     if(r.ui<0 || r.di<0){
-      fail('선반 구성이 필요합니다',
-        '<b></b>User 선반에 사용자 식별 차원, Event Date 선반에 날짜 필드를 올려 주세요.');
+      LAST_EVENTS=null;
+      waitMode(ws.name + ' · 선반 대기');
       return;
     }
     var events=[];
@@ -339,9 +341,14 @@ function run(ws){
       var t=parseDate(raw);
       if(u!=null && String(u).trim()!=='' && !isNaN(t)) events.push({u:String(u), t:t});
     });
+    if(!r.rows.length){
+      LAST_EVENTS=null;
+      waitMode(ws.name + ' · 표시할 행 없음');
+      return;
+    }
     if(!events.length){
-      fail('사용할 수 있는 행이 없습니다',
-        'Event Date 선반의 날짜를 읽지 못했습니다. 필드를 우클릭해 <b>정확한 날짜</b>로 바꾼 뒤 다시 올려 주세요.');
+      fail('날짜를 읽지 못했습니다',
+        'Event Date 선반의 필드를 우클릭해 <b>정확한 날짜</b>(Exact Date)로 바꾼 뒤 다시 시도해 주세요.');
       return;
     }
     // 년 · 분기 · 월로 잘린 날짜 감지
@@ -367,7 +374,9 @@ function run(ws){
       '필드나 필터를 바꾸면 자동으로 다시 계산됩니다';
     render(model);
   }).catch(function(e){
-    fail('데이터를 읽지 못했습니다', String(e && e.message || e));
+    LAST_EVENTS=null;
+    waitMode('선반을 다시 구성해 주세요');
+    if(window.console) console.warn('[retention-matrix]', e);
   });
 }
 

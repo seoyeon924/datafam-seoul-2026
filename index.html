@@ -359,6 +359,33 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .iflow.chain6 .ibadge svg{width:20px;height:20px}
 .iflow.chain6 .iarrow svg{width:16px;height:16px}
 
+/* ---------- QA 단계 카드 ---------- */
+.qagrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:38px}
+.qacard{position:relative;background:#fff;border:1px solid rgba(2,42,192,.15);
+  border-radius:18px;padding:26px 22px 26px;display:flex;flex-direction:column;gap:13px;min-height:284px}
+.qacard .qn{font-family:var(--display);font-weight:700;font-size:12.5px;
+  letter-spacing:.09em;color:var(--accent)}
+.qacard h4{margin:0;font-family:var(--display);font-weight:700;font-size:22px;
+  color:var(--navy);letter-spacing:-.012em}
+.qacard .who{align-self:flex-start;background:var(--card);border-radius:999px;
+  padding:4px 11px;font-size:12.5px;font-weight:600;color:var(--accent)}
+.qacard ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
+.qacard li{position:relative;padding-left:14px;font-size:15.5px;line-height:1.62;
+  color:var(--navy);opacity:.85}
+.qacard li:before{content:'';position:absolute;left:0;top:8.5px;width:5px;height:5px;
+  border-radius:50%;background:#7FA9D9}
+.qagrid .qacard:not(:last-child):after{content:'';position:absolute;right:-12px;top:32px;
+  width:7px;height:7px;border-top:1.9px solid #7FA9D9;border-right:1.9px solid #7FA9D9;
+  transform:rotate(45deg)}
+
+/* ---------- 사례 썸네일 ---------- */
+.ucsvg{display:block;width:100%;height:92px;background:#F2F8FF}
+.ucsvg .l{fill:none;stroke:#5E82B4;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ucsvg .a{fill:none;stroke:var(--accent);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ucsvg .d{fill:none;stroke:#A9BCD4;stroke-width:1.5;stroke-dasharray:3 3;stroke-linecap:round}
+.ucsvg .f{fill:#CFE9FE}.ucsvg .fa{fill:var(--accent)}.ucsvg .fw{fill:#fff}
+.ucsvg .fm{fill:#BDD2E8}.ucsvg .fd{fill:#E4EDF7}
+
 /* MD 산출물 카드 */
 .mdwrap{display:grid;grid-template-columns:1.45fr 1fr;gap:26px;margin-top:24px;align-items:start}
 .mdcard{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:12px;overflow:hidden}
@@ -392,7 +419,8 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 
 /* 도구 갤러리 */
 .ucgrid.dense .uc img{height:92px}
-.ucgrid.dense .uc b{font-size:12px;padding:7px 10px}
+.ucgrid.dense .ucsvg{height:72px}
+.ucgrid.dense .uc b{font-size:12.5px;padding:7px 11px}
 a.uc{text-decoration:none;display:block}
 .ucdesc{font-size:14.5px;color:var(--navy);opacity:.75;margin-top:8px}
 .ucgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:22px}
@@ -482,7 +510,11 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 
 /* 표면 스택 */
 .surf{display:flex;flex-wrap:wrap;gap:8px}
-.sf{background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:999px;padding:9px 16px;font-size:14px;color:var(--navy)}
+.sf{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(2,42,192,.15);
+  border-radius:999px;padding:9px 16px;font-size:14px;color:var(--navy)}
+.sf svg{width:17px;height:17px;flex:0 0 auto;fill:none;stroke:#6B7F9E;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.sf svg.fillmark{fill:#6B7F9E;stroke:none}
 .sarrow{text-align:center;font-size:13px;color:#7FA9D9;margin:10px 0}
 .smcp{background:var(--accent);color:#fff;border-radius:12px;padding:13px 0;text-align:center;font-family:var(--display);font-weight:700;font-size:19px}
 .sbase{background:var(--navy);color:#fff;border-radius:14px;padding:18px 22px;text-align:center}
@@ -1232,8 +1264,8 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
     <div class="cols c2" style="grid-template-columns:1fr 1.15fr;margin-top:18px;align-items:center">
       <div>
         <div class="surf">
-          <div class="sf">음성 에이전트</div><div class="sf">Claude</div><div class="sf">ChatGPT</div>
-          <div class="sf">Slack</div><div class="sf">Salesforce</div><div class="sf">Teams</div>
+          <div class="sf"><svg viewBox="0 0 24 24"><path d="M12 14.4a3 3 0 003-3V6.4a3 3 0 10-6 0v5a3 3 0 003 3zM6.6 11.6a5.4 5.4 0 0010.8 0M12 17.4v3.2M8.9 20.6h6.2"/></svg>음성 에이전트</div><div class="sf"><svg viewBox="0 6.603 1192.672 1193.397" class="fillmark"><path d="m233.96 800.215 234.684-131.678 3.947-11.436-3.947-6.363h-11.436l-39.221-2.416-134.094-3.624-116.296-4.832-112.67-6.04-28.35-6.04-26.577-35.035 2.738-17.477 23.84-16.027 34.147 2.98 75.463 5.155 113.235 7.812 82.147 4.832 121.692 12.644h19.329l2.738-7.812-6.604-4.832-5.154-4.832-117.182-79.41-126.845-83.92-66.443-48.321-35.92-24.484-18.12-22.953-7.813-50.093 32.618-35.92 43.812 2.98 11.195 2.98 44.375 34.147 94.792 73.37 123.786 91.167 18.12 15.06 7.249-5.154.886-3.624-8.135-13.61-67.329-121.692-71.838-123.785-31.974-51.302-8.456-30.765c-2.98-12.645-5.154-23.275-5.154-36.242l37.127-50.416 20.537-6.604 49.53 6.604 20.86 18.121 30.765 70.39 49.852 110.818 77.315 150.684 22.631 44.698 12.08 41.396 4.51 12.645h7.813v-7.248l6.362-84.886 11.759-104.215 11.436-134.094 3.946-37.772 18.685-45.262 37.127-24.482 28.994 13.852 23.839 34.148-3.303 22.067-14.174 92.134-27.785 144.323-18.121 96.644h10.55l12.08-12.08 48.887-64.913 82.147-102.685 36.242-40.752 42.282-45.02 27.14-21.423h51.303l37.772 56.135-16.913 57.986-52.832 67.007-43.812 56.779-62.82 84.563-39.22 67.651 3.623 5.396 9.343-.886 141.906-30.201 76.671-13.852 91.49-15.705 41.396 19.329 4.51 19.65-16.269 40.189-97.852 24.16-114.764 22.954-170.9 40.43-2.093 1.53 2.416 2.98 76.993 7.248 32.94 1.771h80.617l150.12 11.195 39.222 25.933 23.517 31.732-3.946 24.16-60.403 30.766-81.503-19.33-190.228-45.26-65.235-16.27h-9.02v5.397l54.362 53.154 99.624 89.96 124.752 115.973 6.362 28.671-16.027 22.63-16.912-2.415-109.611-82.47-42.282-37.127-95.758-80.618h-6.363v8.456l22.067 32.296 116.537 175.167 6.04 53.719-8.456 17.476-30.201 10.55-33.181-6.04-68.215-95.758-70.39-107.84-56.778-96.644-6.926 3.947-33.503 360.886-15.705 18.443-36.243 13.852-30.201-22.953-16.027-37.127 16.027-73.37 19.329-95.758 15.704-76.107 14.175-94.55 8.456-31.41-.563-2.094-6.927.886-71.275 97.852-108.402 146.497-85.772 91.812-20.537 8.134-35.597-18.443 3.301-32.94 19.893-29.315 118.712-151.007 71.597-93.583 46.228-54.04-.322-7.813h-2.738l-315.302 204.725-56.135 7.248-24.16-22.63 2.98-37.128 11.435-12.08 94.792-65.236-.322.323z"/></svg>Claude</div><div class="sf"><svg viewBox="0 0 24 24"><path d="M12 3.2 19.2 7.4v9.2L12 20.8 4.8 16.6V7.4z"/><path d="M12 3.2v8.4M19.2 7.4 12 11.6M4.8 7.4 12 11.6M12 11.6v9.2"/></svg>ChatGPT</div>
+          <div class="sf"><svg viewBox="0 0 24 24" class="fillmark"><path d="M6.2 14.7a1.9 1.9 0 11-1.9-1.9h1.9zm.9 0a1.9 1.9 0 013.8 0v4.8a1.9 1.9 0 11-3.8 0zM9 6.2a1.9 1.9 0 111.9-1.9v1.9zm0 .9a1.9 1.9 0 010 3.8H4.3a1.9 1.9 0 110-3.8zM17.8 9a1.9 1.9 0 111.9 1.9h-1.9zm-.9 0a1.9 1.9 0 01-3.8 0V4.3a1.9 1.9 0 113.8 0zM15 17.8a1.9 1.9 0 11-1.9 1.9v-1.9zm0-.9a1.9 1.9 0 010-3.8h4.8a1.9 1.9 0 110 3.8z"/></svg>Slack</div><div class="sf"><svg viewBox="0 0 24 24"><path d="M9.6 8.1a3.4 3.4 0 015.9-1.2 4 4 0 015.9 3.5 3.7 3.7 0 01-3.7 3.7H7.2a3.7 3.7 0 01-.6-7.3 3.4 3.4 0 013 1.3z"/></svg>Salesforce</div><div class="sf"><svg viewBox="0 0 24 24"><rect x="3.6" y="5.4" width="11" height="13.2" rx="2.2"/><path d="M6.4 9.2h5.4M9.1 9.2v6"/><path d="M16.4 8.2a2.1 2.1 0 100-4.2 2.1 2.1 0 000 4.2zM15 10.2h3.4a2 2 0 012 2v3a2.6 2.6 0 01-3.6 2.4"/></svg>Teams</div>
         </div>
         <div class="sarrow">모두 같은 통로로</div>
         <div class="smcp">Tableau MCP</div>
@@ -1283,9 +1315,12 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <h2 class="head">3.7 대시보드 배포 전 QA가 진행되는 흐름</h2>
       <p class="sub">접근 범위의 첫 적용 · 배포 전 점검</p>
     </div>
-    <div class="iflow" style="margin-top:52px">
-      <div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">01</span>&nbsp; 조회</b><i style="font-size:13px">Tableau MCP</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">02</span>&nbsp; 후보 정리</b><i style="font-size:13px">Claude Code</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">03</span>&nbsp; 사람 검증</b><i style="font-size:13px">분석가</i></div><span class="iarrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M12.6 6.6L19 12l-6.4 5.4"/></svg></span><div class="istep"><b style="font-size:18px"><span style="color:var(--accent)">04</span>&nbsp; 반영</b><i style="font-size:13px">Tableau</i></div>
-    </div>
+    <div class="qagrid">
+      <div class="qacard"><span class="qn">01</span><h4>조회</h4><span class="who">Tableau MCP</span><ul><li>워크북과 뷰 목록에서 점검 대상 지정</li><li>뷰 데이터를 CSV로 받아 숫자 대조</li><li>필드 정의에서 계산식 원문 확인</li></ul></div>
+      <div class="qacard"><span class="qn">02</span><h4>후보 정리</h4><span class="who">Claude Code</span><ul><li>Skill에 적어 둔 점검 항목 순서대로 실행</li><li>지표 정의와 다른 계산식 표시</li><li>빈 값 · 중복 집계 · 필터 누락 목록화</li></ul></div>
+      <div class="qacard"><span class="qn">03</span><h4>사람 검증</h4><span class="who">분석가</span><ul><li>지표 담당자와 계산식 근거 확인</li><li>오탐 걸러 내고 수정 대상만 남김</li><li>배포 여부는 사람이 결정</li></ul></div>
+      <div class="qacard"><span class="qn">04</span><h4>반영</h4><span class="who">Tableau</span><ul><li>수정 뒤 같은 점검 다시 실행</li><li>통과 항목과 남은 항목 기록</li><li>다음 점검에 그대로 재사용</li></ul></div>
+      </div>
   </div>
   <div class="footer">DataFam Seoul 2026</div>
 </section>
@@ -1293,34 +1328,34 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.8 실무에서 바로 쓰는 활용 사례 11종</h2>
+      <h2 class="head">3.8 실무 활용 사례</h2>
       <p class="sub">분석 · 품질 · 운영</p>
     </div>
     <div class="cols c3" style="margin-top:18px;gap:18px">
       <div>
         <h3 class="colhead" style="font-size:15px">분석</h3>
         <div class="ucgrid dense" style="grid-template-columns:1fr;gap:8px;margin-top:10px">
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_chat.html"><img src="assets/demo_chat.png" alt=""><b>01 대시보드와 대화</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_public_mcp.html"><img src="assets/demo_public.png" alt=""><b>02 제작 구조 질의</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html"><img src="assets/uc1.png" alt=""><b>03 월요일 KPI 브리핑</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc6_exec.html"><img src="assets/uc6.png" alt=""><b>09 임원 보고 초안</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_chat.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="16" y="14" width="122" height="64" rx="7"/><rect class="fd" x="28" y="24" width="42" height="6" rx="3"/><rect class="fm" x="28" y="50" width="13" height="18" rx="2"/><rect class="fm" x="47" y="41" width="13" height="27" rx="2"/><rect class="fa" x="66" y="34" width="13" height="34" rx="2"/><rect class="fm" x="85" y="46" width="13" height="22" rx="2"/><rect class="fm" x="104" y="39" width="13" height="29" rx="2"/><path class="a" d="M164 12h112a8 8 0 018 8v22a8 8 0 01-8 8h-96l-12 10V50h-4a8 8 0 01-8-8V20a8 8 0 018-8z"/><rect class="fd" x="178" y="24" width="72" height="5" rx="2.5"/><rect class="fd" x="178" y="35" width="52" height="5" rx="2.5"/><rect class="f" x="182" y="66" width="100" height="18" rx="9"/></svg><b>01 대시보드와 대화</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_public_mcp.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="16" y="30" width="62" height="32" rx="6"/><path class="a" d="M16 30h62v32H16z" fill="none"/><rect class="fd" x="26" y="38" width="34" height="5" rx="2.5"/><rect class="f" x="26" y="49" width="22" height="5" rx="2.5"/><path class="l" d="M78 46h22M100 16v60M100 16h18M100 46h18M100 76h18"/><rect class="fw" x="118" y="6" width="76" height="22" rx="5"/><rect class="fm" x="128" y="15" width="44" height="5" rx="2.5"/><rect class="fw" x="118" y="35" width="76" height="22" rx="5"/><rect class="fa" x="128" y="44" width="44" height="5" rx="2.5"/><rect class="fw" x="118" y="64" width="76" height="22" rx="5"/><rect class="fm" x="128" y="73" width="44" height="5" rx="2.5"/><path class="l" d="M194 17h22M194 46h22M194 75h22"/><circle class="f" cx="242" cy="17" r="9"/><circle class="f" cx="242" cy="46" r="9"/><circle class="f" cx="242" cy="75" r="9"/></svg><b>02 제작 구조 질의</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="16" y="14" width="82" height="66" rx="7"/><path class="l" d="M16 34h82"/><path class="a" d="M36 10v9M78 10v9"/><circle class="fa" cx="32" cy="47" r="4"/><circle class="fm" cx="50" cy="47" r="4"/><circle class="fm" cx="68" cy="47" r="4"/><circle class="fm" cx="86" cy="47" r="4"/><circle class="fm" cx="32" cy="65" r="4"/><circle class="fm" cx="50" cy="65" r="4"/><circle class="fm" cx="68" cy="65" r="4"/><circle class="fm" cx="86" cy="65" r="4"/><rect class="fd" x="122" y="14" width="52" height="7" rx="3.5"/><rect class="fm" x="122" y="26" width="88" height="10" rx="5"/><path class="a" d="M240 30l14-13M254 17h-9M254 17v9"/><rect class="fd" x="122" y="42" width="52" height="7" rx="3.5"/><rect class="fm" x="122" y="54" width="72" height="10" rx="5"/><path class="a" d="M240 58l14-13M254 45h-9M254 45v9"/><rect class="fd" x="122" y="70" width="52" height="7" rx="3.5"/><rect class="fa" x="122" y="82" width="96" height="8" rx="4"/></svg><b>03 월요일 KPI 브리핑</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc6_exec.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="22" y="8" width="118" height="76" rx="7"/><rect class="fa" x="34" y="18" width="52" height="8" rx="4"/><rect class="fd" x="34" y="36" width="94" height="6" rx="3"/><rect class="fd" x="34" y="48" width="80" height="6" rx="3"/><rect class="fd" x="34" y="60" width="88" height="6" rx="3"/><rect class="fw" x="160" y="14" width="124" height="64" rx="7"/><path class="l" d="M174 66h96"/><path class="f" d="M174 62l22-14 20 6 24-18 26 10v16z"/><path class="a" d="M174 62l22-14 20 6 24-18 26 10"/><circle class="fa" cx="266" cy="46" r="3.5"/></svg><b>09 임원 보고 초안</b></a>
         </div>
       </div>
       <div>
         <h3 class="colhead" style="font-size:15px">품질 · 거버넌스</h3>
         <div class="ucgrid dense" style="grid-template-columns:1fr;gap:8px;margin-top:10px">
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_qa_report.html"><img src="assets/demo_qa_report.png" alt=""><b>04 주간 점검 리포트</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc2_qa.html"><img src="assets/uc2.png" alt=""><b>05 대시보드 QA</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html"><img src="assets/uc3.png" alt=""><b>06 KPI 정의 감사</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc4_catalog.html"><img src="assets/uc4.png" alt=""><b>07 자산 카탈로그</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_qa_report.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="24" y="8" width="132" height="76" rx="7"/><rect class="f" x="38" y="18" width="58" height="8" rx="4"/><circle class="a" cx="44" cy="40" r="6.5" fill="none"/><path class="a" d="M41.4 40l2 2.2 4-4.4"/><rect class="fd" x="58" y="37" width="82" height="6" rx="3"/><circle class="a" cx="44" cy="56" r="6.5" fill="none"/><path class="a" d="M41.4 56l2 2.2 4-4.4"/><rect class="fd" x="58" y="53" width="68" height="6" rx="3"/><circle class="l" cx="44" cy="72" r="6.5" fill="none"/><path class="l" d="M41.6 69.6l4.8 4.8M46.4 69.6l-4.8 4.8"/><rect class="fm" x="58" y="69" width="54" height="6" rx="3"/><rect class="fw" x="182" y="14" width="102" height="20" rx="10"/><circle class="fa" cx="196" cy="24" r="5"/><rect class="fd" x="208" y="21" width="60" height="6" rx="3"/><rect class="fw" x="182" y="42" width="102" height="20" rx="10"/><circle class="fm" cx="196" cy="52" r="5"/><rect class="fd" x="208" y="49" width="48" height="6" rx="3"/><rect class="fw" x="182" y="70" width="102" height="20" rx="10"/><circle class="fm" cx="196" cy="80" r="5"/><rect class="fd" x="208" y="77" width="54" height="6" rx="3"/></svg><b>04 주간 점검 리포트</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc2_qa.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="14" y="12" width="176" height="68" rx="7"/><rect class="f" x="26" y="22" width="46" height="20" rx="4"/><rect class="f" x="80" y="22" width="46" height="20" rx="4"/><rect class="fd" x="134" y="22" width="44" height="20" rx="4"/><path class="l" d="M26 70h152"/><path class="a" d="M26 64l24-12 22 8 26-16 24 10 26-14 30 12"/><circle class="a" cx="238" cy="40" r="24" fill="none"/><path class="a" d="M255 57l17 17"/><path class="a" d="M238 30v12"/><circle class="fa" cx="238" cy="49" r="2.6"/></svg><b>05 대시보드 QA</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="16" y="16" width="106" height="60" rx="7"/><rect class="f" x="28" y="26" width="40" height="7" rx="3.5"/><rect class="fd" x="28" y="42" width="78" height="6" rx="3"/><rect class="fd" x="28" y="55" width="60" height="6" rx="3"/><path class="a" d="M140 38h20M140 52h20M158 30l-16 30"/><rect class="fw" x="178" y="16" width="106" height="60" rx="7"/><rect class="f" x="190" y="26" width="40" height="7" rx="3.5"/><rect class="fa" x="190" y="42" width="78" height="6" rx="3"/><rect class="fd" x="190" y="55" width="46" height="6" rx="3"/></svg><b>06 KPI 정의 감사</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc4_catalog.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="18" y="12" width="60" height="30" rx="5"/><rect class="fm" x="26" y="20" width="30" height="5" rx="2.5"/><rect class="fd" x="26" y="30" width="42" height="4" rx="2"/><rect class="fw" x="86" y="12" width="60" height="30" rx="5"/><rect class="fa" x="94" y="20" width="30" height="5" rx="2.5"/><rect class="fd" x="94" y="30" width="42" height="4" rx="2"/><rect class="fw" x="154" y="12" width="60" height="30" rx="5"/><rect class="fm" x="162" y="20" width="30" height="5" rx="2.5"/><rect class="fd" x="162" y="30" width="42" height="4" rx="2"/><rect class="fw" x="222" y="12" width="60" height="30" rx="5"/><rect class="fm" x="230" y="20" width="30" height="5" rx="2.5"/><rect class="fd" x="230" y="30" width="42" height="4" rx="2"/><rect class="fw" x="18" y="50" width="60" height="30" rx="5"/><rect class="fm" x="26" y="58" width="30" height="5" rx="2.5"/><rect class="fd" x="26" y="68" width="42" height="4" rx="2"/><rect class="fw" x="86" y="50" width="60" height="30" rx="5"/><rect class="fm" x="94" y="58" width="30" height="5" rx="2.5"/><rect class="fd" x="94" y="68" width="42" height="4" rx="2"/><rect class="fw" x="154" y="50" width="60" height="30" rx="5"/><rect class="fm" x="162" y="58" width="30" height="5" rx="2.5"/><rect class="fd" x="162" y="68" width="42" height="4" rx="2"/><rect class="fw" x="222" y="50" width="60" height="30" rx="5"/><rect class="fm" x="230" y="58" width="30" height="5" rx="2.5"/><rect class="fd" x="230" y="68" width="42" height="4" rx="2"/></svg><b>07 자산 카탈로그</b></a>
         </div>
       </div>
       <div>
         <h3 class="colhead" style="font-size:15px">운영 · 개선</h3>
         <div class="ucgrid dense" style="grid-template-columns:1fr;gap:8px;margin-top:10px">
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc5_cleanup.html"><img src="assets/uc5.png" alt=""><b>08 미사용 콘텐츠 점검</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc7_ops.html"><img src="assets/uc7.png" alt=""><b>10 운영 상태 점검</b></a>
-          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html"><img src="assets/uc8.png" alt=""><b>11 리뉴얼 진단</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc5_cleanup.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="20" y="8" width="260" height="16" rx="5"/><rect class="f" x="28" y="12" width="8" height="8" rx="2"/><rect class="fm" x="44" y="13" width="96" height="6" rx="3"/><rect class="fd" x="220" y="13" width="50" height="6" rx="3"/><rect class="fw" x="20" y="30" width="260" height="16" rx="5"/><rect class="f" x="28" y="34" width="8" height="8" rx="2"/><rect class="fm" x="44" y="35" width="78" height="6" rx="3"/><rect class="fd" x="234" y="35" width="36" height="6" rx="3"/><rect class="fd" x="20" y="52" width="260" height="16" rx="5"/><rect class="fm" x="28" y="56" width="8" height="8" rx="2"/><rect class="fm" x="44" y="57" width="64" height="6" rx="3"/><path class="a" d="M256 56l10 8M266 56l-10 8"/><rect class="fd" x="20" y="74" width="260" height="16" rx="5"/><rect class="fm" x="28" y="78" width="8" height="8" rx="2"/><rect class="fm" x="44" y="79" width="52" height="6" rx="3"/><path class="a" d="M256 78l10 8M266 78l-10 8"/></svg><b>08 미사용 콘텐츠 점검</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc7_ops.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><path class="l" d="M22 70a44 44 0 0188 0" stroke-width="7" stroke-linecap="round"/><path class="a" d="M22 70a44 44 0 0121-37" stroke-width="7" stroke-linecap="round"/><path class="a" d="M66 70l24-22"/><circle class="fa" cx="66" cy="70" r="5"/><rect class="fw" x="152" y="12" width="132" height="20" rx="10"/><circle class="fa" cx="166" cy="22" r="5"/><rect class="fd" x="180" y="19" width="74" height="6" rx="3"/><rect class="fw" x="152" y="40" width="132" height="20" rx="10"/><circle class="fm" cx="166" cy="50" r="5"/><rect class="fd" x="180" y="47" width="58" height="6" rx="3"/><rect class="fw" x="152" y="68" width="132" height="20" rx="10"/><circle class="fm" cx="166" cy="78" r="5"/><rect class="fd" x="180" y="75" width="66" height="6" rx="3"/></svg><b>10 운영 상태 점검</b></a>
+          <a class="uc" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html"><svg class="ucsvg" viewBox="0 0 300 92" aria-hidden="true"><rect class="fw" x="14" y="14" width="114" height="64" rx="7"/><rect class="fm" x="26" y="46" width="14" height="20" rx="2"/><rect class="fm" x="46" y="34" width="14" height="32" rx="2"/><rect class="fm" x="66" y="52" width="14" height="14" rx="2"/><rect class="fm" x="86" y="38" width="14" height="28" rx="2"/><rect class="fd" x="26" y="24" width="46" height="6" rx="3"/><path class="d" d="M106 26v40"/><path class="a" d="M140 46h22M156 39l7 7-7 7"/><rect class="fw" x="174" y="14" width="112" height="64" rx="7"/><rect class="f" x="186" y="52" width="14" height="14" rx="2"/><rect class="f" x="206" y="44" width="14" height="22" rx="2"/><rect class="fa" x="226" y="34" width="14" height="32" rx="2"/><rect class="fa" x="246" y="26" width="14" height="40" rx="2"/><rect class="f" x="186" y="24" width="46" height="6" rx="3"/></svg><b>11 리뉴얼 진단</b></a>
         </div>
       </div>
     </div>
@@ -1339,9 +1374,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">Tableau를 열지 않고 채팅으로 데이터 확인</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>어느 단계에서 전환이 깨지는지 답변</li><li>워크북 계산식을 꺼내 정의서와 대조</li><li>궁금한 부분을 이어서 계속 질문</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">질문 입력 · 예시 버튼 클릭 · 실시간 질의는 Claude Code에서</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_chat.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/demo_chat.html</span></a>
       </div>
@@ -1361,9 +1396,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">남의 공개 대시보드를 어떻게 만들었는지 파악</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>공개 워크북을 받아 내부 구조 분석</li><li>시트 구성과 계산식 원문 추출</li><li>따라 만들 순서 정리</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">Tableau Public 링크만 붙여넣기 · 로그인 불필요</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_public_mcp.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/demo_public_mcp.html</span></a>
       </div>
@@ -1383,9 +1418,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">월요일 아침에 지난주 변화 한눈에 확인</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>크게 움직인 지표만 골라서 정리</li><li>평소와 다른 값을 후보로 표시</li><li>오늘 열어봐야 할 대시보드 지목</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">매주 월요일 아침 자동 실행 · Slack으로 수신</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc1_briefing.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc1_briefing.html</span></a>
       </div>
@@ -1405,9 +1440,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">손으로 하던 주간 점검을 자동으로</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>지난주와 달라진 수치 정리</li><li>정의서와 실제 계산식 비교</li><li>사람이 봐야 할 것만 추림</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">매주 자동 실행 · 확인 필요 항목만 보면 됨</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/demo_qa_report.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/demo_qa_report.html</span></a>
       </div>
@@ -1427,9 +1462,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">대시보드 올리기 전 실수 잡기</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>워크북을 읽고 점검 목록 자동 생성</li><li>계산식 · 필터 · 이름 · 데이터 최신성 확인</li><li>통과한 것과 고칠 것 구분</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">올리기 전에 한 번 돌리고 고칠 것만 확인</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc2_qa.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc2_qa.html</span></a>
       </div>
@@ -1449,9 +1484,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">같은 「매출」인데 계산식이 다른 경우 찾기</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>이름이 같은 지표를 전부 모음</li><li>계산식을 정의서와 하나씩 비교</li><li>다르면 어느 뷰까지 영향 가는지 정리</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">분기에 한 번 · 어느 쪽이 맞는지는 회의에서 결정</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc3_kpi_audit.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc3_kpi_audit.html</span></a>
       </div>
@@ -1471,9 +1506,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">회사에 어떤 대시보드가 있는지 목록 만들기</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>워크북 · 뷰 · 데이터 원본 전부 목록화</li><li>누가 만들었고 어디 쓰는지 설명 생성</li><li>문서로 저장하고 주기적으로 갱신</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">주 1회 갱신 · 새로 온 사람 안내용으로</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc4_catalog.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc4_catalog.html</span></a>
       </div>
@@ -1493,9 +1528,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">안 쓰는 대시보드 골라내기</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>오래 안 본 대시보드 찾기</li><li>비슷하게 겹치는 것 묶기</li><li>담당자 없는 워크북 표시</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">월 1회 · 지우지 않고 후보만 제시</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc5_cleanup.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc5_cleanup.html</span></a>
       </div>
@@ -1515,9 +1550,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">임원 보고용 한 장 초안 자동 작성</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>이번 주 달라진 것 3가지로 요약</li><li>근거가 되는 뷰 이미지 자동 첨부</li><li>주요 수치 표로 정리</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">월요일 아침 초안 생성 · 보낼지는 사람이 결정</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc6_exec.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc6_exec.html</span></a>
       </div>
@@ -1537,9 +1572,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">데이터 갱신 실패를 바로 알기</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>새로고침 실패한 것 찾고 원인 추정</li><li>오래 갱신 안 된 데이터 표시</li><li>담당자 자동 호출</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">매일 아침 점검 · Slack으로 알림</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc7_ops.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc7_ops.html</span></a>
       </div>
@@ -1559,9 +1594,9 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <div>
         <h3 class="colhead" style="font-size:17px;margin-bottom:6px">목적</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">대시보드 갈아엎기 전 현황 파악</p>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 나옵니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">기능</h3>
         <div class="body" style="font-size:15.5px;line-height:1.7"><ul><li>시트와 계산식 전부 훑기</li><li>실제로 많이 보는 뷰가 어디인지 확인</li><li>남길 것 · 버릴 것 · 합칠 것 구분</li></ul></div>
-        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">이렇게 씁니다</h3>
+        <h3 class="colhead" style="font-size:17px;margin:16px 0 6px">활용</h3>
         <p class="body" style="font-size:15.5px;line-height:1.65">작업 시작 전 1회 · 최근 3개월 사용 기록 기준</p>
         <a class="live" href="https://seoyeon924.github.io/datafam-seoul-2026/usecases/uc8_renewal.html" target="_blank" rel="noopener"><span>LIVE</span><span class="lu">usecases/uc8_renewal.html</span></a>
       </div>
@@ -1653,19 +1688,18 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.9 답의 기준을 시맨틱 레이어에 두는 이유</h2>
+      <h2 class="head">3.10 데이터의 기준은 Tableau Semantic Layer</h2>
       <p class="sub">업계 사례 2 / 2 · Tableau · CPO 공식 기고</p>
     </div>
     <div class="cols c2" style="grid-template-columns:1fr 1.25fr;margin-top:20px;align-items:center">
-      <div class="body" style="font-size:15.5px;line-height:1.8">
+      <div class="body" style="font-size:16.5px;line-height:1.85">
         <ul>
-          <li>Southard Jones(CPO) 기고 · 2026.03 · "AI Can Draw the Chart. Tableau Defines the Truth."</li>
-          <li>논지: 답을 만드는 건 AI · 답의 기준은 조직이 Tableau에 쌓아온 정의</li>
-          <li>근거: 조직들이 관리해 온 시맨틱 모델 3,300만 개</li>
-          <li>MCP 연결 시 그 정의와 권한을 그대로 상속 · 추측 대신 회사 기준 안의 답</li>
-          <li>OSI(Open Semantic Interchange) 표준 주도 · 2026.01 v0.1</li>
+          <li>차트는 AI가 그리고, 맞는 숫자인지는 Tableau가 정합니다</li>
+          <li>회사가 Tableau에 쌓아 둔 지표 정의를 그대로 씁니다</li>
+          <li>사람마다 다른 계산식 대신 정의 하나로 답이 나옵니다</li>
+          <li>3.2에서 본 권한도 같이 따라옵니다</li>
         </ul>
-        <p style="margin-top:14px;font-size:13.5px;opacity:.72">1.3 플랫폼 계층 · 3.2 권한 상속의 공식 근거</p>
+        <p style="margin-top:14px;font-size:13.5px;opacity:.72">Southard Jones(CPO) 기고 · 2026.03 · 시맨틱 모델 3,300만 개 · OSI 표준 v0.1</p>
       </div>
       <div class="shot rel"><img src="assets/tc26_platform.png" alt="Tableau 키노트"></div>
     </div>
@@ -1678,7 +1712,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">3.10 조회를 넘어 생성으로 · MCP Authoring</h2>
+      <h2 class="head">3.11 조회를 넘어 생성으로 · MCP Authoring</h2>
       <p class="sub">조회를 넘어 생성으로 · Beta 예정</p>
     </div>
     <div class="cards k2" style="margin-top:24px">
@@ -1737,7 +1771,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="logo" src="assets/logo_navy.png">
 
   <div class="wrap" style="bottom:auto;right:auto;width:430px">
-    <span class="tag">EXTENSION 1</span>
+    <span class="tag">NETWORK EXTENSION</span>
     <h2 class="head">Tableau에서는 어려운<br>다양한 시각화</h2>
     <div class="body" style="margin-top:24px">
       <ul>
@@ -1762,7 +1796,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="logo" src="assets/logo_navy.png">
 
   <div class="wrap" style="bottom:auto;right:auto;width:400px">
-    <span class="tag">EXTENSION 1</span>
+    <span class="tag">NETWORK EXTENSION</span>
     <h2 class="head">Tableau 안에서<br>실행되는 결과</h2>
     <div class="body" style="margin-top:22px">
       <ul>
@@ -1782,7 +1816,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <div class="wrap" style="bottom:auto;right:auto;width:420px">
-    <span class="tag">EXTENSION 2</span>
+    <span class="tag">RETENTION EXTENSION</span>
     <h2 class="head">Retention Matrix</h2>
     <p class="ucdesc">샘플 CSV 연결 → .trex 추가 → 선반 2개 · Tableau Desktop 2024.2+</p>
     <div class="body" style="margin-top:22px">
