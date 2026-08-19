@@ -275,11 +275,23 @@ function ask(q){
     el('a', a.html);
   }, 650);
 }
-document.getElementById('send').onclick=function(){ var i=document.getElementById('q'); ask(i.value); i.value=''; };
-document.getElementById('q').addEventListener('keydown',function(e){
-  // 한글 IME 조합 중 Enter는 무시 (입력이 쪼개지는 문제 방지)
-  if(e.isComposing || e.keyCode===229) return;
-  if(e.key==='Enter'){ e.preventDefault(); ask(this.value); this.value=''; }
+var inp=document.getElementById('q');
+var composing=false, lastText='', lastAt=0;
+inp.addEventListener('compositionstart',function(){ composing=true; });
+inp.addEventListener('compositionend',function(){ composing=false; });
+function send(){
+  var v=inp.value, now=Date.now();
+  if(!v.trim()) return;
+  if(v===lastText && now-lastAt<1500){ inp.value=''; return; }
+  if(now-lastAt<1200 && v.trim().length<=3 && lastText.indexOf(v.trim())>=0){ inp.value=''; return; }
+  lastText=v; lastAt=now;
+  ask(v);
+  setTimeout(function(){ inp.value=''; },0);
+}
+document.getElementById('send').onclick=function(){ if(composing) return; send(); };
+inp.addEventListener('keydown',function(e){
+  if(composing || e.isComposing || e.keyCode===229) return;
+  if(e.key==='Enter'){ e.preventDefault(); send(); }
 });
 var qs=document.getElementById('qs');
 SAMPLES.forEach(function(x){
