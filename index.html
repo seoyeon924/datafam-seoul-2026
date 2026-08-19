@@ -466,6 +466,15 @@ a.uc{text-decoration:none;display:block}
   border-radius:8px;padding:8px 13px;color:var(--accent);flex:0 0 auto}
 .tree .tnode b{font-family:var(--display);font-weight:700;font-size:15px;color:var(--navy);display:block}
 .tree .tnode span{font-size:13px;color:var(--navy);opacity:.7}
+
+/* 프롬프트 단계 */
+.psteps{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:22px}
+.pstep{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid rgba(2,42,192,.14);
+  border-radius:12px;padding:13px 16px}
+.pstep .pn{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;
+  font-family:var(--display);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.pstep b{display:block;font-family:var(--display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:3px}
+.pstep i{font-style:normal;font-size:12.5px;line-height:1.55;color:var(--navy);opacity:.75}
 /* ---------- 네비게이션 ---------- */
 #nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:99;
   display:flex;gap:10px;align-items:center;background:rgba(0,30,91,.72);color:#fff;
@@ -714,47 +723,39 @@ a.uc{text-decoration:none;display:block}
 
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
+  <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head" style="font-size:36px">2.1 프롬프트 기반 분석</h2>
-      <p class="sub">기업 실습 프롬프트 11단계 · 기획 구간 발췌</p>
+      <h2 class="head">2.1 Prompt to Dashboard · 11단계</h2>
+      <p class="sub">STEP 1 – 6 · 데이터 정리부터 지표 확정까지</p>
     </div>
-    <div class="cols c2" style="grid-template-columns:1fr 1.35fr;margin-top:18px;align-items:center">
-      <div class="vflow" style="margin-top:0">
-        <div class="vf">데이터 파악 <span>결측 · 이상치 · 기술 통계</span></div>
-        <div class="vf">질문 도출 <span>문제 정의 · 예상 요인</span></div>
-        <div class="vf">KPI 설정 <span>계산식 · 선행 지표</span></div>
-        <div class="vf">시각화 기획 <span>차트 · 색 · 와이어프레임</span></div>
-        <div class="vf">보고서 <span>원페이지 요약</span></div>
-      </div>
-      <div class="mdcard">
-        <div class="fname"><i></i>Prompt to Dashboard 실습 프롬프트 · 발췌</div>
-        <div class="mdbody" style="font-size:13px;line-height:1.65">
-          <p><b>STEP 4 · 문제 정의</b><br>"문제 정의는 구체적이어야 하고, 실제 비즈니스 문제로 인식될 수 있는 것" · 예: 특정 상품 해지율 전년 대비 x%p 상승 → 월매출 감소</p>
-          <p style="margin-top:10px"><b>STEP 6 · 지표 설정</b><br>"상대적이고 비교 가능해서 평가 가능할수록" · "액션 가능한 선행 지표 포함" · 수집 필요 데이터 별도 표시</p>
-          <p style="margin-top:10px"><b>STEP 7 · 차트 선택</b><br>날짜 필터 · KPI 카드(트렌드 + 증감) · 추세 라인 · 비교 막대 · 액션 아이템 · 데이터 표 필수</p>
-          <p class="dim">11단계 전체 · 프로젝트마다 순서대로 수동 입력</p>
-        </div>
-      </div>
-    </div>
+    <div class="psteps"><div class="pstep"><span class="pn">1</span><div><b>전처리</b><i>결측 · 이상치 확인 → 처리 방식 설명과 전후 비교 → 날짜 형식 변환</i></div></div><div class="pstep"><span class="pn">2</span><div><b>데이터 살펴보기</b><i>기술 통계를 APA 형식 표로 · 일변량 · 다변량 EDA</i></div></div><div class="pstep"><span class="pn">3</span><div><b>방법론 탐색</b><i>가능한 분석 방법론 → 다룰 질문 도출 → 결과 정리</i></div></div><div class="pstep"><span class="pn">4</span><div><b>문제 정의와 분석 목적</b><i>구체적인 비즈니스 문제로 · 예: 특정 상품 해지율 상승 → 월매출 감소</i></div></div><div class="pstep"><span class="pn">5</span><div><b>예상 요인 분석</b><i>MECE 원인 분해 → 원인의 원인 → 해결방안 → 목표 지표 · 하이어라키 도식</i></div></div><div class="pstep"><span class="pn">6</span><div><b>지표 설정</b><i>상대 비교 가능한 지표 · 액션 가능한 선행 지표 · 없는 데이터는 수집 필요로 표시</i></div></div></div>
   </div>
-  <div class="footer">기업 대상 실습 프롬프트 원문 기준</div>
+  <div class="footer">Prompt to Dashboard 세션 · 실습 프롬프트 원문</div>
+</section>
+
+<section class="slide">
+  <img class="logo" src="assets/logo_navy.png">
+  <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
+  <div class="wrap">
+    <div class="titleblock" style="margin-bottom:0">
+      <h2 class="head">2.1 Prompt to Dashboard · 11단계</h2>
+      <p class="sub">STEP 7 – 11 · 시각화 설계부터 보고서까지</p>
+    </div>
+    <div class="psteps"><div class="pstep"><span class="pn">7</span><div><b>차트 유형 선택</b><i>날짜 필터 · KPI 카드(추세 + 증감) · 추세 라인 · 비교 막대 · 액션 아이템 · 데이터 표</i></div></div><div class="pstep"><span class="pn">8</span><div><b>색상 선택</b><i>메인 · 서브 컬러 · 의미 일관성 · 디자인 토큰 반영</i></div></div><div class="pstep"><span class="pn">9</span><div><b>와이어프레임 기획</b><i>데이터 스토리텔링 · 배치 · 드릴다운 · 필터 · 질문형 제목</i></div></div><div class="pstep"><span class="pn">10</span><div><b>와이어프레임 생성</b><i>임원 · 실무 · 디자이너 관점 피드백 → 탭별 시안 → 반복 개선</i></div></div><div class="pstep"><span class="pn">11</span><div><b>원페이지 보고서</b><i>컨텍스트 · 문제와 기회 · 액션 · 근거 수치 · 요약 3줄</i></div></div></div>
+    <p style="margin-top:22px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--navy);opacity:.75">프로젝트마다 11단계를 순서대로 수동 입력</p>
+  </div>
+  <div class="footer">Prompt to Dashboard 세션 · 실습 프롬프트 원문</div>
 </section>
 
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <img class="deco" src="assets/star.png" style="left:28px;top:200px;width:32px">
-  <img class="deco" src="assets/plus.png" style="left:10px;top:250px;width:24px;opacity:.7">
-  <div class="wrap">
+  <div class="wrap" style="justify-content:flex-start">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">2.2 프롬프트 방식 한계</h2>
+      <h2 class="head">2.2 반복 사용의 한계</h2>
     </div>
-    <div class="ideas" style="grid-template-columns:repeat(4,1fr);margin-top:40px">
-      <div class="idea"><b>반복 입력</b><span>프로젝트마다 다시</span></div>
-      <div class="idea"><b>맥락 종속</b><span>앞 답변에 의존</span></div>
-      <div class="idea"><b>산출물 분산</b><span>대화 속에 흩어짐</span></div>
-      <div class="idea"><b>기준 불일치</b><span>사람마다 다른 기준</span></div>
-    </div>
+    <div class="ideas" style="grid-template-columns:repeat(4,1fr);margin-top:34px"><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M16.4 3l3.6 3.6-3.6 3.6M4 11.2V9.6a3 3 0 013-3h13M7.6 21L4 17.4 7.6 13.8M20 12.8v1.6a3 3 0 01-3 3H4"/></svg></span><b>반복 입력</b><span>프로젝트마다 처음부터 다시</span></div><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M4.2 5h15.6v10.2H9.6L5.6 19v-3.8H4.2z"/></svg></span><b>맥락 종속</b><span>앞 답변이 길어지면 순서 누락</span></div><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4v7M8.4 6.6l3.6-3.2 3.6 3.2M4.6 13.4l3.4 7M19.4 13.4l-3.4 7M4.6 13.4h14.8"/></svg></span><b>산출물 분산</b><span>대화 안에 흩어져 재사용 불가</span></div><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 4.5v15M5.5 8.5h13M8 8.5l-2.4 4.6a2.8 2.8 0 004.8 0zM16 8.5l-2.4 4.6a2.8 2.8 0 004.8 0z"/></svg></span><b>기준 불일치</b><span>사람마다 다른 지표 · 차트 기준</span></div></div>
   </div>
   <div class="footer">DataFam Seoul 2026</div>
 </section>
@@ -952,13 +953,13 @@ a.uc{text-decoration:none;display:block}
       <div class="vf">데이터 프로파일</div>
       <div class="vf">EDA 요약</div>
       <div class="vf">KPI 정의 초안</div>
-      <div class="vf">시각화 · 대시보드 기획</div>
-      <div class="vf out">분석 보고서 초안</div>
+      <div class="vf">시각화 기획</div>
+      <div class="vf out">대시보드 초안</div>
     </div>
   </div>
   <div class="shot" style="right:56px;top:140px;width:640px;height:424px"><img src="assets/demo_dashboard.png" alt="파이프라인 산출 대시보드"></div>
   <div class="sidenote" style="right:56px;top:576px;width:620px">
-    <b>이전과 달라진 점</b>
+    <b>기존 ChatGPT 프롬프트 재사용보다 좋아진 점</b>
     단계별 결과 파일 저장 · 중단 지점부터 재개 · 데이터 교체 후 동일 흐름 재사용
   </div>
   <div class="footer">앞 단계 파일 생성 후 다음 단계 시작</div>
@@ -973,15 +974,16 @@ a.uc{text-decoration:none;display:block}
     <div class="mdwrap">
       <div class="mdcard">
         <div class="fname"><i></i>runs/latest/outputs/02_eda_report.md</div>
-        <div class="mdbody">
-          <div class="h"><span class="mk">#</span>EDA 보고서 · 발견 3가지</div>
-          <p><b>1.</b> Furniture 마진 10.7% · Technology(34.6%)의 1/3 수준</p>
-          <p><b>2.</b> B그룹 전환율 +1.1%p · 매출 +$11K</p>
-          <p><b>3.</b> 2월 $164K → 3월 $114K · -31%</p>
+        <div class="mdbody" style="font-size:13px;line-height:1.62">
+          <div class="h"><span class="mk">#</span>EDA 보고서</div>
+          <p><b>발견 1 · Furniture가 매출 3위인데 마진 10.7%</b><br>Technology 34.6% · Office Supplies 36.7%와 3배 차이 · 할인율 최대 21%가 마진 잠식</p>
+          <p><b>발견 2 · B그룹이 전환율 +1.1%p, 매출 +$11,190</b><br>A 12.0% / AOV $122 · B 13.1% / AOV $120 · 할인 효과 가능성</p>
+          <p><b>발견 3 · 2월 정점 $164K → 3월 $114K (-31%)</b><br>마진은 29.3% → 31.7% 회복 · 단순 물량 감소 · 계절성 확인 필요</p>
           <table>
-            <tr><th>총 매출</th><th>전체 마진</th><th>전환율</th><th>AOV</th></tr>
-            <tr><td>$397,130</td><td>30.6%</td><td>12.6%</td><td>$121</td></tr>
+            <tr><th>총 매출</th><th>총 이익</th><th>마진</th><th>전환율</th><th>AOV</th></tr>
+            <tr><td>$397,130</td><td>$121,460</td><td>30.6%</td><td>12.6%</td><td>$121</td></tr>
           </table>
+          <p class="dim">→ @problem: 마진 원인 · A/B 유의성 · 3월 급락 구조 확인 요청</p>
         </div>
       </div>
       <div class="agside">
@@ -1004,15 +1006,19 @@ a.uc{text-decoration:none;display:block}
     <div class="mdwrap">
       <div class="mdcard">
         <div class="fname"><i></i>runs/latest/outputs/04_kpi_summary.md</div>
-        <div class="mdbody">
-          <div class="h"><span class="mk">#</span>KPI 정의</div>
+        <div class="mdbody" style="font-size:12.5px;line-height:1.6">
+          <div class="h"><span class="mk">#</span>KPI 정의 및 현황</div>
           <table>
-            <tr><th>KPI</th><th>정의</th><th>현재값</th></tr>
+            <tr><th>KPI</th><th>계산식</th><th>현재값</th></tr>
+            <tr><td>총 매출</td><td>SUM(revenue)</td><td>$397,130</td></tr>
+            <tr><td>총 이익</td><td>SUM(revenue - cost)</td><td>$121,460</td></tr>
             <tr><td>전체 마진율</td><td>Gross Profit / Gross Revenue</td><td>30.6%</td></tr>
             <tr><td>전환율 (CVR)</td><td>orders / visitors</td><td>12.6%</td></tr>
-            <tr><td>평균 주문액 (AOV)</td><td>revenue / orders</td><td>$121</td></tr>
+            <tr><td>평균 주문액</td><td>revenue / orders</td><td>$121</td></tr>
             <tr><td>A/B 전환율 차이</td><td>B - A · %p 절대값</td><td>+1.1%p</td></tr>
           </table>
+          <p style="margin-top:8px"><b>카테고리별</b> Technology 매출 52.1% · 마진 35.0% · 할인 6.0% / Office 28.4% · 36.4% · 4.8% / Furniture 19.4% · 10.7% · 17.7%</p>
+          <p class="dim">단위 · 분모 · 제외 조건 고정 → 이후 전 단계와 Tableau 계산 필드의 기준</p>
         </div>
       </div>
       <div class="agside">
@@ -1034,7 +1040,7 @@ a.uc{text-decoration:none;display:block}
     </div>
     <div class="mdwrap">
       <div class="mdcard">
-        <div class="fname"><i></i>runs/latest/outputs/06_dashboard.html</div>
+        <div class="fname"><i></i>runs/latest/outputs/06_dashboard.html · KPI 4 · 차트 6 · 탭 5</div>
         <img src="assets/demo_dashboard.png" alt="산출 대시보드" style="display:block;width:100%">
       </div>
       <div class="agside">
