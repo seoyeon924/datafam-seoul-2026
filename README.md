@@ -6,9 +6,9 @@ Claude Code와 Tableau MCP로 만드는 분석 워크플로우
 
 | 경로 | 내용 |
 |---|---|
-| `index.html` | 슬라이드 덱 54장 · 편집용 (assets 폴더 필요) |
+| `index.html` | 슬라이드 덱 53장 · 편집용 (assets 폴더 필요) |
 | `DataFam-Seoul-2026-발표자료.html` | 이미지 임베드 단일 파일 · 어디서나 열림 |
-| `DataFam-Seoul-2026-발표자료.pdf` | 54쪽 · 960×540pt |
+| `DataFam-Seoul-2026-발표자료.pdf` | 53쪽 · 960×540pt |
 | `assets/` | 원본 템플릿 PDF에서 추출한 로고·3D 아이콘 |
 
 ## 실행
