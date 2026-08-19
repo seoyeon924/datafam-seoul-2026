@@ -1,0 +1,24 @@
+{
+  "name": "datafam-seoul-2026",
+  "version": "1.0.0",
+  "description": "Claude Code와 Tableau MCP로 만드는 분석 워크플로우",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seoyeon924/datafam-seoul-2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/seoyeon924/datafam-seoul-2026/issues"
+  },
+  "homepage": "https://github.com/seoyeon924/datafam-seoul-2026#readme",
+  "dependencies": {
+    "@netlify/blobs": "^11.0.1"
+  }
+}
