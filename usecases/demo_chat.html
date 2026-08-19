@@ -8,7 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#F4F6F9;color:#16233B;
   -webkit-font-smoothing:antialiased}
-.page{max-width:1000px;margin:0 auto;padding:26px 24px 120px}
+.page{max-width:1000px;margin:0 auto;padding:26px 24px 230px}
 .hd{display:flex;align-items:center;gap:11px;border-bottom:2px solid #16233B;padding-bottom:12px}
 .hd .dot{width:10px;height:10px;border-radius:50%;background:#1E7BEF}
 .hd h1{font-size:18px;font-weight:700}
@@ -35,7 +35,8 @@ code{font-family:'SF Mono',Menlo,monospace;font-size:11.5px;background:#EDF1F7;b
   animation:b 1s infinite}
 .typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
 @keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
-.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #DDE4EE;padding:14px 24px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #DDE4EE;
+  padding:14px 24px;box-shadow:0 -8px 24px rgba(22,35,59,.07)}
 .barin{max-width:1000px;margin:0 auto}
 .row{display:flex;gap:9px}
 input{flex:1;border:1px solid #C9D8EC;border-radius:11px;padding:13px 15px;font-size:15px;
@@ -56,7 +57,7 @@ button{background:#16233B;color:#fff;border:0;border-radius:11px;padding:0 22px;
     <span class="dot"></span>
     <h1>대시보드와 대화</h1>
     <span class="sub">Tableau Public MCP · Sales Funnel Dashboard | VOTD</span>
-    <span class="gen">Claude Code</span>
+    <span class="gen"><span id="mode" style="background:#E3EBFB;color:#1E4FC2;border-radius:5px;padding:3px 8px;font-weight:700">LIVE</span></span>
   </div>
   <div class="chat" id="chat"></div>
 </div>
@@ -69,13 +70,13 @@ button{background:#16233B;color:#fff;border:0;border-radius:11px;padding:0 22px;
     </div>
     <div class="qs" id="qs"></div>
   </div>
-  <p class="foot">시연용 응답 세트 · 답변 내용은 실제 워크북 파싱과 Tableau Public 조회 결과 · 실시간 질의는 Claude Code + Tableau Public MCP에서 동작</p>
+  <p class="foot"><b>프로필 · 워크북 목록은 Tableau Public 공개 API 실시간 조회</b> · 계산식과 구조 분석은 사전 파싱 결과 · 인증 불필요</p>
 </div>
 
 <script>
 'use strict';
 var A = [
- { k:['전환','퍼널','병목','깨지','단계'],
+ { k:['전환','퍼널','병목','깨지','단계','이탈','funnel','전환율'],
    tools:['list-views','get-view-data'],
    html:'<p>「Conversion Rate」 시트 기준 단계별 전환입니다.</p>'+
    '<table><tr><th>Stage</th><th class="num">도달</th><th class="num">다음 단계 전환</th></tr>'+
@@ -86,7 +87,7 @@ var A = [
    '<tr><td>Negotiation</td><td class="num">51</td><td class="num">Closed Won 24</td></tr></table>'+
    '<p><b>Value Proposition → Proposal</b> 구간 이탈이 가장 큽니다. 「Age of Oppty」 기준 이 단계 평균 체류가 다른 단계의 약 2배입니다.</p>' },
 
- { k:['won','수주율','승률','계산식','정의','맞는지','검증'],
+ { k:['won','수주율','승률','계산식','정의','맞는지','검증','계산','수식'],
    tools:['download-workbook','analyze-structure'],
    html:'<p>워크북 계산 필드를 확인했습니다.</p>'+
    '<p><code>Won Rate = [# of Won Opp.] / [# of Closed Opp.]</code></p>'+
@@ -94,7 +95,7 @@ var A = [
    '<p>Closed Won 건수를 Closed 전체로 나누는 방식이라 정의서 기준과 일치합니다. 진행 중(Open) 딜은 분모에서 빠지는 점만 유의하면 됩니다.</p>'+
    '<p class="note">판정은 하지 않습니다. 확인이 필요한 항목만 정리해 전달합니다.</p>' },
 
- { k:['구조','시트','만든','제작','파라미터','어떻게'],
+ { k:['구조','시트','제작','파라미터','어떻게','sheet','구성','설계','만든'],
    tools:['get-workbook-details','analyze-structure'],
    html:'<p>워크북 구성입니다.</p>'+
    '<p>시트 16개 · 대시보드 1개(Sales Pipeline Dashboard) · 파라미터 2개(Top N Accounts · padding)</p>'+
@@ -114,13 +115,13 @@ var A = [
    '<tr><td>Shining Stars | VOTD</td><td class="num">11,145</td><td class="num">225</td></tr>'+
    '<tr><td>SNS Log Dashboard</td><td class="num">5,109</td><td class="num">5</td></tr></table>' },
 
- { k:['코호트','리텐션','game','게임'],
+ { k:['코호트','리텐션','game','게임','잔존','retention'],
    tools:['get-workbook-details'],
    html:'<p>Game Log Dashboard의 리텐션 영역은 주간 코호트 매트릭스 구조입니다.</p>'+
    '<p>첫 이벤트 주를 코호트로 잡고 W0~W9 잔존율을 히트맵으로 표시합니다. Tableau에서는 <code>{FIXED [User]: MIN([Event Date])}</code> 계열 LOD와 주차 차이 계산이 필요합니다.</p>'+
    '<p class="note">같은 결과를 LOD 없이 만드는 방법은 오늘 마지막 Extension 파트에서 다룹니다.</p>' },
 
- { k:['적용','내 데이터','필요한 필드','따라'],
+ { k:['적용','내 데이터','필요한 필드','어떤 필드','재현','따라'],
    tools:['analyze-structure'],
    html:'<p>이 구조를 그대로 쓰려면 아래 필드가 필요합니다.</p>'+
    '<p><b>필수</b> · Opportunity ID(고유값) · Stage(단계 문자열) · Amount(금액) · CreatedDate · Close Date</p>'+
@@ -128,16 +129,60 @@ var A = [
    '<p>Stage 값이 다르면 <code>Sort</code> 계산식의 CASE 분기만 우리 단계명으로 바꾸면 됩니다.</p>' }
 ];
 
-var FB = { tools:['search'], html:'<p>이 시연 화면에는 준비된 응답만 들어 있습니다. 아래 예시 질문을 눌러보세요.</p>'+
-  '<p class="note">실시간 질의는 Claude Code에 Tableau Public MCP를 연결하면 그대로 동작합니다.</p>'+
-  '<p><code>claude mcp add tableau-public -s user -- npx -y @wjsutton/tableau-public-mcp-server@latest</code></p>' };
+var FB = { tools:['GET /public/apis/workbooks'], live:true };
 
-var SAMPLES = ['전환이 가장 크게 깨지는 단계는?','Won Rate 계산이 정의서와 맞아?','이 대시보드 어떻게 만든 거야?',
-  '내 프로필 워크북 목록 보여줘','Game Log의 코호트는 어떤 구조야?','내 데이터에 적용하려면?'];
+var SAMPLES = ['내 프로필 정보 알려줘','워크북 목록 조회수 순으로','전환이 가장 크게 깨지는 단계는?','Won Rate 계산이 정의서와 맞아?','이 대시보드 어떻게 만든 거야?','Game Log의 코호트는 어떤 구조야?'];
 
+var API='https://datafam-seoul-2026.netlify.app/api/tpublic';
 var chat=document.getElementById('chat');
-function el(cls,html){ var d=document.createElement('div'); d.className=cls; d.innerHTML=html; chat.appendChild(d);
-  window.scrollTo(0,document.body.scrollHeight); return d; }
+
+function esc(x){ return String(x==null?'':x).replace(/</g,'&lt;'); }
+function num(n){ return (n||0).toLocaleString(); }
+
+/* 실시간 조회 · Tableau Public 공개 API */
+var LIVE=[
+ { k:['프로필','누구','팔로워','소개','전서연','계정','내 정보','profile'],
+   tools:['GET /profile/api/{user}'],
+   run:async function(){
+     var d=await (await fetch(API+'?action=profile')).json();
+     if(d.error) throw new Error(d.error);
+     return '<p><b>'+esc(d.name)+'</b> · '+esc(d.title)+'</p>'+
+       '<p>'+esc(d.org)+'</p>'+
+       (d.bio?'<p class="note">'+esc(d.bio)+'</p>':'')+
+       '<table><tr><th>공개 Viz</th><th>팔로워</th><th>팔로잉</th></tr>'+
+       '<tr><td>'+num(d.vizCount)+'</td><td>'+num(d.followers)+'</td><td>'+num(d.following)+'</td></tr></table>'+
+       '<p class="note">실시간 조회 결과 · public.tableau.com</p>';
+   }},
+ { k:['워크북','목록','조회수','viz','비즈','인기','작품','포트폴리오','몇 개','뭐 있'],
+   tools:['GET /public/apis/workbooks'],
+   run:async function(){
+     var d=await (await fetch(API+'?action=workbooks&count=8')).json();
+     if(d.error) throw new Error(d.error);
+     var rows=d.items.map(function(w){
+       return '<tr><td><a href="'+w.url+'" target="_blank" rel="noopener" style="color:#1E4FC2">'+esc(w.title)+'</a></td>'+
+              '<td class="num">'+num(w.views)+'</td><td class="num">'+num(w.favorites)+'</td></tr>'; }).join('');
+     return '<p>공개 워크북 목록입니다. 제목을 누르면 실제 대시보드로 이동합니다.</p>'+
+       '<table><tr><th>워크북</th><th class="num">조회수</th><th class="num">즐겨찾기</th></tr>'+rows+'</table>'+
+       '<p class="note">실시간 조회 결과 · public.tableau.com</p>';
+   }}
+];
+function liveMatch(q){
+  var s=q.toLowerCase(), best=null, hi=0;
+  LIVE.forEach(function(a){
+    var n=a.k.filter(function(k){ return s.indexOf(k.toLowerCase())>=0; }).length;
+    if(n>hi){ hi=n; best=a; }
+  });
+  return best;
+}
+function el(cls,html){
+  var d=document.createElement('div'); d.className=cls; d.innerHTML=html; chat.appendChild(d);
+  requestAnimationFrame(function(){
+    var bar=document.querySelector('.bar');
+    var pad=(bar?bar.offsetHeight:150)+24;
+    var y=d.getBoundingClientRect().bottom+window.scrollY-window.innerHeight+pad;
+    if(y>window.scrollY) window.scrollTo({top:y,behavior:'smooth'});
+  });
+  return d; }
 function match(q){
   var s=q.toLowerCase(), best=null, hi=0;
   A.forEach(function(a){
@@ -149,8 +194,27 @@ function match(q){
 function ask(q){
   if(!q.trim()) return;
   el('u', q.replace(/</g,'&lt;'));
-  var a=match(q);
+  var live=liveMatch(q);
   var t=el('a','<div class="typing"><span></span><span></span><span></span></div>');
+  if(live){
+    el('chips', live.tools.map(function(x){ return '<span class="chip">'+x+'</span>'; }).join(''));
+    live.run().then(function(html){ t.remove(); el('a', html); })
+      .catch(function(e){ t.remove(); el('a','<p>조회에 실패했습니다. 네트워크를 확인해 주세요.</p><p class="note">'+esc(e.message)+'</p>'); });
+    return;
+  }
+  var a=match(q);
+  if(a.live){
+    el('chips', a.tools.map(function(x){ return '<span class="chip">'+x+'</span>'; }).join(''));
+    LIVE[1].run().then(function(html){
+      t.remove();
+      el('a','<p>준비된 답변이 없어 공개 워크북 목록을 실시간으로 가져왔습니다.</p>'+html+
+        '<p class="note">계산식 · 시트 구조 · 코호트 질문은 준비된 답변이 있습니다.</p>');
+    }).catch(function(){
+      t.remove();
+      el('a','<p>아래 예시 질문으로 시도해 보세요.</p>');
+    });
+    return;
+  }
   setTimeout(function(){
     t.remove();
     el('chips', a.tools.map(function(x){ return '<span class="chip">'+x+'</span>'; }).join(''));
@@ -165,7 +229,7 @@ SAMPLES.forEach(function(x){
   b.onclick=function(){ ask(x); };
   qs.appendChild(b);
 });
-ask('전환이 가장 크게 깨지는 단계는?');
+ask('내 프로필 정보 알려줘');
 </script>
 </body>
 </html>
