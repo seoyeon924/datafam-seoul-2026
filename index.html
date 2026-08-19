@@ -451,6 +451,21 @@ a.uc{text-decoration:none;display:block}
   display:flex;align-items:center;justify-content:center;gap:12px;
   font-family:var(--display);font-weight:600;font-size:16.5px;letter-spacing:.01em}
 .govbar img{width:24px;height:24px;background:#fff;border-radius:6px;padding:3px}
+
+/* Claude 배지 · 트리 */
+.clbadge{display:flex;align-items:center;gap:10px;width:fit-content;background:#fff;
+  border:1px solid rgba(2,42,192,.15);border-radius:12px;padding:12px 18px;
+  font-family:var(--display);font-weight:700;font-size:19px;color:var(--navy)}
+.clbadge img{width:26px;height:26px}
+.tree .troot{width:fit-content;background:var(--navy);color:#fff;border-radius:10px;
+  padding:9px 18px;font-family:var(--mono);font-size:14px}
+.tree .tnode{position:relative;margin:14px 0 0 26px;padding-left:26px;display:flex;gap:14px;align-items:center}
+.tree .tnode::before{content:'';position:absolute;left:0;top:-18px;bottom:50%;width:1.5px;background:rgba(2,42,192,.3)}
+.tree .tnode::after{content:'';position:absolute;left:0;top:50%;width:20px;height:1.5px;background:rgba(2,42,192,.3)}
+.tree .tnode code{font-family:var(--mono);font-size:13px;background:#fff;border:1px solid rgba(2,42,192,.15);
+  border-radius:8px;padding:8px 13px;color:var(--accent);flex:0 0 auto}
+.tree .tnode b{font-family:var(--display);font-weight:700;font-size:15px;color:var(--navy);display:block}
+.tree .tnode span{font-size:13px;color:var(--navy);opacity:.7}
 /* ---------- 네비게이션 ---------- */
 #nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:99;
   display:flex;gap:10px;align-items:center;background:rgba(0,30,91,.72);color:#fff;
@@ -708,31 +723,26 @@ a.uc{text-decoration:none;display:block}
 <section class="slide">
   <img class="logo" src="assets/logo_navy.png">
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
-
   <div class="wrap">
-    <div class="titleblock">
+    <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">2.3 Agent · Rule · Skill</h2>
-      
+      <p class="sub">Claude Code 실행 규칙 · 프로젝트 폴더의 설정 파일</p>
     </div>
-    <div class="cols c3" style="margin-top:26px">
+    <div class="cols c2" style="grid-template-columns:1fr 1.4fr;margin-top:24px;align-items:center">
       <div>
-        <span class="tag">AGENT</span>
-        <h3 class="colhead">역할 · 입력 · 산출</h3>
+        <div class="clbadge"><img src="assets/claude_logo.svg" alt="Claude">Claude Code</div>
+        <p class="body" style="font-size:15px;margin-top:16px">폴더 안 규칙 파일로 동작 고정 · 대화가 아니라 파일이 기준</p>
+        <p style="margin-top:22px;font-family:var(--display);font-weight:700;font-size:22px;color:var(--accent)">한 번 정의 → 재사용</p>
       </div>
-      <div>
-        <span class="tag">RULE</span>
-        <h3 class="colhead">지표 정의 · 분석 기준 · 시각화 기준</h3>
-      </div>
-      <div>
-        <span class="tag">SKILL</span>
-        <h3 class="colhead">순서 · 의존 · 재개 지점</h3>
+      <div class="tree">
+        <div class="troot">.claude/</div>
+        <div class="tnode"><code>agents/</code><div><b>AGENT</b><span>역할 · 입력 · 산출</span></div></div>
+        <div class="tnode"><code>rules/</code><div><b>RULE</b><span>지표 · 분석 · 시각화 기준</span></div></div>
+        <div class="tnode"><code>skills/</code><div><b>SKILL</b><span>순서 · 의존 · 재개 지점</span></div></div>
       </div>
     </div>
-  
-    <p style="margin-top:46px;font-family:var(--display);font-weight:700;font-size:26px;color:var(--accent);text-align:center">한 번 정의 → 재사용</p>
   </div>
-  
-  <div class="footer">DataFam Seoul 2026</div>
+  <div class="footer">ai-pipeline-kit 폴더 구조 · 상세는 2.5~2.8</div>
 </section>
 
 <!-- =========================================================
@@ -1630,7 +1640,7 @@ a.uc{text-decoration:none;display:block}
     </div>
   </div>
   <div class="shot" style="right:56px;top:158px;width:640px;height:452px">
-    <img src="assets/shot_network.jpg" alt="네트워크 그래프 뷰 확장">
+    <img src="assets/avengers.gif" alt="어벤져스 네트워크 그래프">
   </div>
   <img class="deco" src="assets/star.png" style="right:610px;bottom:80px;width:34px">
   <div class="footer">별도 대시보드가 아닌 Tableau 워크시트 내부 실행</div>
@@ -1784,8 +1794,8 @@ a.uc{text-decoration:none;display:block}
   <div class="thx" style="position:relative;z-index:3;display:flex;gap:26px;align-items:center;margin-top:30px;background:#fff;border:1px solid rgba(2,42,192,.15);border-radius:18px;padding:20px 28px">
     <img src="assets/qr_deck.png" alt="발표 자료 QR" style="width:108px;height:108px">
     <div style="text-align:left">
-      <p style="font-family:var(--display);font-weight:700;font-size:16px;color:var(--accent)">자료 · 도구 8종 · 확장 · 전체 공개</p>
-      <p style="font-family:var(--mono);font-size:12.5px;color:var(--navy);margin-top:6px">seoyeon924.github.io/datafam-seoul-2026</p>
+      <p style="font-family:var(--display);font-weight:700;font-size:16px;color:var(--accent)">자료 · 활용 사례 11종 · 확장 공개</p>
+      <p style="font-family:var(--mono);font-size:12.5px;color:var(--navy);margin-top:6px">datafam-seoul-2026.netlify.app</p>
       <p style="font-size:13.5px;color:var(--navy);margin-top:10px">전서연 · 데이터브릿지랩 · tjdus92422@gmail.com</p>
       <p style="font-size:12.5px;color:var(--navy);opacity:.7;margin-top:4px">문의 · 후기 환영</p>
     </div>
