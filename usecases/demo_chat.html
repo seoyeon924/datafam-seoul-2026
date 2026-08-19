@@ -135,22 +135,44 @@ var SAMPLES = ['내 프로필 정보 알려줘','워크북 목록 조회수 순�
 
 var API='https://datafam-seoul-2026.netlify.app/api/tpublic';
 var ASK='https://datafam-seoul-2026.netlify.app/api/ask';
-function md(t){ return t
-  .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-  .replace(/```([\s\S]*?)```/g,function(m,c){return '<pre style="background:#EDF1F7;border-radius:8px;padding:10px 13px;font-size:12px;overflow-x:auto">'+c.trim()+'</pre>';})
-  .replace(/`([^`]+)`/g,'<code>$1</code>')
-  .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
-  .replace(/^\|(.+)\|$/gm,function(m){return m;})
-  .split(/\n{2,}/).map(function(b){
-    if(b.indexOf('|')===0){
-      var rows=b.split('\n').filter(function(r){return r.trim() && !/^\|[\s:|-]+\|$/.test(r);});
-      return '<table>'+rows.map(function(r,i){
-        var c=r.split('|').slice(1,-1).map(function(x){return x.trim();});
-        var tag=i===0?'th':'td';
-        return '<tr>'+c.map(function(x){return '<'+tag+'>'+x+'</'+tag+'>';}).join('')+'</tr>';}).join('')+'</table>';
+function md(t){
+  t=String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  var code=[];
+  t=t.replace(/```([\s\S]*?)```/g,function(m,c){
+    code.push('<pre style="background:#EDF1F7;border-radius:8px;padding:11px 14px;font-size:12px;overflow-x:auto;line-height:1.6">'+c.trim()+'</pre>');
+    return '\u0000'+(code.length-1)+'\u0000'; });
+  t=t.replace(/`([^`]+)`/g,'<code>$1</code>')
+     .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+
+  var lines=t.split('\n'), out=[], i=0;
+  function isRow(x){ return /^\s*\|.*\|\s*$/.test(x); }
+  function isSep(x){ return /^\s*\|[\s:|-]+\|\s*$/.test(x); }
+  while(i<lines.length){
+    var L=lines[i];
+    if(!L.trim()){ i++; continue; }
+    var h=L.match(/^\s*(#{1,6})\s+(.*)$/);
+    if(h){ out.push('<p style="font-family:inherit;font-weight:700;font-size:14.5px;margin:12px 0 5px">'+h[2]+'</p>'); i++; continue; }
+    if(isRow(L)){
+      var rows=[];
+      while(i<lines.length && isRow(lines[i])){ if(!isSep(lines[i])) rows.push(lines[i]); i++; }
+      out.push('<table>'+rows.map(function(r,k){
+        var cs=r.trim().replace(/^\||\|$/g,'').split('|').map(function(x){return x.trim();});
+        var tg=k===0?'th':'td';
+        return '<tr>'+cs.map(function(x){return '<'+tg+'>'+x+'</'+tg+'>';}).join('')+'</tr>';
+      }).join('')+'</table>'); continue;
     }
-    return '<p>'+b.replace(/\n/g,'<br>')+'</p>';
-  }).join(''); }
+    if(/^\s*[-*]\s+/.test(L)){
+      var items=[];
+      while(i<lines.length && /^\s*[-*]\s+/.test(lines[i])){ items.push(lines[i].replace(/^\s*[-*]\s+/,'')); i++; }
+      out.push('<ul style="margin:4px 0 8px 18px">'+items.map(function(x){return '<li style="margin-bottom:3px">'+x+'</li>';}).join('')+'</ul>');
+      continue;
+    }
+    var para=[];
+    while(i<lines.length && lines[i].trim() && !isRow(lines[i]) && !/^\s*[-*]\s+/.test(lines[i]) && !/^\s*#{1,6}\s/.test(lines[i])){ para.push(lines[i]); i++; }
+    out.push('<p>'+para.join('<br>')+'</p>');
+  }
+  return out.join('').replace(/\u0000(\d+)\u0000/g,function(m,n){ return code[+n]; });
+}
 var chat=document.getElementById('chat');
 
 function esc(x){ return String(x==null?'':x).replace(/</g,'&lt;'); }
