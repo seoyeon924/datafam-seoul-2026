@@ -65,12 +65,12 @@ button{background:#16233B;color:#fff;border:0;border-radius:11px;padding:0 22px;
 <div class="bar">
   <div class="barin">
     <div class="row">
-      <input id="q" placeholder="질문을 입력하세요 · 예: 전환이 가장 크게 깨지는 단계는?" autocomplete="off">
+      <input id="q" placeholder="무엇이든 물어보세요 · 예: Sales Cycle이 음수가 나오는 이유는?" autocomplete="off">
       <button id="send">전송</button>
     </div>
     <div class="qs" id="qs"></div>
   </div>
-  <p class="foot"><b>프로필 · 워크북 목록은 Tableau Public 공개 API 실시간 조회</b> · 계산식과 구조 분석은 사전 파싱 결과 · 인증 불필요</p>
+  <p class="foot"><b>실시간 답변</b> · Tableau Public 공개 API 조회 결과와 워크북 구조를 근거로 생성 · 어떤 질문이든 입력 가능</p>
 </div>
 
 <script>
@@ -129,11 +129,28 @@ var A = [
    '<p>Stage 값이 다르면 <code>Sort</code> 계산식의 CASE 분기만 우리 단계명으로 바꾸면 됩니다.</p>' }
 ];
 
-var FB = { tools:['GET /public/apis/workbooks'], live:true };
+var FB = { tools:['GET /profile/api','GET /public/apis/workbooks','LLM'], ai:true };
 
 var SAMPLES = ['내 프로필 정보 알려줘','워크북 목록 조회수 순으로','전환이 가장 크게 깨지는 단계는?','Won Rate 계산이 정의서와 맞아?','이 대시보드 어떻게 만든 거야?','Game Log의 코호트는 어떤 구조야?'];
 
 var API='https://datafam-seoul-2026.netlify.app/api/tpublic';
+var ASK='https://datafam-seoul-2026.netlify.app/api/ask';
+function md(t){ return t
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+  .replace(/```([\s\S]*?)```/g,function(m,c){return '<pre style="background:#EDF1F7;border-radius:8px;padding:10px 13px;font-size:12px;overflow-x:auto">'+c.trim()+'</pre>';})
+  .replace(/`([^`]+)`/g,'<code>$1</code>')
+  .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+  .replace(/^\|(.+)\|$/gm,function(m){return m;})
+  .split(/\n{2,}/).map(function(b){
+    if(b.indexOf('|')===0){
+      var rows=b.split('\n').filter(function(r){return r.trim() && !/^\|[\s:|-]+\|$/.test(r);});
+      return '<table>'+rows.map(function(r,i){
+        var c=r.split('|').slice(1,-1).map(function(x){return x.trim();});
+        var tag=i===0?'th':'td';
+        return '<tr>'+c.map(function(x){return '<'+tag+'>'+x+'</'+tag+'>';}).join('')+'</tr>';}).join('')+'</table>';
+    }
+    return '<p>'+b.replace(/\n/g,'<br>')+'</p>';
+  }).join(''); }
 var chat=document.getElementById('chat');
 
 function esc(x){ return String(x==null?'':x).replace(/</g,'&lt;'); }
@@ -203,6 +220,21 @@ function ask(q){
     return;
   }
   var a=match(q);
+  if(a.ai){
+    el('chips', a.tools.map(function(x){ return '<span class="chip">'+x+'</span>'; }).join(''));
+    fetch(ASK,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:q})})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        t.remove();
+        if(d.error) throw new Error(d.error);
+        el('a', md(d.answer)+'<p class="note">실시간 조회 데이터 + '+esc(d.model||'')+' 응답</p>');
+      })
+      .catch(function(e){
+        t.remove();
+        el('a','<p>답변 생성에 실패했습니다.</p><p class="note">'+esc(e.message)+'</p>');
+      });
+    return;
+  }
   if(a.live){
     el('chips', a.tools.map(function(x){ return '<span class="chip">'+x+'</span>'; }).join(''));
     LIVE[1].run().then(function(html){
