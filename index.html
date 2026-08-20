@@ -189,6 +189,20 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .quoteslide .by span{font-size:16px;color:var(--navy);opacity:.85}
 
 /* ---------- 감사 ---------- */
+.qrrow{display:flex;align-items:center;gap:52px;justify-content:center}
+.qrbox{flex:0 0 auto;background:#fff;border:1px solid rgba(2,42,192,.14);border-radius:20px;padding:18px}
+.qrbox img{display:block;width:238px;height:238px}
+.qrtx{max-width:470px}
+.qrtx b{display:block;font-family:var(--display);font-weight:700;font-size:27px;
+  color:var(--navy);letter-spacing:-.015em;margin-bottom:9px}
+.qrtx .qru{display:block;font-family:var(--mono);font-size:14.5px;color:var(--accent);margin-bottom:20px}
+.qrtx ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.qrtx li{position:relative;padding-left:16px;font-size:16.5px;color:var(--navy);opacity:.88}
+.qrtx li:before{content:'';position:absolute;left:0;top:.62em;width:5px;height:5px;
+  border-radius:50%;background:var(--accent)}
+.qrtx code{font-family:var(--mono);font-size:14.5px;color:var(--accent)}
+.qrtx .qrm{font-size:15px;color:var(--navy);opacity:.7;padding-top:16px;
+  border-top:1px solid rgba(2,42,192,.12)}
 .thanks{background:var(--sky)}
 .slide.thanks.on{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .thanks .lg{width:190px;margin-bottom:14px;position:relative;z-index:2}
@@ -1971,13 +1985,24 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="deco" src="assets/star.png" style="right:56px;bottom:40px;width:32px;opacity:.9">
   <div class="wrap">
     <div class="titleblock" style="margin-bottom:0">
-      <h2 class="head">자료 · 코드 · 사례 11종 공개</h2>
+      <h2 class="head">오늘 강의 자료 링크</h2>
+      <p class="sub">후기를 남기시면 자료와 확장 파일을 바로 받으실 수 있습니다</p>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center">
-      <p style="font-size:19px;color:var(--navy)">전서연 · 데이터브릿지랩 · sy@databridge.co.kr</p>
+    <div class="qrrow">
+      <div class="qrbox"><img src="assets/qr_apply.svg" alt="후기 폼 QR"></div>
+      <div class="qrtx">
+        <b>후기 작성하고 자료 받기</b>
+        <span class="qru">datafam-seoul-2026.netlify.app/apply.html</span>
+        <ul>
+          <li>발표자료 전체 · 활용 사례 11종</li>
+          <li>Retention Matrix 뷰 확장 · <code>.trex</code> + 샘플 데이터</li>
+          <li>대시보드와 대화 설정 묶음 · Claude Code Skill + MCP 설정</li>
+        </ul>
+        <p class="qrm">전서연 · 데이터브릿지랩 · sy@databridge.co.kr</p>
+      </div>
     </div>
   </div>
-  <div class="footer">슬라이드 · 활용 사례 11종 · Retention Matrix 확장 전체 공개</div>
+  <div class="footer">후기 · 직무 · 회사 3항목 · 개인정보 수집 동의 후 다운로드</div>
 </section>
 
 <!-- =========================================================
@@ -2014,7 +2039,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <div class="meta">
     <b>전서연 · 데이터브릿지랩 CEO</b>
     Tableau Visionary &amp; Public Ambassador<br>
-    <a href="mailto:tjdus92422@gmail.com">tjdus92422@gmail.com</a>
+    <a href="mailto:sy@databridge.co.kr">sy@databridge.co.kr</a>
   </div>
   
 </section>

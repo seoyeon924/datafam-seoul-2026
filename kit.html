@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>자료 받기 · DataFam Seoul 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#001E5B;--accent:#022AC0;--line:#DCE5F1}
+  body{font-family:'Pretendard','Apple SD Gothic Neo',-apple-system,sans-serif;
+    background:#EAF5FE;color:var(--navy);line-height:1.6;-webkit-font-smoothing:antialiased;
+    display:flex;justify-content:center;padding:32px 18px 64px}
+  .wrap{width:100%;max-width:620px}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.09em;
+    color:var(--accent);background:rgba(2,42,192,.09);border-radius:20px;padding:5px 12px;margin-bottom:14px}
+  h1{font-size:28px;letter-spacing:-.02em;margin-bottom:8px}
+  .lede{font-size:15px;color:#4A5D7A;margin-bottom:24px}
+  .dl{display:flex;gap:15px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:19px 20px;margin-bottom:13px;text-decoration:none;color:inherit;
+    transition:border-color .15s,transform .1s}
+  .dl:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .dl .ic{flex:0 0 auto;width:46px;height:46px;border-radius:11px;background:#EAF5FE;
+    display:flex;align-items:center;justify-content:center}
+  .dl .ic svg{width:23px;height:23px;fill:none;stroke:var(--accent);stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round}
+  .dl .tx{flex:1;min-width:0}
+  .dl b{display:block;font-size:16px;letter-spacing:-.01em;margin-bottom:3px}
+  .dl span{display:block;font-size:13.5px;color:#5B6B84;line-height:1.55}
+  .dl .sz{font-size:11.5px;color:#8FA1BA;margin-top:5px;font-family:'SF Mono',Menlo,monospace}
+  .sec{font-size:12.5px;font-weight:700;letter-spacing:.07em;color:var(--accent);
+    opacity:.75;margin:26px 0 11px}
+  .steps{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-top:8px}
+  .steps h3{font-size:14.5px;margin-bottom:11px}
+  .steps ol{margin-left:19px}
+  .steps li{font-size:14px;color:#33455F;margin-bottom:7px}
+  code{font-family:'SF Mono',Menlo,monospace;font-size:12.5px;background:#E8EFF9;
+    border-radius:4px;padding:2px 7px;color:var(--accent)}
+  .note{background:#FFF8E8;border:1px solid #F0DFB4;border-radius:12px;padding:13px 17px;
+    margin-top:16px;font-size:13.5px;color:#6B5320;line-height:1.65}
+  .gate{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 24px;text-align:center}
+  .gate p{font-size:15px;color:#4A5D7A;margin-bottom:18px}
+  .gate a{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    border-radius:11px;padding:13px 26px;font-weight:700;font-size:15px}
+  .foot{margin-top:24px;text-align:center;font-size:12.5px;color:#7186A3;line-height:1.7}
+  .foot a{color:var(--accent)}
+  #main{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="gate" class="gate">
+    <p>후기를 먼저 작성해 주세요.</p>
+    <a href="/apply.html">후기 작성하러 가기</a>
+  </div>
+
+  <div id="main">
+    <span class="badge">DATAFAM SEOUL 2026</span>
+    <h1>감사합니다</h1>
+    <p class="lede">아래 자료를 바로 받으실 수 있습니다.</p>
+
+    <div class="sec">오늘 강의 자료 링크</div>
+    <a class="dl" href="https://datafam-seoul-2026.netlify.app/" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4.6" width="18" height="13" rx="2.2"/><path d="M8 20.4h8M12 17.6v2.8"/></svg></span>
+      <span class="tx"><b>발표자료 전체 보기</b>
+        <span>슬라이드 56장 · 좌우 방향키로 넘깁니다. 활용 사례 11종 링크가 안에 들어 있습니다</span>
+        <span class="sz">datafam-seoul-2026.netlify.app</span></span>
+    </a>
+
+    <div class="sec">뷰 확장</div>
+    <a class="dl" href="/downloads/retention-matrix.trex" download>
+      <span class="ic"><svg viewBox="0 0 24 24"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="2.4"/><path d="M3.4 9.2h17.2M9.2 9.2v11.4"/><path d="M12.8 12.6h4.4M12.8 16.2h4.4"/></svg></span>
+      <span class="tx"><b>Retention Matrix · .trex</b>
+        <span>워크시트 마크 카드에 올리는 코호트 리텐션 확장. User와 Event Date 두 선반만 채우면 데이터에 맞춰 자동 계산합니다</span>
+        <span class="sz">retention-matrix.trex · 1.8 KB</span></span>
+    </a>
+    <a class="dl" href="/downloads/sample_game_log.csv" download>
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3.6c4.1 0 7.4 1.2 7.4 2.7S16.1 9 12 9 4.6 7.8 4.6 6.3 7.9 3.6 12 3.6M4.6 6.3v11.4c0 1.5 3.3 2.7 7.4 2.7s7.4-1.2 7.4-2.7V6.3"/></svg></span>
+      <span class="tx"><b>샘플 데이터</b>
+        <span>확장을 바로 시험해 볼 게임 로그 5,062행. user_id · event_date · action</span>
+        <span class="sz">sample_game_log.csv · 117 KB</span></span>
+    </a>
+
+    <div class="sec">활용 사례 01 · 대시보드와 대화</div>
+    <a class="dl" href="/downloads/dashboard-chat-kit.zip" download>
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 6.2h16v10.4H9.6L5.6 20v-3.4H4z"/><path d="M8.6 11.4h.01M12 11.4h.01M15.4 11.4h.01"/></svg></span>
+      <span class="tx"><b>설정 묶음 · ZIP</b>
+        <span>Claude Code Skill과 Tableau MCP 설정 서식, 바로 붙여 쓰는 질문 30개. 폴더를 열고 <code>claude</code> 만 실행하면 됩니다</span>
+        <span class="sz">dashboard-chat-kit.zip · 5.5 KB</span></span>
+    </a>
+
+    <div class="steps">
+      <h3>대시보드와 대화 · 5분 설치</h3>
+      <ol>
+        <li><code>npm install -g @anthropic-ai/claude-code</code></li>
+        <li>압축을 풀고 그 폴더에서 <code>claude</code> 실행</li>
+        <li><code>claude mcp add tableau-public -s user -- npx -y @wjsutton/tableau-public-mcp-server@latest</code></li>
+        <li>"내 공개 워크북 목록 보여줘" 라고 물어보기</li>
+      </ol>
+      <div class="note">묶음에는 API 키나 토큰이 들어 있지 않습니다. Tableau Public은 인증 없이 바로 쓰이고,
+        사내 Tableau에 연결할 때만 각자 개인 액세스 토큰을 발급해 <code>.env</code>에 넣으시면 됩니다.</div>
+    </div>
+
+    <div class="sec">그 밖에</div>
+    <a class="dl" href="https://github.com/seoyeon924/datafam-seoul-2026" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M9.4 20.2v-2.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 015.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3"/></svg></span>
+      <span class="tx"><b>저장소 전체</b>
+        <span>확장 소스 · 활용 사례 11종 HTML · 제작 기록</span>
+        <span class="sz">github.com/seoyeon924/datafam-seoul-2026</span></span>
+    </a>
+
+    <p class="foot">전서연 · 데이터브릿지랩 CEO<br>
+      Tableau Visionary &amp; Public Ambassador<br>
+      <a href="mailto:sy@databridge.co.kr">sy@databridge.co.kr</a></p>
+  </div>
+</div>
+<script>
+(function(){
+  var t = new URLSearchParams(location.search).get('t') || '';
+  if (!t) return;
+  fetch('/api/apply?t=' + encodeURIComponent(t))
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d && d.ok) {
+        document.getElementById('gate').style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
