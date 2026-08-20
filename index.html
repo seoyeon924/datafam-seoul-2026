@@ -207,8 +207,11 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 /* 전체 워크플로우 지도 */
 .flow3{display:flex;align-items:stretch;gap:14px;margin-top:30px}
 .flow3 .fcol{flex:1;display:flex;flex-direction:column}
-.flow3 .fstage{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-.01em;
+.flow3 .fstage{display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-.01em;
   color:var(--navy);text-align:center;margin-bottom:12px}
+.flow3 .fstage em{flex:0 0 auto;font-style:normal;width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
 .flow3 .ficon{width:52px;height:52px;border-radius:50%;background:#fff;margin-bottom:14px;
   display:flex;align-items:center;justify-content:center;flex:0 0 auto;
   border:1px solid rgba(2,42,192,.12)}
@@ -436,6 +439,11 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .idea b{display:block;font-family:var(--display);font-weight:600;font-size:16.5px;color:var(--navy);margin-bottom:5px}
 .idea span{font-size:13px;line-height:1.5;color:var(--navy);opacity:.78}
 .idea.hl{background:var(--card)}
+.idea.warn{background:#FEF6F4;border-color:#F0CFC6}
+.idea.warn .ibadge{background:#FBE7E1}
+.idea.warn .ibadge svg{stroke:#C4694F}
+.idea.warn b{color:#9E4B33}
+.idea.warn span{color:#8A5744;opacity:.92}
 
 /* 도구 갤러리 */
 .ucgrid.dense .uc img{height:92px}
@@ -480,15 +488,15 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 .tcl.mut .tchead{border-right-color:#C7D3E2}
 .tcl.mut .tchead b{color:#7C8AA0}
 .tcc.mut{background:#EDF2F8;color:#7C8AA0}
-.tcl .tchead b{font-size:19px}
+.tcl .tchead b{font-size:18px;white-space:nowrap}
 .tcl+.tcl{margin-top:13px}
-.tchead{flex:0 0 148px;display:flex;align-items:center;justify-content:center;gap:12px;padding-right:6px;
+.tchead{flex:0 0 182px;display:flex;align-items:center;justify-content:center;gap:11px;padding-right:10px;
   border-right:1px dashed rgba(2,42,192,.18)}
 .tchead .tcic{width:44px;height:44px;border-radius:50%;background:var(--card);flex:0 0 auto;
   display:flex;align-items:center;justify-content:center}
 .tchead .tcic svg{width:22px;height:22px;fill:none;stroke:#6B7F9E;stroke-width:1.6;
   stroke-linecap:round;stroke-linejoin:round}
-.tchead b{font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--navy);line-height:1.3}
+.tchead b{font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--navy);line-height:1.3;white-space:nowrap}
 .tcsteps{flex:1;display:flex;align-items:center;gap:8px}
 .tcc{flex:1;background:var(--card);border-radius:11px;padding:13px 8px;text-align:center;
   font-size:14px;line-height:1.35;color:var(--navy)}
@@ -497,7 +505,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
 .tca svg{width:15px;height:15px;fill:none;stroke:#7FA9D9;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .tcsum{margin-top:22px;background:#fff;border:1px solid rgba(2,42,192,.13);border-radius:18px;
   padding:14px 18px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
-.tcsum .tct{flex:0 0 168px;display:flex;align-items:center;gap:12px;
+.tcsum .tct{flex:0 0 182px;display:flex;align-items:center;gap:12px;
   font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--navy);
   border-right:1px dashed rgba(2,42,192,.18)}
 .tcsum .tct:before{content:'';width:44px;height:44px;border-radius:50%;background:var(--card);
@@ -768,7 +776,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
     </div>
     <div class="flow3" style="">
       <div class="fcol">
-        <div class="fstage">데이터 분석 · 시각화 기획</div>
+        <div class="fstage"><em>1</em>데이터 분석 · 시각화 기획</div>
         <div class="fcard" style="min-height:210px">
           <div class="ficon"><img src="assets/claude_logo.svg" alt=""></div>
           <div class="fbody" style="font-size:16px">구조 파악 · EDA<br>KPI 초안 · 대시보드 시안</div>
@@ -777,7 +785,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       </div>
       <div class="farrow">›</div>
       <div class="fcol">
-        <div class="fstage">Tableau에 붙이기</div>
+        <div class="fstage"><em>2</em>Tableau에 붙이기</div>
         <div class="fcard" style="min-height:210px;border:1.5px solid var(--accent);background:#fff">
           <div class="ficon" style="background:var(--card)"><img src="assets/tableau_logo.svg" alt=""></div>
           <div class="fbody" style="font-size:16px">원본 · 대시보드 연결<br>점검 · 질의 · 확장</div>
@@ -786,7 +794,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       </div>
       <div class="farrow">›</div>
       <div class="fcol">
-        <div class="fstage">판단 · 배포</div>
+        <div class="fstage"><em>3</em>판단 · 배포</div>
         <div class="fcard" style="min-height:210px">
           <div class="ficon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.7"/><path d="M4.8 20.2a7.2 7.2 0 0114.4 0"/></svg></div>
           <div class="fbody" style="font-size:16px">검증 · 해석<br>공유 · 구독</div>
@@ -836,7 +844,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
       <p class="sub">STEP 7 – 11 · 시각화 설계부터 보고서까지</p>
     </div>
     <div class="psteps"><div class="pstep"><span class="pn">7</span><div><b>차트 유형 선택</b><i>날짜 필터 · KPI 카드(추세 + 증감) · 추세 라인 · 비교 막대 · 액션 아이템 · 데이터 표</i></div></div><div class="pstep"><span class="pn">8</span><div><b>색상 선택</b><i>메인 · 서브 컬러 · 의미 일관성 · 디자인 토큰 반영</i></div></div><div class="pstep"><span class="pn">9</span><div><b>와이어프레임 기획</b><i>데이터 스토리텔링 · 배치 · 드릴다운 · 필터 · 질문형 제목</i></div></div><div class="pstep"><span class="pn">10</span><div><b>와이어프레임 생성</b><i>임원 · 실무 · 디자이너 관점 피드백 → 탭별 시안 → 반복 개선</i></div></div><div class="pstep"><span class="pn">11</span><div><b>원페이지 보고서</b><i>컨텍스트 · 문제와 기회 · 액션 · 근거 수치 · 요약 3줄</i></div></div></div>
-    <p style="font-family:var(--display);font-weight:600;font-size:17px;color:var(--navy);opacity:.75">프로젝트마다 11단계를 순서대로 수동 입력</p>
+    <p style="margin-top:26px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--navy);opacity:.75">프로젝트마다 11단계를 순서대로 수동 입력</p>
   </div>
   <div class="footer">Prompt to Dashboard 세션 · 실습 프롬프트 원문</div>
 </section>
@@ -848,7 +856,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
     <div class="titleblock" style="margin-bottom:0">
       <h2 class="head">2.2 프롬프트를 반복 사용할 때 생기는 한계</h2>
     </div>
-    <div class="ideas" style="grid-template-columns:repeat(4,1fr);"><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M16.4 3l3.6 3.6-3.6 3.6M4 11.2V9.6a3 3 0 013-3h13M7.6 21L4 17.4 7.6 13.8M20 12.8v1.6a3 3 0 01-3 3H4"/></svg></span><b>반복 입력</b><span>프로젝트마다 처음부터 다시</span></div><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M4.2 5h15.6v10.2H9.6L5.6 19v-3.8H4.2z"/></svg></span><b>맥락 종속</b><span>앞 답변이 길어지면 순서 누락</span></div><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4v7M8.4 6.6l3.6-3.2 3.6 3.2M4.6 13.4l3.4 7M19.4 13.4l-3.4 7M4.6 13.4h14.8"/></svg></span><b>산출물 분산</b><span>대화 안에 흩어져 재사용 불가</span></div><div class="idea"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 4.5v15M5.5 8.5h13M8 8.5l-2.4 4.6a2.8 2.8 0 004.8 0zM16 8.5l-2.4 4.6a2.8 2.8 0 004.8 0z"/></svg></span><b>기준 불일치</b><span>사람마다 다른 지표 · 차트 기준</span></div></div>
+    <div class="ideas" style="grid-template-columns:repeat(4,1fr);"><div class="idea warn"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M16.4 3l3.6 3.6-3.6 3.6M4 11.2V9.6a3 3 0 013-3h13M7.6 21L4 17.4 7.6 13.8M20 12.8v1.6a3 3 0 01-3 3H4"/></svg></span><b>반복 입력</b><span>프로젝트마다 처음부터 다시</span></div><div class="idea warn"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M4.2 5h15.6v10.2H9.6L5.6 19v-3.8H4.2z"/></svg></span><b>맥락 종속</b><span>앞 답변이 길어지면 순서 누락</span></div><div class="idea warn"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 3.4v7M8.4 6.6l3.6-3.2 3.6 3.2M4.6 13.4l3.4 7M19.4 13.4l-3.4 7M4.6 13.4h14.8"/></svg></span><b>산출물 분산</b><span>대화 안에 흩어져 재사용 불가</span></div><div class="idea warn"><span class="ibadge"><svg viewBox="0 0 24 24"><path d="M12 4.5v15M5.5 8.5h13M8 8.5l-2.4 4.6a2.8 2.8 0 004.8 0zM16 8.5l-2.4 4.6a2.8 2.8 0 004.8 0z"/></svg></span><b>기준 불일치</b><span>사람마다 다른 지표 · 차트 기준</span></div></div>
   </div>
   <div class="footer">DataFam Seoul 2026</div>
 </section>
