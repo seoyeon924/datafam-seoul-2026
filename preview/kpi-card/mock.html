@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KPI Card</title>
+
+  <!--
+    Tableau Extensions API. Viz extensions require API 1.11+; the "1.latest"
+    library satisfies that. Hosted alongside this file (Tableau does NOT publish
+    it on a CDN), so it ships with the extension on GitHub Pages too.
+  -->
+  <script>
+/* Tableau Extensions API 목 · 실제 확장 코드를 브라우저에서 그대로 돌리기 위한 대역 */
+(function(){
+  var q=new URLSearchParams(location.search);
+  var SC={
+    revenue:{field:'Sales', prefix:'$', title:'', months:['2025-09',9.1,'2025-10',11.4,'2025-11',10.2,'2025-12',14.8,'2026-01',13.1,'2026-02',15.9,'2026-03',18.2,'2026-04',17.1,'2026-05',20.4,'2026-06',22.9,'2026-07',24.1,'2026-08',26.7]},
+    users:{field:'Active Users', prefix:'', suffix:'', title:'Weekly Active Users',
+      months:['2026-03',3.1,'2026-04',3.6,'2026-05',3.4,'2026-06',4.2,'2026-07',4.9,'2026-08',4.4]},
+    down:{field:'Conversion', prefix:'', suffix:'%', title:'Conversion Rate', abbreviate:'false', decimals:'2',
+      months:['2026-03',4.4,'2026-04',4.1,'2026-05',3.9,'2026-06',3.6,'2026-07',3.3,'2026-08',2.9]}
+  };
+  var s=SC[q.get('sc')||'revenue']||SC.revenue;
+  var over={};
+  ['title','prefix','suffix','decimals','abbreviate','bgColor','textColor','sparkColor','showSpark','showDelta','captionPrefix','aggregation']
+    .forEach(function(k){ if(q.get(k)!==null) over[k]=q.get(k); });
+  if(s.title) over.title=over.title||s.title;
+  if(s.prefix!==undefined) over.prefix=over.prefix!==undefined?over.prefix:s.prefix;
+  if(s.suffix!==undefined) over.suffix=over.suffix!==undefined?over.suffix:s.suffix;
+  if(s.abbreviate) over.abbreviate=over.abbreviate||s.abbreviate;
+  if(s.decimals) over.decimals=over.decimals||s.decimals;
+  over.aggregation=over.aggregation||'latest';
+
+  var rows=[], i;
+  for(i=0;i<s.months.length;i+=2){
+    var d=new Date(s.months[i]+'-01T00:00:00Z');
+    rows.push([{value:s.months[i], nativeValue:d, formattedValue:s.months[i]},
+               {value:s.months[i+1], nativeValue:s.months[i+1], formattedValue:String(s.months[i+1])}]);
+  }
+  var columns=[{fieldName:'Order Date', dataType:'date', index:0},
+               {fieldName:s.field, dataType:'float', index:1}];
+
+  window.tableau={
+    DialogStyle:{Modal:'modal'},
+    TableauEventType:{SummaryDataChanged:'summary-data-changed', SettingsChanged:'settings-changed'},
+    extensions:{
+      settings:{ get:function(k){ return over[k]; }, set:function(){}, saveAsync:function(){return Promise.resolve();},
+                 getAll:function(){return over;}, addEventListener:function(){} },
+      ui:{ displayDialogAsync:function(){ return Promise.reject(new Error('preview')); }, closeDialog:function(){} },
+      worksheetContent:{ worksheet:{
+        name:'Preview',
+        addEventListener:function(){},
+        getVisualSpecificationAsync:function(){
+          return Promise.resolve({ activeMarksSpecificationIndex:0, marksSpecifications:[{ encodings:[
+            {id:'measure', field:{name:s.field}}, {id:'date', field:{name:'Order Date'}} ]}]});
+        },
+        getSummaryDataReaderAsync:function(){
+          return Promise.resolve({ pageCount:1,
+            getPageAsync:function(){ return Promise.resolve({columns:columns, data:rows}); },
+            releaseAsync:function(){ return Promise.resolve(); } });
+        }
+      }}
+    }
+  };
+  tableau.extensions.initializeAsync=function(){ return Promise.resolve(); };
+  tableau.extensions.initializeDialogAsync=function(){ return Promise.resolve(''); };
+})();
+</script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ---------- KPI card (viz mode) ---------- */
+    .kpi-card {
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+
+      background: #161E46;   /* default; overridden by settings */
+      color: #F4F2EC;        /* default; overridden by settings */
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .kpi-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .kpi-value {
+      font-size: clamp(2rem, 12vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .kpi-delta {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .kpi-spark {
+      width: 78%;
+      max-width: 280px;
+      height: 34px;
+      margin-top: 0.1rem;
+    }
+    .kpi-spark .spark-svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .kpi-caption {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .kpi-message {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.85;
+      max-width: 24ch;
+    }
+
+    /* Gear button to open configuration (viz mode only). */
+    #gear {
+      position: fixed;
+      top: 8px;
+      right: 8px;
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      color: inherit;
+      font-size: 15px;
+      line-height: 28px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    body:hover #gear { opacity: 0.7; }
+    #gear:hover { opacity: 1; }
+
+    /* Version badge (viz mode only), bottom-left, inherits the card text color. */
+    #version {
+      position: fixed;
+      left: 10px;
+      bottom: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: inherit;
+      opacity: 0.4;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ---------- Configuration dialog (?dialog=1) ---------- */
+    .cfg {
+      box-sizing: border-box;
+      padding: 16px 18px 80px;
+      color: #1c2433;
+      font-size: 13px;
+    }
+    .cfg h2 {
+      font-size: 15px;
+      margin: 0 0 4px;
+    }
+    .cfg .sub { color: #6b7280; margin: 0 0 14px; }
+    .cfg fieldset {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 10px 12px 12px;
+      margin: 0 0 12px;
+    }
+    .cfg legend {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 11px;
+      color: #374151;
+      padding: 0 6px;
+    }
+    .cfg .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 8px 0;
+    }
+    .cfg .row label { flex: 1; }
+    .cfg input[type="text"],
+    .cfg input[type="number"],
+    .cfg select {
+      flex: 1;
+      min-width: 0;
+      padding: 5px 7px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font: inherit;
+    }
+    .cfg input[type="number"] { max-width: 70px; }
+    .cfg input[type="color"] {
+      width: 42px;
+      height: 26px;
+      padding: 0;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: none;
+    }
+    .cfg .actions {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      display: flex;
+      gap: 8px;
+      padding: 12px 18px;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+    }
+    .cfg .actions button {
+      font: inherit;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .cfg .primary { background: #161E46; color: #fff; border: none; }
+    .cfg .ghost { background: #fff; color: #374151; border: 1px solid #d1d5db; }
+    .cfg .spacer { flex: 1; }
+  </style>
+</head>
+<body>
+  <!-- Filled in by JS for whichever mode we're in. -->
+  <div id="root"></div>
+
+  <script>
+    "use strict";
+
+    // Bump this when index.html changes; shown as a badge on the card and should
+    // match extension-version in super-kpi-card.trex.
+    var VERSION = "1.2.0";
+
+    // These ids MUST match the <encoding id="..."> values in the .trex.
+    var MEASURE_ENCODING_ID = "measure";
+    var DATE_ENCODING_ID = "date";
+
+    // All configurable settings, with their defaults. Settings persist in the
+    // workbook as strings via tableau.extensions.settings.
+    var DEFAULTS = {
+      title: "",            // custom card title; blank = use the field name
+      aggregation: "sum",   // sum | avg | min | max | count | latest
+      periodGrain: "auto",  // auto | day | week | month | quarter | year — buckets the date for the sparkline & "latest"
+      currentOffset: "0",   // periods back from newest that count as the "current" period (0 = newest)
+      priorOffset: "1",     // periods back from the current period to compare against for the delta
+      prefix: "$",          // text before the number
+      suffix: "",           // text after the number
+      decimals: "1",        // decimal places
+      abbreviate: "true",   // shorten large numbers (48,200 -> 48.2K)
+      captionPrefix: "As of ",
+      showDelta: "true",    // show change vs previous period (needs a date + "latest")
+      showSpark: "true",    // show a sparkline of the measure over the date field
+      bgColor: "#161E46",
+      textColor: "#F4F2EC",
+      upColor: "#3FB950",   // positive change
+      downColor: "#F85149", // negative change
+      sparkColor: "#6AA0FF" // sparkline stroke / fill
+    };
+
+    var root = document.getElementById("root");
+
+    /** Read one setting as a string, falling back to its default. */
+    function raw(key) {
+      var v = tableau.extensions.settings.get(key);
+      return (v === undefined || v === null) ? DEFAULTS[key] : v;
+    }
+
+    /** Read all settings, coerced to the right types. */
+    function getConfig() {
+      return {
+        title: raw("title"),
+        aggregation: raw("aggregation"),
+        periodGrain: raw("periodGrain"),
+        currentOffset: Math.max(0, parseInt(raw("currentOffset"), 10) || 0),
+        priorOffset: Math.max(1, parseInt(raw("priorOffset"), 10) || 1),
+        prefix: raw("prefix"),
+        suffix: raw("suffix"),
+        decimals: parseInt(raw("decimals"), 10) || 0,
+        abbreviate: raw("abbreviate") === "true",
+        captionPrefix: raw("captionPrefix"),
+        showDelta: raw("showDelta") === "true",
+        showSpark: raw("showSpark") === "true",
+        bgColor: raw("bgColor"),
+        textColor: raw("textColor"),
+        upColor: raw("upColor"),
+        downColor: raw("downColor"),
+        sparkColor: raw("sparkColor")
+      };
+    }
+
+    /* =========================================================
+       VIZ MODE
+       ========================================================= */
+
+    /** Format a number per the config: prefix, abbreviation, decimals, suffix. */
+    function formatValue(value, cfg) {
+      if (value === null || value === undefined || isNaN(value)) {
+        return "—";
+      }
+      var sign = value < 0 ? "-" : "";
+      var abs = Math.abs(value);
+      var body;
+
+      if (cfg.abbreviate && abs >= 1000) {
+        var units = [
+          [1e12, "T"], [1e9, "B"], [1e6, "M"], [1e3, "K"]
+        ];
+        for (var i = 0; i < units.length; i++) {
+          if (abs >= units[i][0]) {
+            body = (abs / units[i][0]).toFixed(cfg.decimals) + units[i][1];
+            break;
+          }
+        }
+      } else {
+        body = abs.toLocaleString(undefined, {
+          minimumFractionDigits: cfg.decimals,
+          maximumFractionDigits: cfg.decimals
+        });
+      }
+      return sign + cfg.prefix + body + cfg.suffix;
+    }
+
+    /** Build a tiny inline SVG sparkline from an ordered array of numbers.
+        viewBox is stretched to fill the container (preserveAspectRatio="none");
+        the line keeps a constant 2px weight via vector-effect, and the faint
+        area fill underneath is unaffected by the non-uniform scaling. */
+    function sparklineSvg(values, color) {
+      var n = values.length;
+      var W = 100, H = 30, pad = 3;
+      var min = Math.min.apply(null, values);
+      var max = Math.max.apply(null, values);
+      var span = (max - min) || 1;
+      var pts = values.map(function (v, i) {
+        var x = (n === 1) ? W / 2 : (i / (n - 1)) * W;
+        var y = H - pad - ((v - min) / span) * (H - pad * 2);
+        return x.toFixed(2) + "," + y.toFixed(2);
+      });
+      var firstX = pts[0].split(",")[0];
+      var lastX = pts[pts.length - 1].split(",")[0];
+      var area = firstX + "," + H + " " + pts.join(" ") + " " + lastX + "," + H;
+      return '<svg class="spark-svg" viewBox="0 0 ' + W + ' ' + H + '" ' +
+        'preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+          '<polygon points="' + area + '" fill="' + color + '" fill-opacity="0.18" stroke="none"/>' +
+          '<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + color + '" ' +
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ' +
+            'vector-effect="non-scaling-stroke"/>' +
+        '</svg>';
+    }
+
+    /** Combine a list of numbers per the chosen aggregation. */
+    function aggregate(values, type) {
+      if (values.length === 0) {
+        return type === "count" ? 0 : null;
+      }
+      switch (type) {
+        case "avg":
+          return values.reduce(function (a, b) { return a + b; }, 0) / values.length;
+        case "min":
+          return Math.min.apply(null, values);
+        case "max":
+          return Math.max.apply(null, values);
+        case "count":
+          return values.length;
+        case "sum":
+        case "latest": // "latest" is resolved before we get here when a date exists
+        default:
+          return values.reduce(function (a, b) { return a + b; }, 0);
+      }
+    }
+
+    function applyTheme(cfg) {
+      // Keep the area behind the rounded card transparent so its corners reveal
+      // the Tableau zone behind it — not a second filled rectangle whose color
+      // leaks out past the card's rounded corners.
+      root.style.background = "transparent";
+      root.style.color = cfg.textColor;
+    }
+
+    /** Paint the card. delta is {pct, up} or null. caption is a string or null.
+        series is an ordered array of period values (for the sparkline) or null. */
+    function renderCard(cfg, label, value, caption, delta, series) {
+      var hasSpark = cfg.showSpark && series && series.length >= 2;
+      var html =
+        '<div class="kpi-card">' +
+          '<div class="kpi-label"></div>' +
+          '<div class="kpi-value"></div>';
+      if (hasSpark) {
+        html += '<div class="kpi-spark"></div>';
+      }
+      if (delta) {
+        html += '<div class="kpi-delta"></div>';
+      }
+      if (caption) {
+        html += '<div class="kpi-caption"></div>';
+      }
+      html += '</div><button id="gear" title="Configure" aria-label="Configure">&#9881;</button>' +
+        '<div id="version">v' + VERSION + '</div>';
+      root.innerHTML = html;
+
+      var card = root.querySelector(".kpi-card");
+      card.style.background = cfg.bgColor;
+      card.style.color = cfg.textColor;
+
+      root.querySelector(".kpi-label").textContent = cfg.title || label;
+      root.querySelector(".kpi-value").textContent = formatValue(value, cfg);
+
+      if (hasSpark) {
+        root.querySelector(".kpi-spark").innerHTML = sparklineSvg(series, cfg.sparkColor);
+      }
+      if (delta) {
+        var d = root.querySelector(".kpi-delta");
+        var arrow = delta.up ? "▲" : "▼";
+        d.textContent = arrow + " " + Math.abs(delta.pct).toFixed(1) + "%";
+        d.style.color = delta.up ? cfg.upColor : cfg.downColor;
+      }
+      if (caption) {
+        root.querySelector(".kpi-caption").textContent = caption;
+      }
+      wireGear();
+    }
+
+    function renderMessage(cfg, text) {
+      root.innerHTML =
+        '<div class="kpi-card"><div class="kpi-message"></div></div>' +
+        '<button id="gear" title="Configure" aria-label="Configure">&#9881;</button>' +
+        '<div id="version">v' + VERSION + '</div>';
+      var card = root.querySelector(".kpi-card");
+      card.style.background = cfg.bgColor;
+      card.style.color = cfg.textColor;
+      root.querySelector(".kpi-message").textContent = text;
+      wireGear();
+    }
+
+    function wireGear() {
+      var gear = document.getElementById("gear");
+      if (gear) { gear.onclick = openConfigDialog; }
+    }
+
+    /** Read the active Marks card once and return the field objects assigned to
+        our encoding tiles. encoding.field is a field object whose .name matches
+        the column key in summary data (the official viz-extension idiom). */
+    async function getEncodingFields(worksheet) {
+      var spec = await worksheet.getVisualSpecificationAsync();
+      var result = {};
+      if (spec.activeMarksSpecificationIndex < 0) { return result; }
+      var marks = spec.marksSpecifications[spec.activeMarksSpecificationIndex];
+      if (!marks) { return result; }
+      for (var i = 0; i < marks.encodings.length; i++) {
+        var enc = marks.encodings[i];
+        if (enc.field) { result[enc.id] = enc.field; }
+      }
+      return result;
+    }
+
+    /** Read all summary-data rows via the paged reader (matches the official
+        sample and avoids the row caps of the legacy getSummaryDataAsync). */
+    async function readDataTable(worksheet) {
+      var reader = await worksheet.getSummaryDataReaderAsync(undefined, { ignoreSelection: true });
+      var columns = null;
+      var rows = [];
+      try {
+        for (var p = 0; p < reader.pageCount; p++) {
+          var page = await reader.getPageAsync(p);
+          if (!columns) { columns = page.columns; }
+          rows = rows.concat(page.data);
+        }
+      } finally {
+        await reader.releaseAsync();
+      }
+      return { columns: columns || [], data: rows };
+    }
+
+    function findColumn(columns, field) {
+      if (!field) { return null; }
+      for (var c = 0; c < columns.length; c++) {
+        if (columns[c].fieldName === field.name) { return columns[c]; }
+      }
+      return null;
+    }
+
+    function firstNumericColumn(columns) {
+      for (var c = 0; c < columns.length; c++) {
+        var t = columns[c].dataType;
+        if (t === "float" || t === "int") { return columns[c]; }
+      }
+      return null;
+    }
+
+    function dateTime(cell) {
+      if (cell.nativeValue instanceof Date) { return cell.nativeValue.getTime(); }
+      return Date.parse(cell.value);
+    }
+
+    /** Snap a timestamp to the start of its period for the chosen grain, so rows
+        in the same day/week/month/quarter/year collapse into one bucket. "auto"
+        keeps each distinct date value as-is (the date's native granularity). */
+    function truncateToGrain(ms, grain) {
+      var d = new Date(ms);
+      switch (grain) {
+        case "day":
+          return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+        case "week": {
+          var w = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+          w.setDate(w.getDate() - w.getDay()); // back up to Sunday
+          return w.getTime();
+        }
+        case "month":
+          return new Date(d.getFullYear(), d.getMonth(), 1).getTime();
+        case "quarter":
+          return new Date(d.getFullYear(), Math.floor(d.getMonth() / 3) * 3, 1).getTime();
+        case "year":
+          return new Date(d.getFullYear(), 0, 1).getTime();
+        default:
+          return ms; // auto
+      }
+    }
+
+    /** Human label for a bucket. "auto" reuses Tableau's own formatted value so it
+        respects the field's date format on the viz. */
+    function grainLabel(ms, grain, fallback) {
+      var d = new Date(ms);
+      switch (grain) {
+        case "day":
+          return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+        case "week":
+          return "Week of " + d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+        case "month":
+          return d.toLocaleDateString(undefined, { year: "numeric", month: "short" });
+        case "quarter":
+          return "Q" + (Math.floor(d.getMonth() / 3) + 1) + " " + d.getFullYear();
+        case "year":
+          return String(d.getFullYear());
+        default:
+          return fallback; // auto
+      }
+    }
+
+    async function updateKpi() {
+      var cfg = getConfig();
+      applyTheme(cfg);
+
+      var worksheet = tableau.extensions.worksheetContent.worksheet;
+
+      var encFields = await getEncodingFields(worksheet);
+      var measureField = encFields[MEASURE_ENCODING_ID];
+      if (!measureField) {
+        renderMessage(cfg, "Add a measure to this card.");
+        return;
+      }
+      var dateField = encFields[DATE_ENCODING_ID];
+
+      var dataTable = await readDataTable(worksheet);
+      var columns = dataTable.columns;
+      var rows = dataTable.data;
+
+      var measureCol = findColumn(columns, measureField) || firstNumericColumn(columns);
+      if (!measureCol) {
+        renderMessage(cfg, "Add a measure to this card.");
+        return;
+      }
+      var dateCol = findColumn(columns, dateField);
+      var mIdx = measureCol.index;
+
+      // Collect all numeric measure values (for non-date aggregations).
+      var values = [];
+      for (var r = 0; r < rows.length; r++) {
+        var v = rows[r][mIdx].nativeValue;
+        if (typeof v === "number" && !isNaN(v)) { values.push(v); }
+      }
+
+      // --- No date: aggregate across all rows. ---
+      if (!dateCol) {
+        renderCard(cfg, measureField.name, aggregate(values, cfg.aggregation), null, null);
+        return;
+      }
+
+      // --- With a date: bucket rows by the chosen grain, oldest -> newest. ---
+      var dIdx = dateCol.index;
+      var grain = cfg.periodGrain;
+      var sums = {};
+      for (var i = 0; i < rows.length; i++) {
+        var t = dateTime(rows[i][dIdx]);
+        if (isNaN(t)) { continue; }
+        var key = truncateToGrain(t, grain);
+        var mv = rows[i][mIdx].nativeValue;
+        if (!sums[key]) {
+          sums[key] = { value: 0, label: grainLabel(key, grain, rows[i][dIdx].formattedValue) };
+        }
+        sums[key].value += (typeof mv === "number" && !isNaN(mv)) ? mv : 0;
+      }
+      var times = Object.keys(sums).map(Number).sort(function (a, b) { return a - b; });
+
+      if (times.length === 0) {
+        renderCard(cfg, measureField.name, aggregate(values, cfg.aggregation), null, null, null);
+        return;
+      }
+
+      // The per-period series (oldest -> newest) drives the sparkline.
+      var seriesVals = times.map(function (t) { return sums[t].value; });
+
+      // "latest" shows a chosen period (current) and compares it to an earlier one (prior).
+      if (cfg.aggregation === "latest") {
+        // Current = newest minus currentOffset; prior = current minus priorOffset.
+        var curIdx = times.length - 1 - cfg.currentOffset;
+        if (curIdx < 0) { curIdx = 0; }
+        var current = sums[times[curIdx]];
+        var caption = cfg.captionPrefix + current.label;
+
+        var delta = null;
+        if (cfg.showDelta) {
+          var priorIdx = curIdx - cfg.priorOffset;
+          if (priorIdx >= 0) {
+            var prior = sums[times[priorIdx]].value;
+            if (prior !== 0) {
+              var pct = ((current.value - prior) / Math.abs(prior)) * 100;
+              delta = { pct: pct, up: pct >= 0 };
+            }
+          }
+        }
+        renderCard(cfg, measureField.name, current.value, caption, delta, seriesVals);
+        return;
+      }
+
+      // Other aggregations with a date: value is aggregated across all rows, but
+      // the sparkline still shows the per-period trend at the chosen grain.
+      renderCard(cfg, measureField.name, aggregate(values, cfg.aggregation), null, null, seriesVals);
+    }
+
+    /** Open the config dialog (this same page, in dialog mode). */
+    function openConfigDialog() {
+      var url = window.location.origin + window.location.pathname + "?dialog=1";
+      tableau.extensions.ui
+        .displayDialogAsync(url, "", { width: 360, height: 620, dialogStyle: tableau.DialogStyle.Modal })
+        .then(function () { updateKpi(); })
+        .catch(function (error) {
+          if (!error || error.errorCode !== tableau.ErrorCodes.DialogClosedByUser) {
+            console.error(error);
+          }
+        });
+    }
+
+    function initViz() {
+      var worksheet = tableau.extensions.worksheetContent.worksheet;
+      // Re-render on data changes...
+      worksheet.addEventListener(
+        tableau.TableauEventType.SummaryDataChanged,
+        function () { updateKpi().catch(showError); }
+      );
+      // ...and whenever settings change (saved from the dialog).
+      tableau.extensions.settings.addEventListener(
+        tableau.TableauEventType.SettingsChanged,
+        function () { updateKpi().catch(showError); }
+      );
+      return updateKpi();
+    }
+
+    function showError(err) {
+      renderMessage(getConfig(), "Error: " + err);
+    }
+
+    /* =========================================================
+       DIALOG MODE (?dialog=1)
+       ========================================================= */
+
+    function dialogField(labelText, inputHtml) {
+      return '<div class="row"><label>' + labelText + '</label>' + inputHtml + '</div>';
+    }
+
+    function buildDialog() {
+      var aggOptions = [
+        ["sum", "Sum"], ["avg", "Average"], ["min", "Minimum"],
+        ["max", "Maximum"], ["count", "Count"], ["latest", "Latest period (needs date)"]
+      ].map(function (o) {
+        var sel = (raw("aggregation") === o[0]) ? " selected" : "";
+        return '<option value="' + o[0] + '"' + sel + '>' + o[1] + "</option>";
+      }).join("");
+
+      var grainOptions = [
+        ["auto", "Auto (date's own grain)"], ["day", "Day"], ["week", "Week"],
+        ["month", "Month"], ["quarter", "Quarter"], ["year", "Year"]
+      ].map(function (o) {
+        var sel = (raw("periodGrain") === o[0]) ? " selected" : "";
+        return '<option value="' + o[0] + '"' + sel + '>' + o[1] + "</option>";
+      }).join("");
+
+      function txt(key) {
+        return '<input type="text" id="cfg-' + key + '" value="' + escapeAttr(raw(key)) + '">';
+      }
+      function color(key) {
+        return '<input type="color" id="cfg-' + key + '" value="' + raw(key) + '">';
+      }
+      function check(key) {
+        return '<input type="checkbox" id="cfg-' + key + '"' + (raw(key) === "true" ? " checked" : "") + ">";
+      }
+
+      root.innerHTML =
+        '<div class="cfg">' +
+          '<h2>KPI Card settings</h2>' +
+          '<p class="sub">Changes apply when you click Save.</p>' +
+
+          '<fieldset><legend>Value</legend>' +
+            dialogField("Aggregation", '<select id="cfg-aggregation">' + aggOptions + "</select>") +
+            dialogField("Prefix", txt("prefix")) +
+            dialogField("Suffix", txt("suffix")) +
+            dialogField("Decimal places", '<input type="number" id="cfg-decimals" min="0" max="4" value="' + (parseInt(raw("decimals"), 10) || 0) + '">') +
+            dialogField("Abbreviate large numbers", check("abbreviate")) +
+          "</fieldset>" +
+
+          '<fieldset><legend>Date &amp; periods</legend>' +
+            dialogField("Sparkline / period grain", '<select id="cfg-periodGrain">' + grainOptions + "</select>") +
+            dialogField("Current period (0 = newest)", '<input type="number" id="cfg-currentOffset" min="0" value="' + (parseInt(raw("currentOffset"), 10) || 0) + '">') +
+            dialogField("Compare vs (periods back)", '<input type="number" id="cfg-priorOffset" min="1" value="' + (parseInt(raw("priorOffset"), 10) || 1) + '">') +
+            '<p class="sub" style="margin:6px 0 0">Current / compare apply when Aggregation is “Latest period”.</p>' +
+          "</fieldset>" +
+
+          '<fieldset><legend>Labels</legend>' +
+            dialogField("Title (blank = field name)", txt("title")) +
+            dialogField("Date caption prefix", txt("captionPrefix")) +
+            dialogField("Show change vs previous period", check("showDelta")) +
+            dialogField("Show sparkline (needs date)", check("showSpark")) +
+          "</fieldset>" +
+
+          '<fieldset><legend>Colors</legend>' +
+            dialogField("Card background", color("bgColor")) +
+            dialogField("Text", color("textColor")) +
+            dialogField("Positive change", color("upColor")) +
+            dialogField("Negative change", color("downColor")) +
+            dialogField("Sparkline", color("sparkColor")) +
+          "</fieldset>" +
+
+          '<div class="actions">' +
+            '<button class="ghost" id="cfg-reset" type="button">Reset</button>' +
+            '<span class="spacer"></span>' +
+            '<button class="ghost" id="cfg-cancel" type="button">Cancel</button>' +
+            '<button class="primary" id="cfg-save" type="button">Save</button>' +
+          "</div>" +
+        "</div>";
+
+      document.getElementById("cfg-save").onclick = saveDialog;
+      document.getElementById("cfg-cancel").onclick = function () {
+        tableau.extensions.ui.closeDialog("");
+      };
+      document.getElementById("cfg-reset").onclick = resetDialogToDefaults;
+    }
+
+    function escapeAttr(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+    }
+
+    function byId(id) { return document.getElementById(id); }
+
+    function resetDialogToDefaults() {
+      byId("cfg-aggregation").value = DEFAULTS.aggregation;
+      byId("cfg-periodGrain").value = DEFAULTS.periodGrain;
+      byId("cfg-currentOffset").value = DEFAULTS.currentOffset;
+      byId("cfg-priorOffset").value = DEFAULTS.priorOffset;
+      byId("cfg-prefix").value = DEFAULTS.prefix;
+      byId("cfg-suffix").value = DEFAULTS.suffix;
+      byId("cfg-decimals").value = DEFAULTS.decimals;
+      byId("cfg-abbreviate").checked = DEFAULTS.abbreviate === "true";
+      byId("cfg-title").value = DEFAULTS.title;
+      byId("cfg-captionPrefix").value = DEFAULTS.captionPrefix;
+      byId("cfg-showDelta").checked = DEFAULTS.showDelta === "true";
+      byId("cfg-showSpark").checked = DEFAULTS.showSpark === "true";
+      byId("cfg-bgColor").value = DEFAULTS.bgColor;
+      byId("cfg-textColor").value = DEFAULTS.textColor;
+      byId("cfg-upColor").value = DEFAULTS.upColor;
+      byId("cfg-downColor").value = DEFAULTS.downColor;
+      byId("cfg-sparkColor").value = DEFAULTS.sparkColor;
+    }
+
+    function saveDialog() {
+      var s = tableau.extensions.settings;
+      s.set("aggregation", byId("cfg-aggregation").value);
+      s.set("periodGrain", byId("cfg-periodGrain").value);
+      s.set("currentOffset", String(Math.max(0, parseInt(byId("cfg-currentOffset").value, 10) || 0)));
+      s.set("priorOffset", String(Math.max(1, parseInt(byId("cfg-priorOffset").value, 10) || 1)));
+      s.set("prefix", byId("cfg-prefix").value);
+      s.set("suffix", byId("cfg-suffix").value);
+      s.set("decimals", String(parseInt(byId("cfg-decimals").value, 10) || 0));
+      s.set("abbreviate", byId("cfg-abbreviate").checked ? "true" : "false");
+      s.set("title", byId("cfg-title").value);
+      s.set("captionPrefix", byId("cfg-captionPrefix").value);
+      s.set("showDelta", byId("cfg-showDelta").checked ? "true" : "false");
+      s.set("showSpark", byId("cfg-showSpark").checked ? "true" : "false");
+      s.set("bgColor", byId("cfg-bgColor").value);
+      s.set("textColor", byId("cfg-textColor").value);
+      s.set("upColor", byId("cfg-upColor").value);
+      s.set("downColor", byId("cfg-downColor").value);
+      s.set("sparkColor", byId("cfg-sparkColor").value);
+      s.saveAsync().then(function () {
+        tableau.extensions.ui.closeDialog("saved");
+      });
+    }
+
+    /* =========================================================
+       BOOT
+       ========================================================= */
+
+    if (typeof tableau === "undefined" || !tableau.extensions) {
+      root.innerHTML =
+        '<div class="kpi-card"><div class="kpi-message">Tableau Extensions API failed to load.</div></div>';
+      throw new Error("tableau.extensions is unavailable");
+    }
+
+    var isDialog = new URLSearchParams(window.location.search).get("dialog") === "1";
+
+    if (isDialog) {
+      // Dialog mode: a separate extension context for the settings form.
+      tableau.extensions.initializeDialogAsync().then(function () {
+        buildDialog();
+      }).catch(function (err) {
+        root.innerHTML = '<div class="cfg"><h2>Could not open settings</h2><p>' + err + "</p></div>";
+      });
+    } else {
+      // Viz mode: render the card.
+      root.innerHTML = '<div class="kpi-card"><div class="kpi-message">Loading…</div></div>';
+      tableau.extensions.initializeAsync({ configure: openConfigDialog })
+        .then(initViz)
+        .catch(showError);
+    }
+  </script>
+</body>
+</html>

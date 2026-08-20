@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+  <!--
+    Super KPI Card — a Tableau VIZ extension (<worksheet-extension>): it lives on a
+    worksheet's Marks card with its own encoding shelves, not on a dashboard.
+    Child-element order below is schema-enforced: default-locale, name, description,
+    author, min-api-version, source-location, icon, [permissions], then <encoding> tiles.
+  -->
+  <worksheet-extension id="com.vizyourdata.superkpi" extension-version="1.1.0">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>A big, bold single-value KPI card with optional period-over-period change.</description>
+    <author name="vizyourdata" email="eric.summers@vizyourdata.com" organization="vizyourdata" website="https://vizyourdata.com"/>
+    <min-api-version>1.11</min-api-version>
+    <source-location>
+      <!-- GitHub Pages host for this extension. -->
+      <url>https://tableauops.github.io/kpi-card/index.html</url>
+      <!-- Local dev alternative (serve.bat at project root): http://localhost:8088/index.html -->
+    </source-location>
+    <icon/>
+
+    <!-- Measure tile: exactly one numeric, continuous measure. -->
+    <encoding id="measure">
+      <display-name resource-id="measure-name">Measure</display-name>
+      <data-spec>
+        <data-type>numeric</data-type>
+      </data-spec>
+      <role-spec>
+        <role-type>continuous-measure</role-type>
+      </role-spec>
+      <fields max-count="1"/>
+    </encoding>
+
+    <!-- Date tile: optional, at most one temporal dimension (continuous or discrete).
+         role-spec is intentionally omitted so either flavor of date is accepted. -->
+    <encoding id="date">
+      <display-name resource-id="date-name">Date (optional)</display-name>
+      <data-spec>
+        <data-type>temporal</data-type>
+      </data-spec>
+      <fields max-count="1"/>
+    </encoding>
+  </worksheet-extension>
+
+  <!-- Localized strings live in a top-level <resources> block (not <localizations>). -->
+  <resources>
+    <resource id="name">
+      <text locale="en_US">Super KPI Card</text>
+    </resource>
+    <resource id="measure-name">
+      <text locale="en_US">Measure</text>
+    </resource>
+    <resource id="date-name">
+      <text locale="en_US">Date (optional)</text>
+    </resource>
+  </resources>
+</manifest>
