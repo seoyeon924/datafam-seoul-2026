@@ -37,6 +37,24 @@ code{font-family:'SF Mono',Menlo,monospace;font-size:11.5px;background:#EDF1F7;b
 .st{background:#F1F5FB;border-radius:8px;padding:9px 6px;text-align:center}
 .st b{font-size:16px;margin:0}
 .st span{font-size:10.5px;color:#5B6B84}
+.fun{margin:12px 0 6px;display:flex;align-items:flex-end;gap:8px}
+.fun .st2{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
+.fun .trk{width:100%;height:64px;display:flex;align-items:flex-end}
+.fun .bar{width:100%;background:#C9DBF6;border-radius:4px 4px 0 0;min-height:4px}
+.fun .st2:last-child .bar{background:#1E4FC2}
+.fun .lb{font-size:9.5px;color:#5B6B84;text-align:center;line-height:1.2}
+.fun .vv{font-size:10.5px;font-weight:700;color:#16233B}
+.rate{display:flex;gap:6px;margin-bottom:8px}
+.rate span{flex:1;text-align:center;font-size:10px;color:#5B6B84}
+.rate span b{display:block;font-size:12px;color:#1E4FC2}
+.rate span.warn b{color:#C4453A}
+.tw{width:100%;border-collapse:collapse;margin-top:6px}
+.tw th,.tw td{text-align:left;padding:6px 8px;border-bottom:1px solid #E7ECF4;font-size:11.5px;line-height:1.45}
+.tw th{font-size:10.5px;color:#7186A3;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.tw td.n{text-align:right;font-family:'SF Mono',Menlo,monospace;font-size:11.5px}
+.q2{background:#fff;border:1px solid #D5DEEC;border-radius:14px 14px 3px 14px;padding:11px 16px;
+  font-size:14px;font-weight:600;margin:16px 0 10px}
+.note2{margin-top:8px;font-size:11.5px;color:#7186A3;line-height:1.55}
 .foot{margin-top:18px;display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6B84}
 .foot .b{background:#16233B;color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:600}
 .foot code{background:#E4EBF5}
@@ -68,17 +86,77 @@ code{font-family:'SF Mono',Menlo,monospace;font-size:11.5px;background:#EDF1F7;b
         <div class="sec">재현 순서</div>
         <li>Stage 정렬 계산 필드 → 단계별 집계 시트 → 툴팁 시트(T_) 연결 → KPI 카드(B_) 4개 → 대시보드 조립</li>
       </div>
+
+      <div class="q2">단계별 전환은 어떻게 나와? 어디서 제일 많이 빠져?</div>
+      <div class="chips"><span class="chip">get-view-data</span><span class="chip">read-sheet</span></div>
+      <div class="a">
+        <div class="sec">퍼널 단계별 잔존 · Conversion Rate 시트 기준</div>
+        <div class="fun">
+          <div class="st2"><span class="vv">842</span><div class="trk"><div class="bar" style="height:100%"></div></div><span class="lb">Prospecting</span></div>
+          <div class="st2"><span class="vv">512</span><div class="trk"><div class="bar" style="height:61%"></div></div><span class="lb">Qualification</span></div>
+          <div class="st2"><span class="vv">277</span><div class="trk"><div class="bar" style="height:33%"></div></div><span class="lb">Value<br>Proposition</span></div>
+          <div class="st2"><span class="vv">108</span><div class="trk"><div class="bar" style="height:13%"></div></div><span class="lb">Proposal</span></div>
+          <div class="st2"><span class="vv">51</span><div class="trk"><div class="bar" style="height:7%"></div></div><span class="lb">Negotiation</span></div>
+          <div class="st2"><span class="vv">24</span><div class="trk"><div class="bar" style="height:4%"></div></div><span class="lb">Closed Won</span></div>
+        </div>
+        <div class="rate">
+          <span><b>61%</b>→ Qual</span>
+          <span class="warn"><b>54%</b>→ Value</span>
+          <span class="warn"><b>39%</b>→ Proposal</span>
+          <span><b>47%</b>→ Nego</span>
+          <span><b>47%</b>→ Won</span>
+        </div>
+        <li>Value Proposition → Proposal 구간 39%로 단계 중 이탈이 가장 큼 · 277건 중 169건 이탈</li>
+        <li>전체 Prospecting → Closed Won 2.9% · 최종 Won Rate는 <code>[# of Won Opp.] / [# of Closed Opp.]</code>로 별도 계산</li>
+      </div>
+
+      <div class="q2">시트 16개는 각각 뭐 하는 거야?</div>
+      <div class="chips"><span class="chip">list-sheets</span><span class="chip">analyze-structure</span></div>
+      <div class="a">
+        <table class="tw">
+          <tr><th>그룹</th><th>시트</th><th class="n">개수</th><th>역할</th></tr>
+          <tr><td>본문</td><td>Conversion Rate · Number of Open Oppty · Top 10 Opp. · Won Rate · conversion · focus</td><td class="n">6</td><td>대시보드에 직접 배치</td></tr>
+          <tr><td><code>T_</code> 툴팁</td><td>T_# of Open Oppty · T_Avg.Age of Oppty · T_Avg.Deal Size · T_Conversion Rate · T_Total Expected Amount · T_Won Rate</td><td class="n">6</td><td>본문 시트의 툴팁으로만 삽입</td></tr>
+          <tr><td><code>B_</code> KPI</td><td>B_# of Open Oppty · B_Avg. Age of Oppty · B_Avg.Deal Size · B_Total Expected Amount</td><td class="n">4</td><td>하단 KPI 카드 4장</td></tr>
+        </table>
+        <div class="note2">접두사로 배치 용도를 나눠 두면 대시보드에서 어떤 시트를 지워도 되는지 바로 판단됩니다.
+          툴팁 전용 시트는 대시보드에 보이지 않아 이름만으로는 구분이 어렵습니다.</div>
+      </div>
+
+      <div class="q2">이 구조 그대로 우리 데이터에 쓰려면 뭘 바꿔야 해?</div>
+      <div class="chips"><span class="chip">get-workbook-details</span><span class="chip">list-fields</span></div>
+      <div class="a">
+        <div class="sec">교체 대상</div>
+        <li>필드 5개만 매핑: <code>Stage</code> · <code>Opportunity ID</code> · <code>Amount</code> · <code>Expected Amount</code> · <code>CreatedDate</code></li>
+        <li><code>Sort</code>의 CASE 문에 자사 단계명을 넣어 순서를 다시 정의</li>
+        <li><code>Age of Oppty</code>의 기준일 <code>#2018-10-01#</code>은 하드코딩 · <code>TODAY()</code>로 교체 필요</li>
+        <div class="sec">그대로 쓸 수 있는 것</div>
+        <li>LOD 4종(<code>{FIXED [Opportunity ID]: …}</code>) · 툴팁 시트 연결 구조 · KPI 카드 레이아웃</li>
+      </div>
     </div>
     <div class="side">
       <div class="viz"><img src="../assets/funnel_full.png" alt="Sales Funnel Dashboard"><div class="cap">Sales Funnel Dashboard | VOTD · 조회 104.4K · Featured</div></div>
-      <div class="prof">
+      <div class="prof" style="margin-bottom:10px">
         <b>Seoyeon Jun</b>
-        <div class="r">Tableau Visionary · Public Ambassador 5회 · VOTD 4회</div>
+        <div class="r">Tableau Visionary · Public Ambassador 2021–2026 · VOTD 4회</div>
         <div class="stats">
           <div class="st"><b>35</b><span>Vizzes</span></div>
           <div class="st"><b>2,086</b><span>Followers</span></div>
           <div class="st"><b>104K</b><span>Top Viz 조회</span></div>
         </div>
+      </div>
+      <div class="prof">
+        <b>MCP가 읽어 온 것</b>
+        <table class="tw" style="margin-top:8px">
+          <tr><td>워크북 메타데이터</td><td class="n">공개 API</td></tr>
+          <tr><td>.twbx 원본</td><td class="n">다운로드</td></tr>
+          <tr><td>시트 · 대시보드 목록</td><td class="n">16 · 1</td></tr>
+          <tr><td>계산 필드 원문</td><td class="n">27개</td></tr>
+          <tr><td>파라미터</td><td class="n">2개</td></tr>
+          <tr><td>데이터 원본 연결</td><td class="n">1개</td></tr>
+        </table>
+        <div class="note2">인증 없이 공개 워크북만 대상으로 합니다.
+          비공개 자산이나 사내 서버 자산은 이 경로로 접근할 수 없습니다.</div>
       </div>
     </div>
   </div>

@@ -37,6 +37,27 @@ code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;bor
 .shotimg{background:#fff;border:1px solid #DDE4EE;border-radius:10px;overflow:hidden}
 .shotimg img{display:block;width:100%}
 .shotimg .cap{padding:8px 12px;font-size:11px;color:#5B6B84;border-top:1px solid #E7ECF4}
+.two{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start}
+.card{background:#fff;border:1px solid #DDE4EE;border-radius:12px;padding:14px 16px}
+.card h3{font-size:12.5px;color:#16233B;margin-bottom:9px;font-weight:700}
+.bars{display:flex;flex-direction:column;gap:8px}
+.brow{display:grid;grid-template-columns:70px 1fr 44px;align-items:center;gap:9px;font-size:11.5px}
+.brow .tr{height:9px;background:#EDF1F7;border-radius:5px;overflow:hidden}
+.brow .bf{height:100%;background:#1E4FC2;border-radius:5px}
+.brow .bf.s2{background:#7FA9D9}
+.brow .nn{text-align:right;font-family:'SF Mono',Menlo,monospace;font-size:11px;color:#5B6B84}
+.mini{width:100%;border-collapse:collapse}
+.mini td{padding:5px 0;font-size:11.5px;border-bottom:1px solid #EEF2F8}
+.mini td:last-child{text-align:right;font-family:'SF Mono',Menlo,monospace;color:#5B6B84}
+.mini tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-size:10px;border-radius:4px;padding:2px 7px;font-weight:600}
+.pill.a{background:#E4F3E9;color:#2A7D4B}
+.pill.b{background:#FDECEA;color:#B4392E}
+.pill.c{background:#FFF4DE;color:#8A6320}
+.mdbox{background:#16233B;border-radius:10px;padding:12px 15px;margin-top:8px;
+  font-family:'SF Mono',Menlo,monospace;font-size:10.5px;line-height:1.75;color:#C9DBF6;overflow-x:auto}
+.mdbox .k{color:#7FA9D9}
+.mdbox .v{color:#fff}
 </style></head>
 <body><div class="page">
 <div class="hd"><h1>Tableau 자산 카탈로그</h1><span class="period">사이트 전체 · 2026-08-18 자동 생성</span><span class="gen">생성: Claude Code + Tableau MCP</span></div>
@@ -55,7 +76,47 @@ code{font-family:'SF Mono',Menlo,monospace;font-size:11px;background:#EDF1F7;bor
   <tr><td>Marketing</td><td>캠페인 성과</td><td class="num">8</td><td>이수민</td><td>ga4_export</td><td>채널별 유입 · 전환 · CVR 추이</td></tr>
   <tr><td>HR</td><td>HR Dashboard</td><td class="num">6</td><td>정다은</td><td>hris_extract</td><td>조직별 인원 · 이탈 위험 요인</td></tr>
   <tr><td>Finance</td><td>임원 KPI 보드</td><td class="num">5</td><td>최원준</td><td>finance_dw <span class="tag ok">인증</span></td><td>전사 KPI 월간 요약 · 구독 발송용</td></tr>
+  <tr><td>Marketing</td><td>광고 효율 대시보드</td><td class="num">7</td><td>이수민</td><td>ga4_export</td><td>매체별 ROAS · 예산 소진 추이</td></tr>
+  <tr><td>Sales</td><td>고객 세그먼트 RFM</td><td class="num">6</td><td>김지훈</td><td>sales_master <span class="tag ok">인증</span></td><td>최근성 · 빈도 · 금액 기준 등급 분포</td></tr>
 </table>
-<div class="foot"><span class="b">catalog.md 갱신됨</span><span class="b">신규 입사자 온보딩용</span><span>워크북 추가 · 변경 시 주 1회 자동 갱신</span></div>
+<div class="two" style="margin-top:16px">
+  <div class="card">
+    <h3>프로젝트별 자산 분포</h3>
+    <div class="bars">
+      <div class="brow"><span>Sales</span><div class="tr"><div class="bf" style="width:100%"></div></div><span class="nn">14 / 96</span></div>
+      <div class="brow"><span>Marketing</span><div class="tr"><div class="bf" style="width:64%"></div></div><span class="nn">9 / 61</span></div>
+      <div class="brow"><span>Finance</span><div class="tr"><div class="bf" style="width:43%"></div></div><span class="nn">6 / 38</span></div>
+      <div class="brow"><span>HR</span><div class="tr"><div class="bf s2" style="width:21%"></div></div><span class="nn">3 / 23</span></div>
+    </div>
+    <h3 style="margin-top:16px">데이터 원본별 참조 워크북</h3>
+    <div class="bars">
+      <div class="brow"><span>sales_master</span><div class="tr"><div class="bf" style="width:100%"></div></div><span class="nn">11</span></div>
+      <div class="brow"><span>ga4_export</span><div class="tr"><div class="bf" style="width:64%"></div></div><span class="nn">7</span></div>
+      <div class="brow"><span>finance_dw</span><div class="tr"><div class="bf" style="width:45%"></div></div><span class="nn">5</span></div>
+      <div class="brow"><span>hris_extract</span><div class="tr"><div class="bf s2" style="width:27%"></div></div><span class="nn">3</span></div>
+      <div class="brow"><span>기타 7개</span><div class="tr"><div class="bf s2" style="width:55%"></div></div><span class="nn">6</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>확인이 필요한 항목</h3>
+    <table class="mini">
+      <tr><td><span class="pill b">중복</span> 매출 관련 워크북 3개가 같은 KPI 산출</td><td>3</td></tr>
+      <tr><td><span class="pill c">미인증</span> 데이터 원본 인증 표시 없음</td><td>7</td></tr>
+      <tr><td><span class="pill c">소유자</span> 퇴사자 계정에 남은 워크북</td><td>2</td></tr>
+      <tr><td><span class="pill c">미사용</span> 90일간 조회 0회</td><td>5</td></tr>
+      <tr><td><span class="pill a">정상</span> 위 항목에 해당 없음</td><td>15</td></tr>
+    </table>
+    <h3 style="margin-top:15px">catalog.md 출력 형식</h3>
+    <div class="mdbox">
+<span class="k">## Sales / 영업 파이프라인</span><br>
+<span class="k">- 뷰</span> <span class="v">9</span>  <span class="k">소유자</span> <span class="v">김지훈</span>  <span class="k">최종수정</span> <span class="v">2026-08-11</span><br>
+<span class="k">- 원본</span> <span class="v">sales_master (인증)</span><br>
+<span class="k">- 설명</span> <span class="v">단계별 전환과 수주율</span><br>
+<span class="k">- 조회</span> <span class="v">90일 1,204회 · 구독 3건</span>
+    </div>
+  </div>
+</div>
+
+<div class="foot"><span class="b">catalog.md 갱신됨</span><span class="b">신규 입사자 온보딩용</span><span>워크북 추가 · 변경 시 주 1회 자동 갱신 · 조회 수는 사이트 사용 기록 기준</span></div>
 
 </div></body></html>
