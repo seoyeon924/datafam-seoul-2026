@@ -250,13 +250,18 @@ function buildModel(events, now, cmp){
   }
   function colVal(k){ var c=retCol(k); return c===null?'—':c.toFixed(1)+'%'; }
   var dauLabel = unit==='day' ? 'DAU' : (unit==='week' ? 'WAU' : 'MAU');
-  var c1 = Math.min(1, maxCols-1), c2 = Math.min(4, maxCols-1), c3 = Math.min(8, maxCols-1);
-  var kpis=[
-    { label: dauLabel, value: avg.toFixed(1), delta: dAvg, unit:'%', cmpLabel: cmpLabel, trend: cSeries.slice(-14) },
-    { label: prefix+c1+' Retention', value: colVal(c1), delta: colDelta(c1), cmpLabel:'이전 코호트', trend: counts.slice(-14) },
-    { label: prefix+c2+' Retention', value: colVal(c2), delta: colDelta(c2), cmpLabel:'이전 코호트', trend: counts.slice(-14) },
-    { label: prefix+c3+' Retention', value: colVal(c3), delta: colDelta(c3), cmpLabel:'이전 코호트', trend: counts.slice(-14) }
-  ];
+  // 보여줄 코호트 열: 원하는 위치를 데이터 폭에 맞춰 줄이고 중복은 제거
+  var picks=[];
+  [1,4,8].forEach(function(k){
+    var c=Math.min(k, maxCols-1);
+    if(c>=1 && picks.indexOf(c)<0 && retCol(c)!==null) picks.push(c);
+  });
+  if(!picks.length) for(var pc=1; pc<maxCols && picks.length<3; pc++){ if(retCol(pc)!==null) picks.push(pc); }
+  var kpis=[{ label: dauLabel, value: avg.toFixed(1), delta: dAvg, unit:'%', cmpLabel: cmpLabel, trend: cSeries.slice(-14) }];
+  picks.forEach(function(c){
+    kpis.push({ label: prefix+c+' Retention', value: colVal(c), delta: colDelta(c),
+                cmpLabel:'이전 코호트', trend: counts.slice(-14) });
+  });
 
   return {
     periods: Array.apply(null,{length:maxCols}).map(function(_,i){return i;}),
@@ -355,9 +360,9 @@ function run(ws){
     var uniqDays={}; events.forEach(function(e){ uniqDays[startOfDay(e.t)]=1; });
     var nDays=Object.keys(uniqDays).length;
     if(nDays<4){
-      fail('날짜가 연 · 분기 · 월 단위로 집계되어 있습니다',
-        '서로 다른 날짜가 '+nDays+'개뿐이라 코호트를 만들 수 없습니다.<br>' +
-        'Event Date 선반의 필드를 우클릭 → <b>정확한 날짜</b>(Exact Date) 선택 후 다시 시도해 주세요.');
+      fail('서로 다른 날짜가 '+nDays+'개뿐입니다',
+        '코호트를 만들려면 날짜가 최소 4개 필요합니다.<br>' +
+        '날짜가 연 · 분기 · 월로 집계되어 있다면 Event Date 선반의 필드를 우클릭 → <b>정확한 날짜</b>(Exact Date)로 바꿔 주세요.');
       return;
     }
     var maxT=events.reduce(function(a,e){return Math.max(a,e.t);},0);

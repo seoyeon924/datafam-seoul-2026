@@ -57,6 +57,13 @@ p.sub{font-size:23px;line-height:1.45;color:var(--navy);font-weight:400}
 .bio ul{margin:0 0 20px}
 .bio ul:last-child{margin-bottom:0}
 .bio li{margin-bottom:7px}
+.pvgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:11px}
+.pv{display:block;text-decoration:none;background:#fff;border:1px solid rgba(2,42,192,.13);
+  border-radius:8px;overflow:hidden}
+.pv img{display:block;width:100%;height:52px;object-fit:cover;object-position:top}
+.pv span{display:block;padding:5px 7px;font-size:8.5px;line-height:1.3;color:var(--navy);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-top:1px solid rgba(2,42,192,.08)}
+.pv em{font-style:normal;color:var(--accent);font-weight:700}
 .bio .grp{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;
   font-size:15.5px;letter-spacing:.03em;color:var(--accent);margin-bottom:12px}
 .bio .grp:after{content:'';flex:1;height:1px;background:rgba(2,42,192,.2)}
@@ -187,7 +194,9 @@ h3.colhead{font-family:var(--display);font-weight:700;font-size:22px;line-height
 .thanks .lg{width:190px;margin-bottom:14px;position:relative;z-index:2}
 .thanks .t{font-family:var(--display);font-weight:700;font-size:150px;line-height:.94;color:var(--navy);letter-spacing:-.03em;position:relative;z-index:2}
 .thanks .t .y{display:block;margin-left:70px}
-.thanks .meta{margin-top:26px;font-size:19px;color:var(--navy);opacity:.9;position:relative;z-index:2;text-align:center;line-height:1.6}
+.thanks .meta{margin-top:30px;font-size:25px;font-weight:600;color:var(--navy);position:relative;z-index:2;text-align:center;line-height:1.55}
+.thanks .meta b{display:block;font-family:var(--display);font-weight:700;font-size:30px;margin-bottom:6px}
+.thanks .meta a{color:var(--accent);text-decoration:none;font-family:var(--mono);font-size:23px}
 
 /* ---------- 노트(발표자 메모) ---------- */
 .speakernote{display:none}
@@ -654,7 +663,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
         <ul>
           <li><b>데이터브릿지랩 CEO</b></li>
           <li><b>Tableau Visionary</b></li>
-          <li><b>Tableau Public Ambassador 5년 연속</b></li>
+          <li><b>Tableau Public Ambassador · 2021 – 2026</b></li>
         </ul>
         <span class="grp">이전</span>
         <ul>
@@ -667,14 +676,17 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
           <li>Tableau Live Featured Author · Tableau Certified Associate</li>
         </ul>
       </div>
-      <div class="shot rel"><img src="assets/profile_public.png" alt="Tableau Public 프로필"></div>
+      <div>
+        <div class="shot rel"><img src="assets/profile_public.png" alt="Tableau Public 프로필"></div>
+        <div class="pvgrid"><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/SalesFunnelDashboard_16570254084520/SalesPipelineDashboard" target="_blank" rel="noopener"><img src="assets/public/sales_funnel_dashboard_votd.png" alt=""><span>Sales Funnel Dashboard <em>VOTD</em></span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/DigitalAdsPerformanceDashboard/PerformanceSummary" target="_blank" rel="noopener"><img src="assets/public/digital_ads_performance_dashboard.png" alt=""><span>Digital Ads Performance Dashboard</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/RFMAnalysis-CustomerSegmentation/Segmentation" target="_blank" rel="noopener"><img src="assets/public/rfm_analysis_customer_segmentation.png" alt=""><span>RFM Analysis - Customer Segmentation</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/12-3_GameLogDashboard_17534330076730/GameDashboard" target="_blank" rel="noopener"><img src="assets/public/game_log_dashboard.png" alt=""><span>Game Log Dashboard</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/ShiningStars-MoviesData/ShiningStarsDashboard" target="_blank" rel="noopener"><img src="assets/public/shining_stars_votd.png" alt=""><span>Shining Stars <em>VOTD</em></span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/SalesAnalysis_16026638948020/Dashboard" target="_blank" rel="noopener"><img src="assets/public/sales_analysis.png" alt=""><span>Sales Analysis</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/COVID19_SankeyChart/Sankey" target="_blank" rel="noopener"><img src="assets/public/covid19_sankeychart.png" alt=""><span>COVID19_SankeyChart</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/KPIDashboardforNavigatingOrderValueDrivers/KPIDashboard" target="_blank" rel="noopener"><img src="assets/public/kpi_dashboard_for_navigating_order.png" alt=""><span>KPI Dashboard for Navigating Order Value Drivers</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/PromotionAnalysisDahsboard/PromotionAnalysis" target="_blank" rel="noopener"><img src="assets/public/promotion_analysis_dahsboard.png" alt=""><span>Promotion Analysis Dahsboard</span></a><a class="pv" href="https://public.tableau.com/app/profile/.83057946/viz/NegativePressureIsolationRoomsInKorea/Dashboard" target="_blank" rel="noopener"><img src="assets/public/negative_pressure_isolation_rooms_.png" alt=""><span>Negative Pressure Isolation Rooms In Korea</span></a></div>
+      </div>
     </div>
   </div>
   <div class="footer">public.tableau.com · Seoyeon Jun</div>
 </section>
 
 <!-- =========================================================
-     03 · 핵심 주장
+     03 · 한 줄 주장
      ========================================================= -->
 <section class="slide dark bigstate">
   <img class="logo" src="assets/logo_white.png">
@@ -887,8 +899,8 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
     <div class="cols c2" style="grid-template-columns:1fr 1.4fr;margin-top:24px;align-items:center">
       <div>
         <div class="clbadge"><img src="assets/claude_logo.svg" alt="Claude">Claude Code</div>
-        <p class="body" style="font-size:15px;">폴더 안 규칙 파일로 동작 고정 · 대화가 아니라 파일이 기준</p>
-        <p style="font-family:var(--display);font-weight:700;font-size:22px;color:var(--accent)">한 번 정의 → 재사용</p>
+        <p class="body" style="font-size:15px;line-height:1.7">폴더 안 규칙 파일로 동작 고정 · 대화가 아니라 파일이 기준</p>
+        <p style="margin-top:18px;font-family:var(--display);font-weight:700;font-size:22px;line-height:1.4;color:var(--accent)">한 번 정의 → 재사용</p>
       </div>
       <div class="tree">
         <div class="troot">.claude/</div>
@@ -981,7 +993,7 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
         <span class="tag">RULE</span>
         <h3 class="colhead">공통 기준</h3>
         <div class="body"><p>7개 에이전트 전 단계 동일 적용 · 사람마다 다르던 기준의 문서화</p></div>
-        <div class="tbox"><img src="assets/tableau_logo.svg" alt=""><div><b>Tableau 인계</b><span>2 · 4 · 5조가 대시보드 카드 규칙으로 직결</span></div></div>
+        <div class="tbox"><img src="assets/tableau_logo.svg" alt=""><div><b>Tableau 인계</b><span>2 · 4 · 5번이 대시보드 카드 규칙으로 연결</span></div></div>
       </div>
     </div>
   </div>
@@ -1995,10 +2007,15 @@ a.live .lu{font-family:var(--mono);font-size:12px;color:var(--accent);word-break
   <img class="deco" src="assets/plus.png" style="right:390px;top:200px;width:30px">
   <img class="deco" src="assets/star.png" style="left:300px;bottom:230px;width:46px">
   <img class="deco" src="assets/plus.png" style="left:360px;bottom:270px;width:28px">
-  <img class="deco" src="assets/iheartdata.png" style="right:290px;bottom:180px;width:120px;z-index:3">
+  <img class="deco" src="assets/iheartdata.png" style="right:130px;bottom:96px;width:120px;z-index:3">
 
   <img class="lg" src="assets/logo_navy.png" style="width:150px;margin-bottom:6px">
   <div class="t" style="font-size:104px">Thank<span class="y" style="margin-left:48px">you</span></div>
+  <div class="meta">
+    <b>전서연 · 데이터브릿지랩 CEO</b>
+    Tableau Visionary &amp; Public Ambassador<br>
+    <a href="mailto:tjdus92422@gmail.com">tjdus92422@gmail.com</a>
+  </div>
   
 </section>
 
